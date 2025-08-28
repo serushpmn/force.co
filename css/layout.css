@@ -1,6 +1,6 @@
 /* --- Header --- */
 header {
-  background: var(--orange-400);
+  background: var(--gradient-glassmorphic-orange);
 }
 .top-header {
   backdrop-filter: blur(9px);
@@ -37,6 +37,7 @@ header {
 .mobile-menu-open {
   display: none; /* در دسکتاپ مخفی است */
   background: none;
+  color: #000;
   border: none;
   cursor: pointer;
   padding: 5px;

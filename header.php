@@ -26,7 +26,7 @@
 
                     <button class="mobile-menu-open" aria-label="باز کردن منو" aria-expanded="false" aria-controls="mobile-menu-container">
                         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="27" viewBox="0 0 26 27" fill="none">
-                            <path d="M1 25.348H25M1 13.4273H25M1 1.50659H25" stroke="white" stroke-width="1.875" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M1 25.348H25M1 13.4273H25M1 1.50659H25" stroke="black" stroke-width="1.875" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                 </div>

@@ -75,7 +75,9 @@
   .top-header .bio-language {
     /* display: none; */
   }
-
+  .mobile-menu-icon {
+    display: flex;
+  }
   .logo {
     width: 100px;
     height: 100%;
@@ -928,8 +930,7 @@
   #popupForm {
     width: 50%;
   }
-}
-/* --- نمایش دکمه همبرگری در موبایل --- */
+
 
 @media only screen and (min-width: 768px) {
   section {
@@ -939,13 +940,13 @@
     background: var(--gradient-glassmorphic-orange);
   }
   .top-menu {
-    display: none; /* منوی دسکتاپ مخفی شود */
-  }
-  .mobile-menu-open {
-    display: block; /* دکمه همبرگری نمایش داده شود */
+    display: flex;
   }
   .top-header .bio-language {
     display: flex;
+  }
+  .mobile-menu-icon {
+    display: none;
   }
   .hero h1 {
     font-size: 40px;
