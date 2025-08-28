@@ -126,6 +126,7 @@
                               $the_query->the_post(); ?>
                            <div class="each-logo">
                               <?php the_post_thumbnail(); ?>
+                              <span class="logo-tooltip"><?php the_title(); ?></span>
                            </div>
                            <?php
                               endwhile; ?>
@@ -168,6 +169,7 @@
                               $the_query->the_post(); ?>
                            <div class="each-logo">
                               <?php the_post_thumbnail(); ?>
+                              <span class="logo-tooltip"><?php the_title(); ?></span>
                            </div>
                            <?php
                               endwhile; ?>
@@ -211,6 +213,7 @@
                            $the_query->the_post(); ?>
                         <div class="each-logo">
                            <?php the_post_thumbnail(); ?>
+                           <span class="logo-tooltip"><?php the_title(); ?></span>
                         </div>
                         <?php
                            endwhile; ?>
@@ -249,6 +252,7 @@
                            $the_query->the_post(); ?>
                         <div class="each-logo">
                            <?php the_post_thumbnail(); ?>
+                           <span class="logo-tooltip"><?php the_title(); ?></span>
                         </div>
                         <?php
                            endwhile; ?>
@@ -287,6 +291,7 @@
                            $the_query->the_post(); ?>
                         <div class="each-logo">
                            <?php the_post_thumbnail(); ?>
+                           <span class="logo-tooltip"><?php the_title(); ?></span>
                         </div>
                         <?php
                            endwhile; ?>
@@ -327,6 +332,7 @@
                            $the_query->the_post(); ?>
                         <div class="each-logo">
                            <?php the_post_thumbnail(); ?>
+                           <span class="logo-tooltip"><?php the_title(); ?></span>
                         </div>
                         <?php
                            endwhile; ?>
@@ -352,6 +358,7 @@
                            $the_query->the_post(); ?>
                         <div class="each-logo">
                            <?php the_post_thumbnail(); ?>
+                           <span class="logo-tooltip"><?php the_title(); ?></span>
                         </div>
                         <?php
                            endwhile; ?>
@@ -391,6 +398,7 @@
                            $the_query->the_post(); ?>
                         <div class="each-logo">
                            <?php the_post_thumbnail(); ?>
+                           <span class="logo-tooltip"><?php the_title(); ?></span>
                         </div>
                         <?php
                            endwhile; ?>

@@ -253,6 +253,7 @@ h3.home-title:before {
   box-shadow: var(--shadow-2xl);
 }
 .group-logos .logo-box img {
+  border-radius: 50%;
   object-fit: cover;
 }
 .comments-home .partner-logos {

@@ -1,3 +1,67 @@
+@media (max-width: 500px) {
+  .group-logos .logo-box .each-logo .logo-tooltip {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    min-width: 150px;
+    max-width: 90vw;
+    font-size: 18px;
+    padding: 16px 20px 24px 20px;
+    z-index: 99999 !important;
+    background: #222;
+    color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+    text-align: center;
+    white-space: pre-line;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo-tooltip .close-tooltip-btn {
+    display: block;
+    margin-top: 10px;
+    background: #fff;
+    color: #222;
+    border: none;
+    border-radius: 8px;
+    padding: 4px 16px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+}
+.group-logos .logo-box .each-logo .logo-tooltip {
+  top: 110%;
+  bottom: auto;
+  min-width: 80px;
+  max-width: 200px;
+  font-size: 15px;
+  white-space: pre-line;
+  overflow-x: auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+@media (max-width: 400px) {
+  .group-logos .logo-box .each-logo .logo-tooltip {
+    font-size: 17px;
+    min-width: 100px;
+    max-width: 90vw;
+    padding: 8px 12px;
+  }
+}
+/* Tooltip: نمایش با هاور و کلیک */
+.group-logos .logo-box .each-logo .logo-tooltip {
+  pointer-events: auto;
+}
+.group-logos .logo-box .each-logo.show-tooltip .logo-tooltip,
+.group-logos .logo-box .each-logo:hover .logo-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+  .group-logos .logo-box .each-logo {
+    border-radius: 50% !important;
+    overflow: hidden;
+  }
 /* media queries
 ///////////////////////////////
 ///////////////////////////////
@@ -798,6 +862,15 @@
   .myMaghale .each-maghale img {
     margin-bottom: 10px;
     /* height: 40%; */
+  }
+  
+  /* Tooltip visibility fix for logos */
+  .group-logos .logo-box .each-logo {
+    position: relative; /* ensure tooltip positions relative to logo */
+    overflow: visible;  /* prevent clipping the tooltip */
+  }
+  .group-logos .logo-box .each-logo .logo-tooltip {
+    z-index: 1000; /* keep tooltip above neighbors */
   }
 
   .each-maghale h3,

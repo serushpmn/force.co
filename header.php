@@ -8,6 +8,7 @@
 </head>
 
 <body <?php body_class(); ?>>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/tooltip.js"></script>
     <header>
         <div class="container">
             <div class="top-header">

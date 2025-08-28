@@ -313,3 +313,32 @@ footer .copy-right p {
   padding-top: 20px;
   text-align: center;
 }
+
+.each-logo {
+  position: relative;
+  display: inline-block;
+}
+
+.logo-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  background: #222;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 4px 10px;
+  position: absolute;
+  z-index: 10;
+  bottom: 110%; /* بالای لوگو نمایش داده شود */
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  transition: opacity 0.3s;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.each-logo:hover .logo-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
