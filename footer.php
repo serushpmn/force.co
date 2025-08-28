@@ -211,12 +211,35 @@
               behavior: 'smooth'
             });
           });
-   document.querySelector(".mobile-menu-icon").addEventListener('click',function(){
-     document.querySelector(".top-menu-mobile").classList.add("active")
-   })
-   document.querySelector(".top-menu-mobile .mobile-menu-icon").addEventListener('click',function(){
-     document.querySelector(".top-menu-mobile").classList.remove("active")
-   })
+ document.addEventListener('DOMContentLoaded', function() {
+    const openMenuButton = document.querySelector('.mobile-menu-open');
+    const closeMenuButton = document.querySelector('.mobile-menu-close');
+    const menuContainer = document.querySelector('#mobile-menu-container');
+    const menuOverlay = document.querySelector('.mobile-menu-overlay');
+
+    if (openMenuButton && menuContainer) {
+        // باز کردن منو با کلیک روی دکمه همبرگر
+        openMenuButton.addEventListener('click', function() {
+            menuContainer.classList.add('is-open');
+            document.body.style.overflow = 'hidden'; // جلوگیری از اسکرول صفحه
+        });
+    }
+
+    function closeMenu() {
+        menuContainer.classList.remove('is-open');
+        document.body.style.overflow = ''; // فعال کردن مجدد اسکرول
+    }
+
+    if (closeMenuButton) {
+        // بستن منو با کلیک روی دکمه ضربدر
+        closeMenuButton.addEventListener('click', closeMenu);
+    }
+
+    if (menuOverlay) {
+        // بستن منو با کلیک روی پس‌زمینه نیمه‌شفاف
+        menuOverlay.addEventListener('click', closeMenu);
+    }
+});
    
        document.getElementById('openFormButton').addEventListener('click', function() {
        document.getElementById('popupFormContainer').style.display = 'block';
