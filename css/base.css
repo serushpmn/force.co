@@ -9,6 +9,9 @@ body {
   direction: rtl;
   background: #f7f7f7;
 }
+tbody {
+  font-family: KalamehWebFaNum, Arial, Helvetica, sans-serif;
+}
 a {
   text-decoration: none;
   color: var(--black-500);
@@ -76,4 +79,11 @@ table th {
   text-align: right;
   background-color: #04aa6d;
   color: white;
+}
+.fa,
+.fa[class^="fa-"] {
+  font-family: FontAwesome !important;
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
 }

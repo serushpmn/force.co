@@ -1,3 +1,4 @@
+
 <?php 
 function loadfiles(){
     wp_enqueue_style( 'style', get_template_directory_uri().'/style.css',false);
@@ -73,4 +74,29 @@ function display_aparat() {
   $aparat = get_option('aparat');
   echo "<input type='text' name='aparat' value='$aparat' />";
 }
-?>
+
+add_filter( 'woocommerce_checkout_fields', 'force_customize_checkout_fields' );
+function force_customize_checkout_fields( $fields ) {
+  // حذف فیلد کشور
+  unset($fields['billing']['billing_country']);
+  unset($fields['shipping']['shipping_country']);
+
+  // تغییر برچسب خیابان به آدرس و غیر الزامی کردن آن
+  $fields['billing']['billing_address_1']['label'] = 'آدرس';
+  $fields['billing']['billing_address_1']['placeholder'] = 'آدرس کامل خود را وارد کنید';
+  $fields['billing']['billing_address_1']['required'] = false;
+
+  // استان و شهر الزامی و انتقال به بالای آدرس
+  $fields['billing']['billing_state']['required'] = true;
+  $fields['billing']['billing_city']['required'] = true;
+
+
+  // کد پستی اجباری
+  $fields['billing']['billing_postcode']['required'] = true;
+
+  // تلفن اجباری، ایمیل اختیاری
+  $fields['billing']['billing_phone']['required'] = true;
+  $fields['billing']['billing_email']['required'] = false;
+
+  return $fields;
+}

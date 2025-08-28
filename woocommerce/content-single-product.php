@@ -80,6 +80,10 @@ if ( post_password_required() ) {
                 <div class="product-price-column">
                   <?php echo wc_get_product( $post->ID )->get_price_html(); ?>
                 </div>
+                <form class="cart add-to-cart-form" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data' style="margin:18px 0;">
+                  <input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" />
+                  <button type="submit" class="buy-btn" style="width:100%;margin-top:8px;">افزودن به سبد خرید</button>
+                </form>
                 <?php endif; ?>
 
                 <div class="product-icons-box" style="display:flex;gap:16px;align-items:center; justify-content:space-around;margin-bottom:16px;">

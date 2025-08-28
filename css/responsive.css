@@ -1,3 +1,499 @@
+.checkout-page, .woocommerce-checkout, .woocommerce-checkout * {
+  font-family: KalamehWebFaNum, Tahoma, Arial, sans-serif !important;
+}
+/* بازطراحی کامل صفحه تسویه حساب ووکامرس */
+.checkout-page, .woocommerce-checkout {
+  background: var(--gray-50);
+  min-height: 100vh;
+  padding: 32px 0 64px 0;
+}
+.checkout-container {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: var(--shadow-xl);
+  max-width: 800px;
+  margin: 32px auto;
+  padding: 32px 24px 40px 24px;
+}
+.checkout-title {
+  font-size: var(--h3);
+  color: var(--orange-500);
+  font-weight: var(--bold);
+  margin-bottom: 32px;
+  text-align: center;
+}
+.checkout-content {
+  font-size: 1.1rem;
+  color: var(--black-700);
+}
+.woocommerce-checkout form.checkout {
+  background: var(--gray-100);
+  border-radius: 12px;
+  padding: 24px 12px;
+  box-shadow: var(--shadow-xs);
+}
+.woocommerce-checkout .col2-set {
+  display: flex;
+  gap: 32px;
+}
+.woocommerce-checkout .col-1, .woocommerce-checkout .col-2 {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.woocommerce-checkout label {
+  color: var(--orange-700);
+  font-weight: var(--semi_bold);
+  margin-bottom: 6px;
+  font-size: 1.05rem;
+}
+.woocommerce-checkout input[type="text"],
+.woocommerce-checkout input[type="email"],
+.woocommerce-checkout input[type="tel"],
+.woocommerce-checkout input[type="number"],
+.woocommerce-checkout input[type="password"],
+.woocommerce-checkout textarea,
+.woocommerce-checkout select {
+  width: 100%;
+  border: 1.5px solid var(--orange-200);
+  border-radius: 8px;
+  background: var(--gray-50);
+  color: var(--orange-700);
+  font-size: 1.1rem;
+  font-family: 'Kalameh', Tahoma, Arial, sans-serif;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-xs);
+  transition: border 0.2s;
+}
+.woocommerce-checkout input:focus,
+.woocommerce-checkout textarea:focus,
+.woocommerce-checkout select:focus {
+  border-color: var(--orange-500);
+  outline: none;
+}
+.woocommerce-checkout .woocommerce-checkout-review-order-table {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: var(--shadow-xs);
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 24px;
+}
+.woocommerce-checkout-review-order-table th, .woocommerce-checkout-review-order-table td {
+  border: none;
+  padding: 14px 8px;
+  text-align: center;
+  font-family: 'Kalameh', Tahoma, Arial, sans-serif;
+}
+.woocommerce-checkout-review-order-table th {
+  background: var(--orange-500);
+  color: #fff;
+  font-weight: var(--bold);
+  font-size: 1.1rem;
+}
+.woocommerce-checkout .order-total th, .woocommerce-checkout .order-total td {
+  color: var(--orange-700);
+  font-weight: var(--bold);
+  font-size: 1.2rem;
+}
+.woocommerce-checkout .button, .woocommerce-checkout input.button {
+  background: var(--orange-500) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-weight: var(--bold);
+  box-shadow: var(--shadow-xs);
+  transition: background 0.2s;
+  font-size: 1.1rem;
+  padding: 10px 32px;
+  margin: 8px 0;
+}
+.woocommerce-checkout .button:hover, .woocommerce-checkout input.button:hover {
+  background: var(--orange-700) !important;
+}
+.woocommerce .woocommerce-message,
+.woocommerce .woocommerce-info,
+.woocommerce .woocommerce-error {
+  background: var(--orange-100) !important;
+  color: var(--orange-700) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: var(--shadow-xs);
+}
+.woocommerce .woocommerce-message:before,
+.woocommerce .woocommerce-info:before,
+.woocommerce .woocommerce-error:before {
+  color: var(--orange-500) !important;
+}
+.woocommerce-checkout .woocommerce-checkout-payment {
+  background: var(--gray-50);
+  border-radius: 10px;
+  box-shadow: var(--shadow-xs);
+  padding: 18px 12px;
+  margin-top: 18px;
+}
+.woocommerce-checkout .payment_methods {
+  margin-bottom: 18px;
+}
+.woocommerce-checkout .payment_box {
+  background: var(--orange-50);
+  color: var(--orange-700);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-top: 8px;
+  font-size: 1rem;
+}
+.woocommerce-checkout .place-order {
+  text-align: center;
+}
+.woocommerce-checkout .form-row {
+  margin-bottom: 12px;
+}
+.woocommerce-checkout .form-row label {
+  margin-bottom: 4px;
+}
+.woocommerce-checkout .form-row input[type="checkbox"] {
+  accent-color: var(--orange-500);
+}
+@media (max-width: 700px) {
+  .checkout-container {
+    padding: 12px 2vw 24px 2vw;
+    max-width: 98vw;
+  }
+  .checkout-title {
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+  }
+  .woocommerce-checkout .col2-set {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+.cart-subtotal th, .order-subtotal td{
+  text-align: center;
+}
+/* استایل ورودی تعداد محصول در سبد خرید */
+.woocommerce-cart-form .product-quantity input.qty,
+.woocommerce .quantity input.qty {
+  width: 56px;
+  height: 38px;
+  border: 1.5px solid var(--orange-200);
+  border-radius: 8px;
+  background: var(--gray-50);
+  color: var(--orange-700);
+  font-size: 1.1rem;
+  font-family: 'KalamehWebFaNum', Tahoma, Arial, sans-serif;
+  text-align: center;
+  font-weight: var(--bold);
+  box-shadow: var(--shadow-xs);
+  transition: border 0.2s;
+  margin: 0 4px;
+}
+.woocommerce-cart-form .product-quantity input.qty:focus,
+.woocommerce .quantity input.qty:focus {
+  border-color: var(--orange-500);
+  outline: none;
+}
+.woocommerce-cart-form table.shop_table, .woocommerce-cart-form table.shop_table th, .woocommerce-cart-form table.shop_table td {
+  direction: rtl;
+  font-family: 'KalamehWebFaNum', Tahoma, Arial, sans-serif;
+}
+.woocommerce-cart-form table.shop_table th {
+  font-family: 'KalamehWebFaNum', Tahoma, Arial, sans-serif;
+}
+/* حذف رنگ‌های پیش‌فرض ووکامرس (سبز، بنفش و ...) و جایگزینی با نارنجی و خاکستری */
+.woocommerce .button.alt,
+.woocommerce .checkout-button,
+.woocommerce .button,
+.woocommerce input.button,
+.woocommerce input.button.alt,
+.woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
+.woocommerce-cart .cart-collaterals .checkout-button {
+  background: var(--orange-500) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-weight: var(--bold);
+  box-shadow: var(--shadow-xs);
+  transition: background 0.2s;
+}
+.woocommerce .button.alt:hover,
+.woocommerce .checkout-button:hover,
+.woocommerce .button:hover,
+.woocommerce input.button:hover,
+.woocommerce input.button.alt:hover,
+.woocommerce-cart .wc-proceed-to-checkout a.checkout-button:hover,
+.woocommerce-cart .cart-collaterals .checkout-button:hover {
+  background: var(--orange-700) !important;
+}
+.woocommerce .woocommerce-message,
+.woocommerce .woocommerce-info,
+.woocommerce .woocommerce-error {
+  background: var(--orange-100) !important;
+  color: var(--orange-700) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: var(--shadow-xs);
+}
+.woocommerce .woocommerce-message:before,
+.woocommerce .woocommerce-info:before,
+.woocommerce .woocommerce-error:before {
+  color: var(--orange-500) !important;
+}
+.woocommerce .cart-empty {
+  background: var(--orange-50) !important;
+  color: var(--orange-700) !important;
+  border-radius: 10px !important;
+  font-weight: var(--bold);
+}
+.woocommerce .order-total th, .woocommerce .order-total td {
+  text-align: center;
+  font-weight: var(--bold);
+}
+.woocommerce .cart_totals h2 {
+  color: var(--orange-500) !important;
+}
+.woocommerce .product-name a {
+  color: var(--orange-700) !important;
+}
+.woocommerce .product-name a:hover {
+  color: var(--orange-500) !important;
+}
+.woocommerce .remove {
+  color: var(--orange-400) !important;
+}
+.woocommerce .remove:hover {
+  color: var(--orange-700) !important;
+}
+/* بازطراحی کامل صفحه سبد خرید با تم نارنجی و رنگ‌های variables.css */
+.cart-page, .woocommerce-cart {
+  background: var(--gray-50);
+  min-height: 100vh;
+  padding: 32px 0 64px 0;
+}
+.cart-container {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: var(--shadow-xl);
+  max-width: 1200px;
+  margin: 32px auto;
+  padding: 32px 24px 40px 24px;
+}
+.cart-title {
+  font-size: var(--h3);
+  color: var(--orange-500);
+  font-weight: var(--bold);
+  margin-bottom: 32px;
+  text-align: center;
+}
+.cart-content {
+  font-size: 1.1rem;
+  color: var(--black-700);
+}
+.woocommerce-cart-form, .cart_totals {
+  background: var(--gray-100);
+  border-radius: 12px;
+  padding: 24px 12px;
+  box-shadow: var(--shadow-xs);
+}
+.woocommerce-cart-form table.shop_table {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: var(--shadow-xs);
+  overflow: hidden;
+  width: 100%;
+}
+.woocommerce-cart-form table.shop_table th, .woocommerce-cart-form table.shop_table td {
+  border: none;
+  padding: 14px 8px;
+  text-align: center;
+}
+.woocommerce-cart-form .cart_item {
+  border-bottom: 1px solid var(--gray-200);
+}
+.woocommerce-cart-form .product-name a {
+  color: var(--orange-700);
+  font-weight: var(--semi_bold);
+  transition: color 0.2s;
+}
+.woocommerce-cart-form .product-name a:hover {
+  color: var(--orange-500);
+}
+.woocommerce-cart-form .product-price, .woocommerce-cart-form .product-subtotal {
+  color: var(--orange-500);
+  font-weight: var(--bold);
+}
+.woocommerce-cart-form .actions .button,
+.woocommerce .cart_totals .checkout-button,
+.woocommerce .cart_totals .button {
+  background: var(--orange-500);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: var(--bold);
+  padding: 10px 32px;
+  border: none;
+  box-shadow: var(--shadow-xs);
+  transition: background 0.2s;
+  margin: 8px 0;
+}
+.woocommerce-cart-form .actions .button:hover,
+.woocommerce .cart_totals .checkout-button:hover,
+.woocommerce .cart_totals .button:hover {
+  background: var(--orange-700);
+}
+.woocommerce-message, .woocommerce-error, .woocommerce-info {
+  background: var(--orange-100);
+  color: var(--orange-700);
+  border-radius: 8px;
+  padding: 12px 18px;
+  margin: 16px 0;
+  font-weight: var(--semi_bold);
+  box-shadow: var(--shadow-xs);
+}
+.cart_totals {
+  background: var(--gray-50);
+  border-radius: 12px;
+  box-shadow: var(--shadow-xs);
+  margin-top: 32px;
+  padding: 24px 18px;
+}
+.cart_totals h2 {
+  color: var(--orange-500);
+  font-size: 1.3rem;
+  font-weight: var(--bold);
+  margin-bottom: 18px;
+}
+.cart_totals table th, .cart_totals table td {
+  border: none;
+  padding: 10px 6px;
+  font-size: 1.05rem;
+}
+.cart_totals .order-total th, .cart_totals .order-total td {
+  color: var(--orange-700);
+  font-size: 1.2rem;
+  font-weight: var(--bold);
+}
+.cart-empty {
+  color: var(--orange-700);
+  background: var(--orange-50);
+  border-radius: 10px;
+  padding: 24px 0;
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 32px 0;
+}
+.woocommerce-cart-form .remove {
+  color: var(--orange-400);
+  font-size: 1.3rem;
+  transition: color 0.2s;
+}
+.woocommerce-cart-form .remove:hover {
+  color: var(--orange-700);
+}
+@media (max-width: 700px) {
+  .cart-container {
+    padding: 12px 2vw 24px 2vw;
+    max-width: 98vw;
+  }
+  .cart-title {
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+  }
+  .cart_totals {
+    padding: 12px 4px;
+  }
+}
+/* استایل اختصاصی سبد خرید و تسویه حساب */
+.cart-page, .checkout-page {
+  background: var(--gray-50);
+  min-height: 100vh;
+  padding: 32px 0 64px 0;
+}
+.cart-container, .checkout-container {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: var(--shadow-xl);
+  max-width: 1200px;
+  margin: 32px auto;
+  padding: 32px 24px 40px 24px;
+}
+.cart-title, .checkout-title {
+  font-size: var(--h3);
+  color: var(--orange-500);
+  font-weight: var(--bold);
+  margin-bottom: 32px;
+  text-align: center;
+}
+.cart-content, .checkout-content {
+  font-size: 1.1rem;
+  color: var(--black-700);
+}
+.woocommerce-cart-form, .woocommerce-checkout {
+  background: var(--gray-100);
+  border-radius: 12px;
+  padding: 24px 12px;
+  box-shadow: var(--shadow-xs);
+}
+.woocommerce-cart-form table.shop_table, .woocommerce-checkout-review-order-table {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: var(--shadow-xs);
+  overflow: hidden;
+}
+.woocommerce-cart-form table.shop_table th, .woocommerce-cart-form table.shop_table td,
+.woocommerce-checkout-review-order-table th, .woocommerce-checkout-review-order-table td {
+  border: none;
+  padding: 14px 8px;
+}
+.woocommerce-cart-form .cart_item {
+  border-bottom: 1px solid var(--gray-200);
+}
+.woocommerce-cart-form .product-name a,
+.woocommerce-checkout-review-order-table .product-name {
+  color: var(--orange-700);
+  font-weight: var(--semi_bold);
+}
+.woocommerce-cart-form .product-price, .woocommerce-cart-form .product-subtotal,
+.woocommerce-checkout-review-order-table .product-total {
+  color: var(--orange-500);
+  font-weight: var(--bold);
+}
+.woocommerce-cart-form .actions .button,
+.woocommerce-checkout .button {
+  background: var(--orange-500);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: var(--bold);
+  padding: 10px 32px;
+  border: none;
+  box-shadow: var(--shadow-xs);
+  transition: background 0.2s;
+}
+.woocommerce-cart-form .actions .button:hover,
+.woocommerce-checkout .button:hover {
+  background: var(--orange-700);
+}
+.woocommerce-message, .woocommerce-error, .woocommerce-info {
+  background: var(--orange-100);
+  color: var(--orange-700);
+  border-radius: 8px;
+  padding: 12px 18px;
+  margin: 16px 0;
+  font-weight: var(--semi_bold);
+  box-shadow: var(--shadow-xs);
+}
+@media (max-width: 600px) {
+  .cart-container, .checkout-container {
+    padding: 12px 2vw 24px 2vw;
+    max-width: 98vw;
+  }
+  .cart-title, .checkout-title {
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+  }
+}
 /* استایل ویژه برای متن ناموجود در انبار */
 .prd_stock.out-of-stock-text {
   color: #fff !important;
@@ -312,7 +808,7 @@ del .woocommerce-Price-amount.amount {
     margin: 20px auto;
     border-collapse: collapse;
     width: 80%;
-    text-align: center;
+    text-align: center !important;
     font-size: 18px;
   }
 
@@ -334,8 +830,15 @@ del .woocommerce-Price-amount.amount {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: right;
-    background-color: #04aa6d;
-    color: white;
+    background: var(--orange-500);
+    color: #fff;
+    font-weight: var(--bold);
+    font-size: 1.1rem;
+  }
+  table {
+    max-width: 1200px;
+    width: 100%;
+    margin: 20px auto;
   }
   .call-button {
     position: fixed;

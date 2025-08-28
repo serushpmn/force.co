@@ -25,6 +25,14 @@
                         <?php do_action('wpml_add_language_selector'); ?>
                     </div>
 
+                    <a href="<?php echo wc_get_cart_url(); ?>" class="cart-header-btn" style="position:relative;display:inline-block;margin-left:18px;">
+                        <i class="fa fa-shopping-cart" style="font-size: 1.7rem;color:var(--orange-500);"></i>
+                        <?php $cart_count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0; ?>
+                        <span class="cart-count-badge" style="position:absolute;top:-8px;left:-8px;background:var(--orange-500);color:#fff;font-size:0.9rem;padding:2px 8px;border-radius:12px;min-width:22px;text-align:center;font-weight:bold;line-height:1;display:<?php echo ($cart_count>0?'inline-block':'none'); ?>;">
+                            <?php echo esc_html($cart_count); ?>
+                        </span>
+                    </a>
+
                     <button class="mobile-menu-open" aria-label="باز کردن منو" aria-expanded="false" aria-controls="mobile-menu-container">
                         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="27" viewBox="0 0 26 27" fill="none">
                             <path d="M1 25.348H25M1 13.4273H25M1 1.50659H25" stroke="black" stroke-width="1.875" stroke-linecap="round" stroke-linejoin="round" />
