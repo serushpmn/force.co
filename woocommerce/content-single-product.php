@@ -37,8 +37,22 @@ if ( post_password_required() ) {
 <section>
           <div class="product-single-top ">
             <div class="product-single-right">
-              
+            
+            
+              <div style="position:relative;">
+                <?php
+                // نمایش بج درصد تخفیف اگر محصول تخفیف‌دار باشد
+                if ( $product->is_on_sale() ) {
+                  $regular_price = (float) $product->get_regular_price();
+                  $sale_price = (float) $product->get_sale_price();
+                  if ( $regular_price > 0 && $sale_price > 0 && $regular_price > $sale_price ) {
+                    $discount_percent = round( ( ( $regular_price - $sale_price ) / $regular_price ) * 100 );
+                    echo '<span class="discount-badge">' . $discount_percent . '% تخفیف</span>';
+                  }
+                }
+                ?>
                 <?php woocommerce_show_product_images(); ?>
+              </div>
               
               <div class="product-single-details">
              
@@ -61,8 +75,25 @@ if ( post_password_required() ) {
                     <?php endif; ?>
               
                 <h2><?php echo wc_get_product( $post->ID )->get_title(); ?></h2>
-                <p class="prd_stock"><?php echo (wc_get_product( $post->ID )->get_stock_status()=='instock') ? 'موجود در انبار' :'ناموجود در انبار';?></p>
-                <p><?php echo wc_get_product( $post->ID )->get_price_html(); ?></p>
+                <p class="prd_stock<?php echo ($product->get_stock_status() !== 'instock') ? ' out-of-stock-text' : ''; ?>"><?php echo (wc_get_product( $post->ID )->get_stock_status()=='instock') ? 'موجود' :'ناموجود';?></p>
+                <?php if ($product->get_stock_status() === 'instock') : ?>
+                <div class="product-price-column">
+                  <?php echo wc_get_product( $post->ID )->get_price_html(); ?>
+                </div>
+                <?php endif; ?>
+
+                <div class="product-icons-box" style="display:flex;gap:16px;align-items:center; justify-content:space-around;margin-bottom:16px;">
+
+              <div class="icon-item" style="display:flex;flex-direction:column;align-items:center;">
+                <i class="fa fa-truck" style="font-size:36px;color:#ff9800;"></i>
+                <span style="font-size:18px;margin-top:4px;">ارسال سریع</span>
+              </div>
+              <div class="icon-item" style="display:flex;flex-direction:column;align-items:center;">
+                <i class="fa fa-shield" style="font-size:36px;color:#ff9800;"></i>
+                <span style="font-size:18px;margin-top:4px;">ضمانت اصالت</span>
+              </div>
+            </div>
+
               </div>
             </div>
             <div class="product-single-left">
@@ -73,7 +104,11 @@ foreach( $downloads as $key => $each_download ) {
   echo '<a href="'.$each_download["file"].'" download>'.$each_download["name"];'</a>';
 }?>
               <a href="https://force.co.ir/wp-content/themes/Force/files/catalogue.pdf">کاتالوگ همه محصولات<i class="fa fa-download"></i></a>
-              <a href="#" id="openFormButton">ثبت درخواست خرید<i class="fa fa-phone"></i></a>
+              <?php if ($product->get_stock_status() === 'instock') : ?>
+                <a href="#" id="openFormButton">ثبت درخواست خرید<i class="fa fa-phone"></i></a>
+              <?php else : ?>
+                <a class="buy-btn disabled" href="#" tabindex="-1" aria-disabled="true" onclick="return false;">ثبت درخواست خرید<i class="fa fa-phone"></i></a>
+              <?php endif; ?>
                         <div id="popupFormContainer">
                           <div id="popupForm">
                             <h2>تماس با ما</h2>
@@ -109,13 +144,21 @@ foreach( $downloads as $key => $each_download ) {
             <div class="product-single-left sticky">
             <?php the_post_thumbnail(); ?>
             <h3 class="maghale-title"><?php the_title(); ?></h3>
-            <p><?php echo wc_get_product( $post->ID )->get_price_html(); ?></p>
+    <?php if ($product->get_stock_status() === 'instock') : ?>
+    <div class="product-price-column">
+      <?php echo wc_get_product( $post->ID )->get_price_html(); ?>
+    </div>
+    <?php endif; ?>
             <?php $downloads = $product->get_downloads();
 foreach( $downloads as $key => $each_download ) {
   echo '<a href="'.$each_download["file"].'" download>'.$each_download["name"];'</a>';
 }?>
 <a href="<?php echo get_template_directory_uri();?>/files/catalogue.pdf" download>کاتالوگ همه محصولات<i class="fa fa-download"></i></a>
-              <a href="#">ثبت درخواست خرید<i class="fa fa-phone"></i></a>
+            <?php if ($product->get_stock_status() === 'instock') : ?>
+                <a href="#" id="openFormButton">ثبت درخواست خرید<i class="fa fa-phone"></i></a>
+              <?php else : ?>
+                <a class="buy-btn disabled" href="#" tabindex="-1" aria-disabled="true" onclick="return false;">ثبت درخواست خرید<i class="fa fa-phone"></i></a>
+              <?php endif; ?>
             </div>
           </div>
         </section>

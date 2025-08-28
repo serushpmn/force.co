@@ -449,13 +449,26 @@
                <div class="swiper-slide each-maghale">
                   <div class="each-maghale-img">
                      <a href="<?php the_permalink();?>">
+                         <?php
+                        // نمایش بج درصد تخفیف فقط اگر محصول موجود و تخفیف‌دار باشد
+                        if ( $product->get_stock_status() === 'instock' && $product->is_on_sale() ) {
+                           $regular_price = (float) $product->get_regular_price();
+                           $sale_price = (float) $product->get_sale_price();
+                           if ( $regular_price > 0 && $sale_price > 0 && $regular_price > $sale_price ) {
+                              $discount_percent = round( ( ( $regular_price - $sale_price ) / $regular_price ) * 100 );
+                              echo '<span class="discount-badge">' . $discount_percent . '% تخفیف</span>';
+                           }
+                        }
+                ?>
                      <?php the_post_thumbnail(); ?>
                      </a> 
                   </div>
                   <a href="<?php the_permalink();?>">
                      <h3 class="maghale-title"><?php the_title(); ?></h3>
                   </a>
+                  <?php if ($product->get_stock_status() === 'instock') : ?>
                   <span class="prd-price"><?php echo wc_get_product( $post->ID )->get_price_html(); ?></span>
+                  <?php endif; ?>
                   <a href="<?php the_permalink() ?>" class="btn-white">خرید<i class="fa fa-shopping-cart"></i></a>
                </div>
                <?php endwhile; ?>

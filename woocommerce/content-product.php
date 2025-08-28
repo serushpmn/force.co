@@ -24,19 +24,38 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-<div class="each-product-card">
+<div class="each-product-card<?php echo ($product->get_stock_status() !== 'instock') ? ' out-of-stock' : ''; ?>">
             <div class="full-w">
               <a href="<?php the_permalink() ?>">
                 <div class="each-prd-img">
+                <?php
+                // نمایش بج درصد تخفیف فقط اگر محصول موجود و تخفیف‌دار باشد
+                if ( $product->get_stock_status() === 'instock' && $product->is_on_sale() ) {
+                  $regular_price = (float) $product->get_regular_price();
+                  $sale_price = (float) $product->get_sale_price();
+                  if ( $regular_price > 0 && $sale_price > 0 && $regular_price > $sale_price ) {
+                    $discount_percent = round( ( ( $regular_price - $sale_price ) / $regular_price ) * 100 );
+                    echo '<span class="discount-badge">' . $discount_percent . '% تخفیف</span>';
+                  }
+                }
+                ?>
                 <?php the_post_thumbnail(); ?>
               </div>
               </a>
                   <a href="<?php the_permalink() ?>"><h2><?php the_title(); ?></h2></a>
                   <div class="product-card-description">
-                    <p class="prd_stock"><?php echo (wc_get_product( $post->ID )->get_stock_status()=='instock') ? 'موجود در انبار' :'ناموجود در انبار';?></p>
-                    <p><?php echo wc_get_product( $post->ID )->get_price_html(); ?></p>
+                    <p class="prd_stock<?php echo ($product->get_stock_status() !== 'instock') ? ' out-of-stock-text' : ''; ?>"><?php echo (wc_get_product( $post->ID )->get_stock_status()=='instock') ? 'موجود ' :'ناموجود  ';?></p>
+                    <?php if ($product->get_stock_status() === 'instock') : ?>
+                    <div class="product-price-column">
+                      <?php echo wc_get_product( $post->ID )->get_price_html(); ?>
+                    </div>
+                    <?php endif; ?>
                   </div>
                        </div>
-            <a href="<?php the_permalink() ?>">خرید</a>
+            <?php if ($product->get_stock_status() === 'instock') : ?>
+              <a href="<?php the_permalink() ?>" class="buy-btn">خرید</a>
+            <?php else : ?>
+              <a class="buy-btn disabled" href="#" tabindex="-1" aria-disabled="true" onclick="return false;">ناموجود</a>
+            <?php endif; ?>
           </div>
           

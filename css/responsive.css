@@ -1,3 +1,242 @@
+/* استایل ویژه برای متن ناموجود در انبار */
+.prd_stock.out-of-stock-text {
+  color: #fff !important;
+  background: var(--orange-800) !important;
+  border-radius: 10px;
+  padding: 4px 18px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  display: inline-block;
+  margin: 0.5em 0 0.5em 0;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(189,189,189,0.15);
+}
+/* استایل کارت و دکمه محصولات ناموجود */
+.each-product-card.out-of-stock {
+  opacity: 0.6;
+  filter: grayscale(0.25) brightness(0.95);
+  box-shadow: 0 0 0 2px #eee;
+  position: relative;
+}
+.each-product-card.out-of-stock::after {
+  content: 'ناموجود';
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: #bdbdbd;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 4px 16px;
+  border-radius: 16px;
+  z-index: 20;
+  pointer-events: none;
+}
+.buy-btn.disabled,
+.each-product-card.out-of-stock .buy-btn {
+  background: #bdbdbd !important;
+  color: #fff !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  border: none !important;
+  opacity: 0.8;
+  box-shadow: none !important;
+}
+.buy-btn {
+  display: inline-block;
+  background: var(--orange-700, #e65100);
+  color: #fff;
+  padding: 10px 32px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 12px 0 8px 0;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px rgba(255, 152, 0, 0.08);
+  border: none;
+  cursor: pointer;
+}
+.buy-btn:hover:not(.disabled) {
+  background: var(--orange-900, #b26500);
+}
+/* بازطراحی کامل قیمت ووکامرس: ستونی، مدرن و واکنش‌گرا */
+.product-price-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2em;
+  margin: 0.5em 0 0.5em 0;
+}
+.product-price-column del {
+  order: 1;
+  font-size: 1.1rem;
+  color: var(--gray-400, #bdbdbd);
+  text-decoration: line-through;
+  font-weight: 400;
+  margin: 0 0 0.1em 0;
+  background: none;
+}
+.product-price-column ins {
+  order: 2;
+  font-size: 1.5rem;
+  color: var(--orange-700, #e65100);
+  font-weight: bold;
+  background: var(--orange-50, #fff3e0);
+  border-radius: 10px;
+  padding: 6px 18px;
+  box-shadow: 0 2px 8px rgba(255, 152, 0, 0.08);
+  margin: 0;
+  text-decoration: none;
+  display: inline-block;
+}
+.product-price-column .woocommerce-Price-amount.amount {
+  font-size: inherit;
+  color: inherit;
+  font-weight: inherit;
+}
+.product-price-column del .woocommerce-Price-amount.amount {
+  color: var(--gray-400, #bdbdbd);
+  font-size: 1.1rem;
+}
+.product-price-column ins .woocommerce-Price-amount.amount {
+  color: var(--orange-700, #e65100);
+  font-size: 1.5rem;
+}
+/* حالت فقط یک قیمت */
+.product-price-column del:empty {
+  display: none;
+}
+.product-price-column ins:empty {
+  display: none;
+}
+/* واکنش‌گرا */
+@media (max-width: 600px) {
+  .product-price-column ins {
+    font-size: 1.15rem;
+    padding: 4px 10px;
+    border-radius: 8px;
+  }
+  .product-price-column del {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 400px) {
+  .product-price-column ins {
+    font-size: 1rem;
+    padding: 3px 6px;
+    border-radius: 6px;
+  }
+  .product-price-column del {
+    font-size: 0.8rem;
+  }
+}
+/* بج درصد تخفیف محصولات تخفیف‌دار */
+.discount-badge {
+  margin-top: 5px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #ffffff ;
+  color:var(--orange-500);
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 5px 14px;
+  border-radius: 20px;
+  z-index: 10;
+  box-shadow: 12px 13px 20px 12px rgba(57, 80, 107, 0.2);
+  letter-spacing: 0.5px;
+  display: inline-block;
+  direction: rtl;
+  line-height: 1.6;
+  min-width: 54px;
+  text-align: center;
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .discount-badge {
+    font-size: 0.6rem;
+    padding: 4px 10px;
+    top: 7px;
+    right: 7px;
+    border-radius: 16px;
+    min-width: 40px;
+  }
+}
+
+@media (max-width: 400px) {
+  .discount-badge {
+    font-size: 0.5rem;
+    padding: 3px 7px;
+    top: 4px;
+    right: 4px;
+    border-radius: 12px;
+    min-width: 30px;
+  }
+}
+.each-product-card {
+  position: relative;
+}
+/* قیمت ووکامرس: بزرگ فقط در صفحه محصول */
+.single-product .woocommerce-Price-amount.amount {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: var(--orange-700, #e65100);
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(255, 152, 0, 0.08);
+  display: inline-block;
+  margin: 10px 0;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* قیمت کوچک برای سایر صفحات */
+.woocommerce-Price-amount.amount {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--orange-700, #e65100);
+  border-radius: 8px;
+  box-shadow: none;
+  display: inline-block;
+  margin: 4px 0;
+  letter-spacing: 0.2px;
+  transition: background 0.2s, color 0.2s;
+}
+.woocommerce-Price-amount.amount .woocommerce-Price-currencySymbol {
+  font-size: 1.3rem;
+  color: var(--orange-500, #ff9800);
+  margin-right: 4px;
+}
+
+
+/* قیمت اصلی (خط‌خورده و کوچک) */
+del .woocommerce-Price-amount.amount {
+  font-size: 1.2rem;
+  color: var(--gray-400, #bdbdbd);
+  background: none !important;
+  text-decoration: line-through;
+  font-weight: normal;
+  margin-left: 10px;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+/* قیمت تخفیف‌خورده (بزرگ و رنگی) */
+.price ins .woocommerce-Price-amount.amount {
+  font-size: 2.4rem;
+  color: var(--orange-700, #e65100);
+  background: var(--orange-50, #fff3e0) !important;
+  font-weight: bold;
+  border-radius: 14px;
+  padding: 8px 22px !important;
+  box-shadow: 0 2px 8px rgba(255, 152, 0, 0.08) !important;
+  margin-right: 0;
+}
+.price ins {
+  text-decoration: none;
+}
+/* بازطراحی قیمت ووکامرس */
 @media (max-width: 500px) {
   .group-logos .logo-box .each-logo .logo-tooltip {
     position: fixed !important;
