@@ -1,0 +1,16 @@
+[02-Jun-2025 12:30:23 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home3/forcecoi/public_html/wp-content/themes/Force/index.php:1
+Stack trace:
+#0 {main}
+  thrown in /home3/forcecoi/public_html/wp-content/themes/Force/index.php on line 1
+[02-Jun-2025 13:03:33 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home3/forcecoi/public_html/wp-content/themes/Force/index.php:1
+Stack trace:
+#0 {main}
+  thrown in /home3/forcecoi/public_html/wp-content/themes/Force/index.php on line 1
+[02-Jun-2025 13:34:35 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home3/forcecoi/public_html/wp-content/themes/Force/index.php:1
+Stack trace:
+#0 {main}
+  thrown in /home3/forcecoi/public_html/wp-content/themes/Force/index.php on line 1
+[02-Jun-2025 14:04:02 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home3/forcecoi/public_html/wp-content/themes/Force/index.php:1
+Stack trace:
+#0 {main}
+  thrown in /home3/forcecoi/public_html/wp-content/themes/Force/index.php on line 1

@@ -1,0 +1,26 @@
+/*
+Theme Name: Force update Theme
+Theme URI: https://Force.co.ir
+Author: Sorush Peimani
+Author URI: 
+Description: A Custom theme that Created only for Force Co Website
+Tags: Theme, Woocommerce
+Version: 1.0
+Requires at least: 5.0
+Tested up to: 5.4
+Requires PHP: 7.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: Force.co
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+@import url("css/reset.css");
+@import url("css/variables.css");
+@import url("css/fonts.css");
+@import url("css/base.css");
+@import url("css/layout.css");
+@import url("css/components.css");
+@import url("css/pages.css");
+@import url("css/woocommerce.css");
+@import url("css/responsive.css");

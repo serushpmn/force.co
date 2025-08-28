@@ -1,0 +1,244 @@
+/* --- Buttons --- */
+.btn-orange {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  padding: 10px 20px;
+  background: var(--orange-700);
+  border-radius: 11px;
+}
+.btn-white {
+  font-size: 16px;
+  color: var(--orange-700);
+  display: flex;
+  padding: 8px 22px;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border-radius: 11px;
+  border: 2px solid var(--orange-700);
+}
+.btn-white:hover {
+  border: 2px solid var(--orange-700);
+  background: var(--gradient-dark);
+  color: #fff;
+  transition: 0.3s all ease;
+}
+.btn-orange:hover {
+  background: var(--gradient-light);
+  transition: 0.3s all ease;
+}
+#goToTopButton {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--orange-500);
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  z-index: 20;
+}
+#goToTopButton:hover {
+  opacity: 0.7;
+}
+#goToTopButton i {
+  font-size: 44px;
+}
+.call-button {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75px;
+  height: 75px;
+  background-color: var(--orange-700);
+  text-align: center;
+  color: #fff;
+  border-radius: 50%;
+  box-shadow: 2px 3px 13px 0px #fe590f;
+  transition: all 0.5s ease;
+}
+.call-button:hover {
+  scale: 0.95;
+  background-color: var(--orange-900);
+  box-shadow: 2px 3px 20px 0px #fe590f;
+}
+
+/* --- Forms --- */
+.contact-form {
+  background: var(--orange-100);
+  padding: 10px;
+  border-radius: 10px;
+}
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form input[type="url"] {
+  font-family: KalamehWebFaNum;
+  font-size: 16px;
+  border-right: 2px;
+  width: 75% !important;
+  height: 31px;
+  padding: 5px 10px;
+  background: #fff;
+  border: none;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+.contact-form input::placeholder {
+  direction: rtl;
+  font-size: 16px;
+}
+.contact-form input:focus {
+  outline: none;
+}
+.contact-form input[type="submit"] {
+  font-family: KalamehWebFaNum;
+  background-color: var(--orange-600);
+  color: #fff;
+  height: 32px;
+  width: 20%;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.contact-form span {
+  font-size: 20px;
+  text-align: center;
+  padding-top: 12px;
+  font-weight: 800;
+}
+.contact-form .wpcf7-spinner {
+  display: none;
+}
+.contact-form input[type="submit"]:hover {
+  background: var(--orange-500);
+}
+.contact-form input[type="submit"]:active {
+  background-color: var(--orange-700);
+  scale: 0.995;
+}
+.title-search-bar form.searchbar {
+  display: flex;
+  border-radius: 25px;
+  background: #fff;
+  box-shadow: var(--shadow-xl) inset;
+}
+.title-search-bar form.searchbar input {
+  background: transparent;
+  border-radius: 25px;
+  width: 100%;
+  border: none;
+  padding: 10px 30px;
+  font-size: 20px;
+  font-family: KalamehWebFaNum;
+}
+.title-search-bar form.searchbar input::placeholder {
+  color: var(--gray-600);
+}
+.title-search-bar form.searchbar input:focus {
+  outline: none;
+}
+.title-search-bar form.searchbar button {
+  outline: none;
+  border: none;
+  background: none;
+  font-size: 32px;
+  padding-left: 30px;
+  color: var(--orange-500);
+  cursor: pointer;
+}
+.title-search-bar form.searchbar button:hover {
+  color: var(--orange-600);
+}
+
+/* --- Slider (Swiper) --- */
+.swiper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.swiper-rtl .swiper-button-next,
+.swiper-rtl .swiper-button-prev {
+  background: #fff;
+  width: 30px;
+  height: 30px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 50%;
+}
+.swiper-rtl .swiper-button-next:hover,
+.swiper-rtl .swiper-button-prev:hover {
+  scale: 1.15;
+  transition: 0.3s all ease;
+}
+.swiper .swiper-button-next:after,
+.swiper .swiper-button-prev:after {
+  font-family: swiper-icons;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--orange-600);
+  text-transform: none !important;
+  letter-spacing: 0;
+  font-variant: initial;
+  line-height: 1;
+}
+
+/* --- Pagination --- */
+.pagenumbers {
+  margin: 50px auto;
+  text-align: center;
+}
+.pagenumbers a {
+  background: #fff;
+  border-radius: 10px;
+  padding: 5px 13px;
+  font-size: 16px;
+}
+.pagenumbers a:hover,
+.pagenumbers span.current {
+  color: #fff;
+  padding: 5px 13px;
+  font-size: 16px;
+  border-radius: 10px;
+  box-shadow: var(--shadow-2xl);
+  transition: 0.3s all ease;
+}
+.pagenumbers a:hover {
+  background: var(--orange-500);
+  transition: 0.3s all ease;
+}
+.pagenumbers span.current {
+  background: var(--orange-400);
+}
+
+/* --- Featherlight --- */
+.featherlight,
+[data-featherlight] img {
+  cursor: pointer !important;
+}
