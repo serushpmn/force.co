@@ -2,12 +2,15 @@
 /* Template Name: Orders */
 get_header();
 ?>
-<div class="container orders-page">
+<div class="container account-page">
   <h2>سفارش‌های من</h2>
+  <div class="account-container">
+  <?php get_template_part( 'template-parts/account', 'sidebar' ); ?>
 
-  <div class="orders-list-wrap">
+    <div class="orders-list-wrap">
     <?php if ( is_user_logged_in() ) :
       $current_user = wp_get_current_user();
+
       if ( function_exists( 'wc_get_orders' ) ) {
         $orders = wc_get_orders( array( 'customer' => $current_user->ID, 'limit' => 50 ) );
         if ( ! empty( $orders ) ) : ?>
@@ -62,6 +65,5 @@ get_header();
     endif; ?>
   </div>
 
-</div>
 
 <?php get_footer(); ?>

@@ -7,6 +7,7 @@ function loadfiles(){
   wp_enqueue_style( 'force-account', get_template_directory_uri() . '/css/account.css', array('style'), '1.0' );
   wp_enqueue_style( 'force-orders', get_template_directory_uri() . '/css/orders.css', array('style'), '1.0' );
   wp_enqueue_style( 'force-cart', get_template_directory_uri() . '/css/cart-custom.css', array('style'), '1.0' );
+  wp_enqueue_style( 'force-account-edit', get_template_directory_uri() . '/css/account-edit.css', array('style'), '1.0' );
     wp_enqueue_script( 'swiper','https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js', false );
   // Theme toggle script
   wp_enqueue_script( 'force-theme-toggle', get_template_directory_uri() . '/js/theme-toggle.js', array(), '1.0', true );
@@ -56,15 +57,14 @@ add_action("admin_init", "add_contact_fields");
  * Runs once for administrators and sets an option to avoid repeating.
  */
 function force_ensure_account_pages() {
-  // Run only once: skip if already created
-  if ( get_option( 'force_account_pages_created' ) === '1' ) return;
-
   $pages = array(
   array( 'slug' => 'login', 'title' => 'ورود', 'template' => 'page-login.php' ),
   array( 'slug' => 'account', 'title' => 'ناحیه کاربری', 'template' => 'page-account.php' ),
+  array( 'slug' => 'edit-account', 'title' => 'ویرایش ناحیه کاربری', 'template' => 'page-edit-account.php' ),
   array( 'slug' => 'logout', 'title' => 'خروج', 'template' => 'page-logout.php' ),
   array( 'slug' => 'orders', 'title' => 'سفارش‌ها', 'template' => 'page-orders.php' ),
   );
+  $created_any = false;
 
   foreach ( $pages as $p ) {
     $existing = get_page_by_path( $p['slug'] );
@@ -82,13 +82,16 @@ function force_ensure_account_pages() {
         if ( file_exists( $template_file ) ) {
           update_post_meta( $post_id, '_wp_page_template', $p['template'] );
         }
+        $created_any = true;
       }
     }
   }
 
-  // flush rewrite rules once
-  flush_rewrite_rules( false );
-  update_option( 'force_account_pages_created', '1' );
+  // flush rewrite rules and set created flag only if we actually created pages
+  if ( $created_any ) {
+    flush_rewrite_rules( false );
+    update_option( 'force_account_pages_created', '1' );
+  }
 }
 // Run on init so pages exist even if admin hasn't visited admin area yet.
 add_action( 'init', 'force_ensure_account_pages' );
