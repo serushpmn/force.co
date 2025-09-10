@@ -1,14 +1,17 @@
-.checkout-page, .woocommerce-checkout, .woocommerce-checkout * {
+.checkout-page,
+.woocommerce-checkout,
+.woocommerce-checkout * {
   font-family: KalamehWebFaNum, Tahoma, Arial, sans-serif !important;
 }
 /* بازطراحی کامل صفحه تسویه حساب ووکامرس */
-.checkout-page, .woocommerce-checkout {
+.checkout-page,
+.woocommerce-checkout {
   background: var(--gray-50);
   min-height: 100vh;
   padding: 32px 0 64px 0;
 }
 .checkout-container {
-  background: #fff;
+  background: var(--white);
   border-radius: 18px;
   box-shadow: var(--shadow-xl);
   max-width: 800px;
@@ -36,7 +39,8 @@
   display: flex;
   gap: 32px;
 }
-.woocommerce-checkout .col-1, .woocommerce-checkout .col-2 {
+.woocommerce-checkout .col-1,
+.woocommerce-checkout .col-2 {
   flex: 1 1 0;
   min-width: 0;
 }
@@ -59,7 +63,7 @@
   background: var(--gray-50);
   color: var(--orange-700);
   font-size: 1.1rem;
-  font-family: 'Kalameh', Tahoma, Arial, sans-serif;
+  font-family: "Kalameh", Tahoma, Arial, sans-serif;
   padding: 10px 12px;
   margin-bottom: 12px;
   box-shadow: var(--shadow-xs);
@@ -72,33 +76,36 @@
   outline: none;
 }
 .woocommerce-checkout .woocommerce-checkout-review-order-table {
-  background: #fff;
+  background: var(--white);
   border-radius: 10px;
   box-shadow: var(--shadow-xs);
   overflow: hidden;
   width: 100%;
   margin-bottom: 24px;
 }
-.woocommerce-checkout-review-order-table th, .woocommerce-checkout-review-order-table td {
+.woocommerce-checkout-review-order-table th,
+.woocommerce-checkout-review-order-table td {
   border: none;
   padding: 14px 8px;
   text-align: center;
-  font-family: 'Kalameh', Tahoma, Arial, sans-serif;
+  font-family: "Kalameh", Tahoma, Arial, sans-serif;
 }
 .woocommerce-checkout-review-order-table th {
   background: var(--orange-500);
-  color: #fff;
+  color: var(--white);
   font-weight: var(--bold);
   font-size: 1.1rem;
 }
-.woocommerce-checkout .order-total th, .woocommerce-checkout .order-total td {
+.woocommerce-checkout .order-total th,
+.woocommerce-checkout .order-total td {
   color: var(--orange-700);
   font-weight: var(--bold);
   font-size: 1.2rem;
 }
-.woocommerce-checkout .button, .woocommerce-checkout input.button {
+.woocommerce-checkout .button,
+.woocommerce-checkout input.button {
   background: var(--orange-500) !important;
-  color: #fff !important;
+  color: var(--white) !important;
   border: none !important;
   border-radius: 8px !important;
   font-weight: var(--bold);
@@ -108,7 +115,8 @@
   padding: 10px 32px;
   margin: 8px 0;
 }
-.woocommerce-checkout .button:hover, .woocommerce-checkout input.button:hover {
+.woocommerce-checkout .button:hover,
+.woocommerce-checkout input.button:hover {
   background: var(--orange-700) !important;
 }
 .woocommerce .woocommerce-message,
@@ -169,334 +177,31 @@
     gap: 0;
   }
 }
-.cart-subtotal th, .order-subtotal td{
-  text-align: center;
+
+.theme-toggle {
+  background: transparent;
+  border: 0;
+  padding: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
-/* استایل ورودی تعداد محصول در سبد خرید */
-.woocommerce-cart-form .product-quantity input.qty,
-.woocommerce .quantity input.qty {
-  width: 56px;
-  height: 38px;
-  border: 1.5px solid var(--orange-200);
-  border-radius: 8px;
-  background: var(--gray-50);
-  color: var(--orange-700);
-  font-size: 1.1rem;
-  font-family: 'KalamehWebFaNum', Tahoma, Arial, sans-serif;
-  text-align: center;
-  font-weight: var(--bold);
-  box-shadow: var(--shadow-xs);
-  transition: border 0.2s;
-  margin: 0 4px;
+.theme-toggle svg {
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
-.woocommerce-cart-form .product-quantity input.qty:focus,
-.woocommerce .quantity input.qty:focus {
-  border-color: var(--orange-500);
-  outline: none;
+:root[data-theme="dark"] .theme-toggle .sun {
+  opacity: 0.15;
+  transform: scale(0.8);
 }
-.woocommerce-cart-form table.shop_table, .woocommerce-cart-form table.shop_table th, .woocommerce-cart-form table.shop_table td {
-  direction: rtl;
-  font-family: 'KalamehWebFaNum', Tahoma, Arial, sans-serif;
+:root:not([data-theme="dark"]) .theme-toggle .moon {
+  opacity: 0.15;
+  transform: scale(0.8);
 }
-.woocommerce-cart-form table.shop_table th {
-  font-family: 'KalamehWebFaNum', Tahoma, Arial, sans-serif;
-}
-/* حذف رنگ‌های پیش‌فرض ووکامرس (سبز، بنفش و ...) و جایگزینی با نارنجی و خاکستری */
-.woocommerce .button.alt,
-.woocommerce .checkout-button,
-.woocommerce .button,
-.woocommerce input.button,
-.woocommerce input.button.alt,
-.woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
-.woocommerce-cart .cart-collaterals .checkout-button {
-  background: var(--orange-500) !important;
-  color: #fff !important;
-  border: none !important;
-  border-radius: 8px !important;
-  font-weight: var(--bold);
-  box-shadow: var(--shadow-xs);
-  transition: background 0.2s;
-}
-.woocommerce .button.alt:hover,
-.woocommerce .checkout-button:hover,
-.woocommerce .button:hover,
-.woocommerce input.button:hover,
-.woocommerce input.button.alt:hover,
-.woocommerce-cart .wc-proceed-to-checkout a.checkout-button:hover,
-.woocommerce-cart .cart-collaterals .checkout-button:hover {
-  background: var(--orange-700) !important;
-}
-.woocommerce .woocommerce-message,
-.woocommerce .woocommerce-info,
-.woocommerce .woocommerce-error {
-  background: var(--orange-100) !important;
-  color: var(--orange-700) !important;
-  border: none !important;
-  border-radius: 8px !important;
-  box-shadow: var(--shadow-xs);
-}
-.woocommerce .woocommerce-message:before,
-.woocommerce .woocommerce-info:before,
-.woocommerce .woocommerce-error:before {
-  color: var(--orange-500) !important;
-}
-.woocommerce .cart-empty {
-  background: var(--orange-50) !important;
-  color: var(--orange-700) !important;
-  border-radius: 10px !important;
-  font-weight: var(--bold);
-}
-.woocommerce .order-total th, .woocommerce .order-total td {
-  text-align: center;
-  font-weight: var(--bold);
-}
-.woocommerce .cart_totals h2 {
-  color: var(--orange-500) !important;
-}
-.woocommerce .product-name a {
-  color: var(--orange-700) !important;
-}
-.woocommerce .product-name a:hover {
-  color: var(--orange-500) !important;
-}
-.woocommerce .remove {
-  color: var(--orange-400) !important;
-}
-.woocommerce .remove:hover {
-  color: var(--orange-700) !important;
-}
-/* بازطراحی کامل صفحه سبد خرید با تم نارنجی و رنگ‌های variables.css */
-.cart-page, .woocommerce-cart {
-  background: var(--gray-50);
-  min-height: 100vh;
-  padding: 32px 0 64px 0;
-}
-.cart-container {
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: var(--shadow-xl);
-  max-width: 1200px;
-  margin: 32px auto;
-  padding: 32px 24px 40px 24px;
-}
-.cart-title {
-  font-size: var(--h3);
-  color: var(--orange-500);
-  font-weight: var(--bold);
-  margin-bottom: 32px;
-  text-align: center;
-}
-.cart-content {
-  font-size: 1.1rem;
-  color: var(--black-700);
-}
-.woocommerce-cart-form, .cart_totals {
-  background: var(--gray-100);
-  border-radius: 12px;
-  padding: 24px 12px;
-  box-shadow: var(--shadow-xs);
-}
-.woocommerce-cart-form table.shop_table {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: var(--shadow-xs);
-  overflow: hidden;
-  width: 100%;
-}
-.woocommerce-cart-form table.shop_table th, .woocommerce-cart-form table.shop_table td {
-  border: none;
-  padding: 14px 8px;
-  text-align: center;
-}
-.woocommerce-cart-form .cart_item {
-  border-bottom: 1px solid var(--gray-200);
-}
-.woocommerce-cart-form .product-name a {
-  color: var(--orange-700);
-  font-weight: var(--semi_bold);
-  transition: color 0.2s;
-}
-.woocommerce-cart-form .product-name a:hover {
-  color: var(--orange-500);
-}
-.woocommerce-cart-form .product-price, .woocommerce-cart-form .product-subtotal {
-  color: var(--orange-500);
-  font-weight: var(--bold);
-}
-.woocommerce-cart-form .actions .button,
-.woocommerce .cart_totals .checkout-button,
-.woocommerce .cart_totals .button {
-  background: var(--orange-500);
-  color: #fff;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: var(--bold);
-  padding: 10px 32px;
-  border: none;
-  box-shadow: var(--shadow-xs);
-  transition: background 0.2s;
-  margin: 8px 0;
-}
-.woocommerce-cart-form .actions .button:hover,
-.woocommerce .cart_totals .checkout-button:hover,
-.woocommerce .cart_totals .button:hover {
-  background: var(--orange-700);
-}
-.woocommerce-message, .woocommerce-error, .woocommerce-info {
-  background: var(--orange-100);
-  color: var(--orange-700);
-  border-radius: 8px;
-  padding: 12px 18px;
-  margin: 16px 0;
-  font-weight: var(--semi_bold);
-  box-shadow: var(--shadow-xs);
-}
-.cart_totals {
-  background: var(--gray-50);
-  border-radius: 12px;
-  box-shadow: var(--shadow-xs);
-  margin-top: 32px;
-  padding: 24px 18px;
-}
-.cart_totals h2 {
-  color: var(--orange-500);
-  font-size: 1.3rem;
-  font-weight: var(--bold);
-  margin-bottom: 18px;
-}
-.cart_totals table th, .cart_totals table td {
-  border: none;
-  padding: 10px 6px;
-  font-size: 1.05rem;
-}
-.cart_totals .order-total th, .cart_totals .order-total td {
-  color: var(--orange-700);
-  font-size: 1.2rem;
-  font-weight: var(--bold);
-}
-.cart-empty {
-  color: var(--orange-700);
-  background: var(--orange-50);
-  border-radius: 10px;
-  padding: 24px 0;
-  text-align: center;
-  font-size: 1.2rem;
-  margin: 32px 0;
-}
-.woocommerce-cart-form .remove {
-  color: var(--orange-400);
-  font-size: 1.3rem;
-  transition: color 0.2s;
-}
-.woocommerce-cart-form .remove:hover {
-  color: var(--orange-700);
-}
-@media (max-width: 700px) {
-  .cart-container {
-    padding: 12px 2vw 24px 2vw;
-    max-width: 98vw;
-  }
-  .cart-title {
-    font-size: 1.5rem;
-    margin-bottom: 18px;
-  }
-  .cart_totals {
-    padding: 12px 4px;
-  }
-}
-/* استایل اختصاصی سبد خرید و تسویه حساب */
-.cart-page, .checkout-page {
-  background: var(--gray-50);
-  min-height: 100vh;
-  padding: 32px 0 64px 0;
-}
-.cart-container, .checkout-container {
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: var(--shadow-xl);
-  max-width: 1200px;
-  margin: 32px auto;
-  padding: 32px 24px 40px 24px;
-}
-.cart-title, .checkout-title {
-  font-size: var(--h3);
-  color: var(--orange-500);
-  font-weight: var(--bold);
-  margin-bottom: 32px;
-  text-align: center;
-}
-.cart-content, .checkout-content {
-  font-size: 1.1rem;
-  color: var(--black-700);
-}
-.woocommerce-cart-form, .woocommerce-checkout {
-  background: var(--gray-100);
-  border-radius: 12px;
-  padding: 24px 12px;
-  box-shadow: var(--shadow-xs);
-}
-.woocommerce-cart-form table.shop_table, .woocommerce-checkout-review-order-table {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: var(--shadow-xs);
-  overflow: hidden;
-}
-.woocommerce-cart-form table.shop_table th, .woocommerce-cart-form table.shop_table td,
-.woocommerce-checkout-review-order-table th, .woocommerce-checkout-review-order-table td {
-  border: none;
-  padding: 14px 8px;
-}
-.woocommerce-cart-form .cart_item {
-  border-bottom: 1px solid var(--gray-200);
-}
-.woocommerce-cart-form .product-name a,
-.woocommerce-checkout-review-order-table .product-name {
-  color: var(--orange-700);
-  font-weight: var(--semi_bold);
-}
-.woocommerce-cart-form .product-price, .woocommerce-cart-form .product-subtotal,
-.woocommerce-checkout-review-order-table .product-total {
-  color: var(--orange-500);
-  font-weight: var(--bold);
-}
-.woocommerce-cart-form .actions .button,
-.woocommerce-checkout .button {
-  background: var(--orange-500);
-  color: #fff;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: var(--bold);
-  padding: 10px 32px;
-  border: none;
-  box-shadow: var(--shadow-xs);
-  transition: background 0.2s;
-}
-.woocommerce-cart-form .actions .button:hover,
-.woocommerce-checkout .button:hover {
-  background: var(--orange-700);
-}
-.woocommerce-message, .woocommerce-error, .woocommerce-info {
-  background: var(--orange-100);
-  color: var(--orange-700);
-  border-radius: 8px;
-  padding: 12px 18px;
-  margin: 16px 0;
-  font-weight: var(--semi_bold);
-  box-shadow: var(--shadow-xs);
-}
-@media (max-width: 600px) {
-  .cart-container, .checkout-container {
-    padding: 12px 2vw 24px 2vw;
-    max-width: 98vw;
-  }
-  .cart-title, .checkout-title {
-    font-size: 1.5rem;
-    margin-bottom: 18px;
-  }
-}
+
 /* استایل ویژه برای متن ناموجود در انبار */
 .prd_stock.out-of-stock-text {
-  color: #fff !important;
+  color: var(--white) !important;
   background: var(--orange-800) !important;
   border-radius: 10px;
   padding: 4px 18px;
@@ -505,22 +210,22 @@
   display: inline-block;
   margin: 0.5em 0 0.5em 0;
   letter-spacing: 1px;
-  box-shadow: 0 2px 8px rgba(189,189,189,0.15);
+  box-shadow: 0 2px 8px rgba(189, 189, 189, 0.15);
 }
 /* استایل کارت و دکمه محصولات ناموجود */
 .each-product-card.out-of-stock {
   opacity: 0.6;
   filter: grayscale(0.25) brightness(0.95);
-  box-shadow: 0 0 0 2px #eee;
+  box-shadow: 0 0 0 2px var(--gray-300);
   position: relative;
 }
 .each-product-card.out-of-stock::after {
-  content: 'ناموجود';
+  content: "ناموجود";
   position: absolute;
   top: 16px;
   left: 16px;
-  background: #bdbdbd;
-  color: #fff;
+  background: var (--gray--600);
+  color: var(--white);
   font-size: 1rem;
   font-weight: bold;
   padding: 4px 16px;
@@ -530,8 +235,8 @@
 }
 .buy-btn.disabled,
 .each-product-card.out-of-stock .buy-btn {
-  background: #bdbdbd !important;
-  color: #fff !important;
+  background: var(--gray-400) !important;
+  color: var(--white) !important;
   cursor: not-allowed !important;
   pointer-events: none !important;
   border: none !important;
@@ -540,8 +245,8 @@
 }
 .buy-btn {
   display: inline-block;
-  background: var(--orange-700, #e65100);
-  color: #fff;
+  background: var(--orange-700, --orange--600);
+  color: var(--white);
   padding: 10px 32px;
   border-radius: 12px;
   font-size: 1.1rem;
@@ -554,7 +259,7 @@
   cursor: pointer;
 }
 .buy-btn:hover:not(.disabled) {
-  background: var(--orange-900, #b26500);
+  background: var(--orange-900, var(--orange--300));
 }
 /* بازطراحی کامل قیمت ووکامرس: ستونی، مدرن و واکنش‌گرا */
 .product-price-column {
@@ -567,7 +272,7 @@
 .product-price-column del {
   order: 1;
   font-size: 1.1rem;
-  color: var(--gray-400, #bdbdbd);
+  color: var(--gray-400, --gray--600);
   text-decoration: line-through;
   font-weight: 400;
   margin: 0 0 0.1em 0;
@@ -576,9 +281,9 @@
 .product-price-column ins {
   order: 2;
   font-size: 1.5rem;
-  color: var(--orange-700, #e65100);
+  color: var(--orange-700, --orange--600);
   font-weight: bold;
-  background: var(--orange-50, #fff3e0);
+  background: var(--orange-50, var(--white) 3);
   border-radius: 10px;
   padding: 6px 18px;
   box-shadow: 0 2px 8px rgba(255, 152, 0, 0.08);
@@ -592,11 +297,11 @@
   font-weight: inherit;
 }
 .product-price-column del .woocommerce-Price-amount.amount {
-  color: var(--gray-400, #bdbdbd);
+  color: var(--gray-400, --gray--600);
   font-size: 1.1rem;
 }
 .product-price-column ins .woocommerce-Price-amount.amount {
-  color: var(--orange-700, #e65100);
+  color: var(--orange-700, --orange--600);
   font-size: 1.5rem;
 }
 /* حالت فقط یک قیمت */
@@ -633,8 +338,8 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  background: #ffffff ;
-  color:var(--orange-500);
+  background: var(--white) fff;
+  color: var(--orange-500);
   font-size: 0.8rem;
   font-weight: bold;
   padding: 5px 14px;
@@ -678,7 +383,7 @@
 .single-product .woocommerce-Price-amount.amount {
   font-size: 2.4rem;
   font-weight: bold;
-  color: var(--orange-700, #e65100);
+  color: var(--orange-700, --orange--600);
   border-radius: 14px;
   box-shadow: 0 2px 8px rgba(255, 152, 0, 0.08);
   display: inline-block;
@@ -691,7 +396,7 @@
 .woocommerce-Price-amount.amount {
   font-size: 1.2rem;
   font-weight: 500;
-  color: var(--orange-700, #e65100);
+  color: var(--orange-700, --orange--600);
   border-radius: 8px;
   box-shadow: none;
   display: inline-block;
@@ -705,11 +410,10 @@
   margin-right: 4px;
 }
 
-
 /* قیمت اصلی (خط‌خورده و کوچک) */
 del .woocommerce-Price-amount.amount {
   font-size: 1.2rem;
-  color: var(--gray-400, #bdbdbd);
+  color: var(--gray-400, --gray--600);
   background: none !important;
   text-decoration: line-through;
   font-weight: normal;
@@ -721,8 +425,8 @@ del .woocommerce-Price-amount.amount {
 /* قیمت تخفیف‌خورده (بزرگ و رنگی) */
 .price ins .woocommerce-Price-amount.amount {
   font-size: 2.4rem;
-  color: var(--orange-700, #e65100);
-  background: var(--orange-50, #fff3e0) !important;
+  color: var(--orange-700, --orange--600);
+  background: var(--orange-50, var(--white) 3) !important;
   font-weight: bold;
   border-radius: 14px;
   padding: 8px 22px !important;
@@ -745,9 +449,9 @@ del .woocommerce-Price-amount.amount {
     padding: 16px 20px 24px 20px;
     z-index: 99999 !important;
     background: #222;
-    color: #fff;
+    color: var(--white);
     border-radius: 12px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
     text-align: center;
     white-space: pre-line;
     display: flex;
@@ -757,7 +461,7 @@ del .woocommerce-Price-amount.amount {
   .logo-tooltip .close-tooltip-btn {
     display: block;
     margin-top: 10px;
-    background: #fff;
+    background: var(--white);
     color: #222;
     border: none;
     border-radius: 8px;
@@ -774,7 +478,7 @@ del .woocommerce-Price-amount.amount {
   font-size: 15px;
   white-space: pre-line;
   overflow-x: auto;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 @media (max-width: 400px) {
   .group-logos .logo-box .each-logo .logo-tooltip {
@@ -793,10 +497,10 @@ del .woocommerce-Price-amount.amount {
   visibility: visible;
   opacity: 1;
 }
-  .group-logos .logo-box .each-logo {
-    border-radius: 50% !important;
-    overflow: hidden;
-  }
+.group-logos .logo-box .each-logo {
+  border-radius: 50% !important;
+  overflow: hidden;
+}
 /* media queries
 ///////////////////////////////
 ///////////////////////////////
@@ -805,6 +509,10 @@ del .woocommerce-Price-amount.amount {
   table {
     font-family: Arial, Helvetica, sans-serif;
     direction: ltr;
+    /* show desktop top menu */
+    .top-menu {
+      display: flex;
+    }
     margin: 20px auto;
     border-collapse: collapse;
     width: 80%;
@@ -831,7 +539,7 @@ del .woocommerce-Price-amount.amount {
     padding-bottom: 12px;
     text-align: right;
     background: var(--orange-500);
-    color: #fff;
+    color: var(--white);
     font-weight: var(--bold);
     font-size: 1.1rem;
   }
@@ -852,7 +560,7 @@ del .woocommerce-Price-amount.amount {
     height: 75px;
     background-color: var(--orange-700);
     text-align: center;
-    color: #fff;
+    color: var(--white);
     border-radius: 50%;
     box-shadow: 2px 3px 13px 0px #fe590f;
     transition: all 0.5s ease;
@@ -863,7 +571,7 @@ del .woocommerce-Price-amount.amount {
     box-shadow: 2px 3px 20px 0px #fe590f;
   }
   .call-button a {
-    color: #fff;
+    color: var(--white);
     font-size: 14px;
     font-weight: 700;
     cursor: none;
@@ -879,7 +587,7 @@ del .woocommerce-Price-amount.amount {
     display: none;
   }
   .top-header .bio-language {
-    /* display: none; */
+    display: block; /* keep language selector visible */
   }
   .mobile-menu-icon {
     display: flex;
@@ -907,7 +615,7 @@ del .woocommerce-Price-amount.amount {
     padding: 5px;
   }
   .hero h3 a {
-    color: #fff;
+    color: var(--white);
   }
   .hero h3:hover {
     background: var(--orange-700);
@@ -1026,7 +734,7 @@ del .woocommerce-Price-amount.amount {
     padding: 15px 10px;
   }
   .myMaghale .each-maghale {
-    background-color: #fff;
+    background-color: var(--white);
     padding: 10px;
     height: 300px;
     border-radius: 18px;
@@ -1244,7 +952,7 @@ del .woocommerce-Price-amount.amount {
   .contact-us-info i {
     font-size: 36px;
     background: var(--orange-500);
-    color: #fff;
+    color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1310,7 +1018,7 @@ del .woocommerce-Price-amount.amount {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
+    background-color: var(--white);
     padding: 20px;
     border-radius: 5px;
     font-family: KalamehWebFaNum;
@@ -1349,18 +1057,18 @@ del .woocommerce-Price-amount.amount {
   .wpcf7-formm textarea:focus {
     border: 2px solid var(--orange-300);
     outline: none;
-    background: #fff;
+    background: var(--white);
   }
   .wpcf7-form input:disabled {
     background: var(--orange-600);
     border: 2px solid var(--orange-600);
-    color: #fff;
+    color: var(--white);
     font-weight: 700;
   }
   .wpcf7-form input[type="submit"] {
     font-family: KalamehWebFaNum;
     background-color: var(--orange-300);
-    color: #fff;
+    color: var(--white);
     border: none;
     padding: 8px 16px;
     border-radius: 15px;
@@ -1605,11 +1313,11 @@ del .woocommerce-Price-amount.amount {
     margin-bottom: 10px;
     /* height: 40%; */
   }
-  
+
   /* Tooltip visibility fix for logos */
   .group-logos .logo-box .each-logo {
     position: relative; /* ensure tooltip positions relative to logo */
-    overflow: visible;  /* prevent clipping the tooltip */
+    overflow: visible; /* prevent clipping the tooltip */
   }
   .group-logos .logo-box .each-logo .logo-tooltip {
     z-index: 1000; /* keep tooltip above neighbors */
@@ -1667,183 +1375,6 @@ del .woocommerce-Price-amount.amount {
   }
   .product-single-right {
     flex-direction: column;
-  }
-  .product-single-pics {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    height: 100%;
-    width: 100%;
-  }
-  .product-single-pics img {
-    border-radius: 10px;
-  }
-  .product-single-pics > :first-child {
-    grid-column-start: -1;
-    grid-column-end: 1;
-  }
-  .product-single-details h2 {
-    font-size: 20px;
-    line-height: 24px;
-  }
-  .product-single-details p {
-    font-size: 24px;
-    line-height: 22px;
-  }
-  .product-single-left {
-    gap: 10px;
-  }
-  .sticky {
-    display: flex;
-  }
-  .product-description {
-    gap: 5px;
-  }
-
-  .product-description-tab a {
-    font-size: 20px;
-    line-height: 28px;
-  }
-
-  .product-description p {
-    font-size: 16px;
-    line-height: 22px;
-  }
-  .similar-products .similar-prd h3 {
-    font-size: 16px;
-  }
-  .single-article p {
-    padding: 0 10px 15px 10px;
-    font-size: 16px;
-  }
-  .article-category {
-    padding: 10px;
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .about-us-content {
-    flex-direction: column-reverse;
-  }
-  .about-us-content img {
-    height: 300px;
-    object-fit: cover;
-  }
-  .contact-us-content .maps {
-    height: 400px;
-  }
-  .hero .hero-info span.brand-description-2 {
-    width: 60px;
-    height: 60px;
-    font-size: 16px;
-  }
-  .hero h3 {
-    font-size: 24px;
-    bottom: 50%;
-    left: 40px;
-  }
-  .slider {
-    max-height: 300px;
-  }
-  #popupForm {
-    width: 50%;
-  }
-
-
-@media only screen and (min-width: 768px) {
-  section {
-    padding: 15px 0;
-  }
-  header {
-    background: var(--gradient-glassmorphic-orange);
-  }
-  .top-menu {
-    display: flex;
-  }
-  .top-header .bio-language {
-    display: flex;
-  }
-  .mobile-menu-icon {
-    display: none;
-  }
-  .hero h1 {
-    font-size: 40px;
-  }
-  .hero h1 > span {
-    font-size: 32px;
-    bottom: 20px;
-  }
-  .hero h2 {
-    font-size: 42px;
-  }
-  .hero .hero-info p {
-    font-size: 32px;
-    line-height: 50px;
-  }
-  .hero .hero-info p span {
-    font-size: 20px;
-  }
-  h3.home-title {
-    font-size: 30px;
-    right: -68px;
-  }
-  .kasbokar-rect {
-    height: 50px;
-  }
-  .kasbokar-circle {
-    width: 100px;
-    margin-top: -66px;
-  }
-  .kasbokar-circle .circle {
-    width: 80px;
-    height: 80px;
-  }
-  .kasbokar-circle span {
-    font-size: 16px;
-  }
-  .group-logos .logo-box .each-logo {
-    width: 55px;
-    height: 55px;
-  }
-
-  .govahiname .each-govahiname {
-    height: 280px;
-  }
-  .each-maghale a,
-  .each-akhbar a {
-    font-size: 18px;
-  }
-  nav.products-navbar {
-    display: flex;
-  }
-  .title-search-bar {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-  }
-  .title-search-bar form.searchbar {
-    width: 400px;
-  }
-
-  .products {
-    height: 120px;
-  }
-  .products-info-text h1 {
-    font-size: 32px;
-    line-height: 30px;
-  }
-  .products-info-text span {
-    font-size: 24px;
-    line-height: 24px;
-  }
-  .products-info-text p {
-    margin-top: 90px;
-    font-size: 16px;
-    line-height: 24px;
-  }
-  /* ////////////// */
-  .product-single-top {
-    flex-direction: row;
-  }
-  .product-single-right {
-    flex-direction: row;
   }
   .product-single-pics {
     grid-template-columns: repeat(3, 75px);
@@ -1935,6 +1466,15 @@ del .woocommerce-Price-amount.amount {
   }
   .top-menu ul.menu li a {
     min-width: 100px;
+  }
+
+  /* Force show top menu on desktop in case other styles hide it */
+  .top-header > .top-menu,
+  header .top-header .top-menu,
+  .top-header .top-menu {
+    display: flex !important;
+    align-items: center;
+    gap: 18px;
   }
   .top-header .bio-language a {
     font-size: 20px;
@@ -2200,4 +1740,39 @@ del .woocommerce-Price-amount.amount {
   .footer-menu {
     grid-template-columns: repeat(4, 1fr);
   }
+}
+
+/* Footer: keep same appearance in dark mode (exception) */
+:root[data-theme="dark"] footer .footer-menu nav.contact-form,
+:root[data-theme="dark"] footer .footer-menu nav.contact-form {
+  background-color: #ffccb5 !important;
+}
+:root[data-theme="dark"] footer,
+:root[data-theme="dark"] footer .container,
+:root[data-theme="dark"] footer .footer-menu,
+:root[data-theme="dark"] footer .copy-right,
+:root[data-theme="dark"] footer .footer-menu nav,
+:root[data-theme="dark"] footer .footer-menu nav h3,
+:root[data-theme="dark"] footer .footer-menu nav a,
+:root[data-theme="dark"] footer .footer-menu .social-icons a,
+:root[data-theme="dark"] footer .widget-icon a {
+  background: #363636 !important;
+  color: #ffffff !important;
+}
+
+:root[data-theme="dark"] footer a {
+  color: #fe590f !important; /* brand orange for links */
+}
+
+:root[data-theme="dark"] footer .social-icons a i,
+:root[data-theme="dark"] footer .widget-icon i {
+  color: #fe590f !important;
+}
+
+:root[data-theme="dark"] footer svg {
+  fill: #fe590f !important;
+}
+
+:root[data-theme="dark"] .copy-right {
+  background: transparent !important;
 }

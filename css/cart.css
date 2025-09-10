@@ -1,0 +1,305 @@
+/* =================================== */
+/* == استایل پایه آیکون سبد خرید == */
+/* =================================== */
+
+/* نگهدارنده اصلی لینک */
+.cart-header-btn {
+  position: relative;
+  display: inline-block;
+  margin-left: 18px; /* فاصله از آیتم کناری */
+  vertical-align: middle; /* برای تراز عمودی بهتر */
+}
+
+/* آیکون سبد خرید */
+.cart-header-btn .fa-shopping-cart {
+  font-size: 1.7rem;
+  color: var(--orange-500);
+}
+
+/* نشانگر تعداد محصولات */
+.cart-header-btn .cart-count-badge {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  background: var(--orange-500);
+  color: var(--white);
+  font-size: 0.9rem;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+  padding: 2px 8px;
+  min-width: 22px;
+  border-radius: 12px;
+  box-sizing: border-box; /* برای محاسبه بهتر اندازه */
+}
+/* =================================== */
+/* == استایل واکنش‌گرا سبد خرید  == */
+/* =================================== */
+
+/* برای تبلت و دستگاه‌های کوچک‌تر (کمتر از 768 پیکسل) */
+@media (max-width: 768px) {
+  .cart-header-btn {
+    margin-left: 12px; /* کاهش فاصله از کنار */
+  }
+
+  .cart-header-btn .fa-shopping-cart {
+    font-size: 1.6rem; /* کمی کوچک‌تر کردن آیکون */
+  }
+
+  .cart-header-btn .cart-count-badge {
+    font-size: 0.8rem; /* کوچک‌تر کردن فونت عدد */
+    top: -6px;
+    left: -7px;
+    padding: 2px 7px;
+    min-width: 20px;
+  }
+}
+
+/* برای موبایل (کمتر از 480 پیکسل) */
+@media (max-width: 480px) {
+  .cart-header-btn {
+    margin-left: 8px; /* فاصله کمتر برای هدرهای فشرده موبایل */
+  }
+
+  .cart-header-btn .fa-shopping-cart {
+    font-size: 1.5rem; /* آیکون کوچک‌تر برای صرفه‌جویی در فضا */
+  }
+
+  .cart-header-btn .cart-count-badge {
+    font-size: 0.75rem;
+    top: -5px;
+    left: -6px;
+    padding: 1px 6px;
+    min-width: 18px;
+  }
+}
+
+/* login */
+/* =================================== */
+/* == استایل پایه بخش حساب کاربری   == */
+/* =================================== */
+
+.header-account {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: middle;
+  font-size: 1rem; /* اندازه فونت پایه */
+}
+
+/* استایل عمومی لینک‌ها */
+.header-account a {
+  color: var(
+    --text-color,
+    var(--black-800)
+  ); /* یک رنگ پیش‌فرض در صورت تعریف نشدن متغیر */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.header-account a:hover {
+  color: var(--orange-500); /* رنگ هاور */
+}
+
+/* استایل لینک خروج */
+.header-account .logout-link {
+  margin-right: 8px; /* ایجاد فاصله بین نام کاربر و دکمه خروج */
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.header-account .logout-link::before {
+  content: "|"; /* جداکننده */
+  margin-left: 8px;
+  color: #ccc;
+}
+
+/* =================================== */
+/* ==   استایل دکمه تغییر تم (Toggle)   == */
+/* =================================== */
+
+.theme-toggle {
+  background: none;
+  border: 2px solid transparent;
+  padding: 6px;
+  border-radius: 50%; /* کاملا گرد */
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  outline-offset: 5px; /* برای نمایش بهتر focus */
+}
+
+.theme-toggle:hover {
+  background-color: var(--orange-50);
+}
+
+.theme-toggle:focus-visible {
+  border-color: var(--orange-500);
+}
+
+/* استایل آیکون‌های SVG داخل دکمه */
+.theme-toggle svg {
+  overflow: visible; /* برای نمایش بهتر انیمیشن */
+}
+.theme-toggle .sun,
+.theme-toggle .moon {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* --- حالت پیش‌فرض (روشن) --- */
+.theme-toggle .moon {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+/* --- حالت فعال (تاریک) --- */
+/* از همین attribute برای استایل‌دهی استفاده می‌کنیم */
+.theme-toggle[aria-pressed="true"] .sun {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.theme-toggle[aria-pressed="true"] .moon {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.theme-toggle[aria-pressed="true"]:hover {
+  background-color: var(--black-400);
+}
+
+/* Cart Page */
+/* استایل کلی صفحه سبد خرید */
+.cart-page {
+  font-family: "IRANSans", sans-serif;
+  background: #fafafa;
+  padding: 2rem;
+}
+
+/* عنوان */
+.cart-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: right;
+  color: #333;
+}
+
+/* محتوای اصلی سبد خرید */
+.cart-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+/* کارت محصول */
+.woocommerce-cart-form__cart-item {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* عکس محصول */
+.woocommerce-cart-form__cart-item .product-thumbnail img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+/* نام محصول */
+.woocommerce-cart-form__cart-item .product-name a {
+  font-weight: 600;
+  color: #444;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.woocommerce-cart-form__cart-item .product-name a:hover {
+  color: #e63946;
+}
+
+/* قیمت */
+.woocommerce-cart-form__cart-item .product-price,
+.woocommerce-cart-form__cart-item .product-subtotal {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111;
+}
+
+/* دکمه حذف */
+.woocommerce-cart-form__cart-item .product-remove a {
+  color: #fff !important;
+  background: #e63946;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.woocommerce-cart-form__cart-item .product-remove a:hover {
+  background: #b22234;
+}
+
+/* تعداد */
+.woocommerce-cart-form__cart-item .quantity input {
+  width: 60px;
+  padding: 0.4rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+/* بخش جمع کل */
+.cart-collaterals {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  text-align: right;
+}
+.cart-collaterals h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+/* جدول جمع کل */
+.cart_totals table {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.cart_totals th {
+  font-weight: 500;
+  color: #444;
+}
+.cart_totals td {
+  font-weight: 700;
+  color: #111;
+}
+
+/* دکمه پرداخت */
+.wc-proceed-to-checkout .checkout-button {
+  display: block;
+  width: 100%;
+  background: #e63946;
+  color: #fff;
+  padding: 0.8rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 0.8rem;
+  text-align: center;
+  transition: background 0.3s;
+}
+.wc-proceed-to-checkout .checkout-button:hover {
+  background: #b22234;
+}

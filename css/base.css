@@ -7,25 +7,22 @@ body {
   font-family: KalamehWebFaNum;
   margin: 0 auto;
   direction: rtl;
-  background: #f7f7f7;
+  background: var(--gray-50);
 }
 tbody {
   font-family: KalamehWebFaNum, Arial, Helvetica, sans-serif;
 }
-a {
-  text-decoration: none;
-  color: var(--black-500);
-}
+a,
 p,
-span,
-ol,
-ul,
 h1,
 h2,
 h3,
-h4 {
-  cursor: default;
+h4,
+span {
+  text-decoration: none;
+  color: var(--black-900);
 }
+
 .container {
   max-width: 1360px;
   margin: 0 auto;
@@ -60,7 +57,7 @@ table {
   font-size: 18px;
 }
 table td {
-  border: 1px solid #ddd;
+  border: 1px solid var(--gray-50);
   padding: 8px;
 }
 table tr:first-child {
@@ -68,16 +65,16 @@ table tr:first-child {
   font-weight: 700;
 }
 table tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: var(--gray-50);
 }
 table tr:hover {
-  background-color: #ddd;
+  background-color: var(--gray-50);
 }
 table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: right;
-  background-color: #04aa6d;
+  background-color: var(--orange-500);
   color: white;
 }
 .fa,

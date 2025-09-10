@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  color: #fff;
+  color: var(--white);
   padding: 10px 20px;
   background: var(--orange-700);
   border-radius: 11px;
@@ -24,7 +24,7 @@
 .btn-white:hover {
   border: 2px solid var(--orange-700);
   background: var(--gradient-dark);
-  color: #fff;
+  color: var(--white);
   transition: 0.3s all ease;
 }
 .btn-orange:hover {
@@ -40,7 +40,7 @@
   height: 50px;
   border-radius: 50%;
   background-color: var(--orange-500);
-  color: #fff;
+  color: var(--white);
   border: none;
   outline: none;
   cursor: pointer;
@@ -65,15 +65,15 @@
   height: 75px;
   background-color: var(--orange-700);
   text-align: center;
-  color: #fff;
+  color: var(--white);
   border-radius: 50%;
-  box-shadow: 2px 3px 13px 0px #fe590f;
+  box-shadow: 2px 3px 13px 0px var(--orange-500);
   transition: all 0.5s ease;
 }
 .call-button:hover {
   scale: 0.95;
   background-color: var(--orange-900);
-  box-shadow: 2px 3px 20px 0px #fe590f;
+  box-shadow: 2px 3px 20px 0px var(--orange-500);
 }
 
 /* --- Forms --- */
@@ -92,7 +92,7 @@
   width: 75% !important;
   height: 31px;
   padding: 5px 10px;
-  background: #fff;
+  background: var(--white);
   border: none;
   border-radius: 5px;
   margin-left: 5px;
@@ -107,7 +107,7 @@
 .contact-form input[type="submit"] {
   font-family: KalamehWebFaNum;
   background-color: var(--orange-600);
-  color: #fff;
+  color: var(--white);
   height: 32px;
   width: 20%;
   border: none;
@@ -134,7 +134,7 @@
 .title-search-bar form.searchbar {
   display: flex;
   border-radius: 25px;
-  background: #fff;
+  background: var(--white);
   box-shadow: var(--shadow-xl) inset;
 }
 .title-search-bar form.searchbar input {
@@ -186,7 +186,7 @@
 }
 .swiper-rtl .swiper-button-next,
 .swiper-rtl .swiper-button-prev {
-  background: #fff;
+  background: var(--white);
   width: 30px;
   height: 30px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -215,14 +215,14 @@
   text-align: center;
 }
 .pagenumbers a {
-  background: #fff;
+  background: var(--white);
   border-radius: 10px;
   padding: 5px 13px;
   font-size: 16px;
 }
 .pagenumbers a:hover,
 .pagenumbers span.current {
-  color: #fff;
+  color: var(--white);
   padding: 5px 13px;
   font-size: 16px;
   border-radius: 10px;
