@@ -379,18 +379,6 @@
 .each-product-card {
   position: relative;
 }
-/* قیمت ووکامرس: بزرگ فقط در صفحه محصول */
-.single-product .woocommerce-Price-amount.amount {
-  font-size: 2.4rem;
-  font-weight: bold;
-  color: var(--orange-700, --orange--600);
-  border-radius: 14px;
-  box-shadow: 0 2px 8px rgba(255, 152, 0, 0.08);
-  display: inline-block;
-  margin: 10px 0;
-  letter-spacing: 0.5px;
-  transition: background 0.2s, color 0.2s;
-}
 
 /* قیمت کوچک برای سایر صفحات */
 .woocommerce-Price-amount.amount {
@@ -864,6 +852,9 @@ del .woocommerce-Price-amount.amount {
     line-height: 24px;
   }
   .product-single-left {
+    border-radius: 1rem;
+    box-shadow: var(--shadow-l);
+    padding: 10px;
     gap: 5px;
   }
   .sticky {
@@ -985,7 +976,7 @@ del .woocommerce-Price-amount.amount {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: var(--white);
+    background-color: var(--gray-50);
     padding: 20px;
     border-radius: 5px;
     font-family: KalamehWebFaNum;
@@ -1632,6 +1623,9 @@ del .woocommerce-Price-amount.amount {
     line-height: 30px;
   }
   .product-single-details p {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
     font-size: 30px;
     line-height: 24px;
   }
@@ -1768,7 +1762,7 @@ del .woocommerce-Price-amount.amount {
   position: relative;
   max-width: 720px;
 }
-.product-single-details h2 {
+.product-single-details h1 {
   font-size: 1.6rem;
   margin: 0;
   color: var(--black-700, #222);

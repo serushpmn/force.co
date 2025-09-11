@@ -1,4 +1,3 @@
-
 <?php 
 function loadfiles(){
     wp_enqueue_style( 'style', get_template_directory_uri().'/style.css',false);
@@ -168,3 +167,96 @@ function force_customize_checkout_fields( $fields ) {
 
   return $fields;
 }
+
+// Enqueue CSS/JS for single product comments + rating
+add_action('wp_enqueue_scripts', function() {
+	// فقط در صفحات تک محصول (WooCommerce) یا صفحات تک پست نمایش بده
+	if ( is_singular('product') || is_singular() ) {
+		wp_enqueue_style('force-single-product', get_stylesheet_directory_uri() . '/css/single-product.css', [], null);
+		wp_enqueue_script('force-comment-rating', get_stylesheet_directory_uri() . '/js/comment-rating.js', ['jquery'], null, true);
+	}
+});
+
+// چاپ فیلد ستاره‌ها در فرم نظرات (برای کاربر لاگین و غیر لاگین)
+function force_comment_rating_field() {
+	// فقط در صفحات تک محصول یا تک نوشته نمایش ده
+	if ( ! ( is_singular('product') || is_singular() ) ) return;
+
+	// مقدار پیش‌فرض صفر
+	?>
+	
+	<?php
+}
+add_action('comment_form_logged_in_after', 'force_comment_rating_field');
+add_action('comment_form_after_fields', 'force_comment_rating_field');
+
+// ذخیره‌ی rating در متای کامنت بعد از ارسال
+function force_save_comment_rating($comment_id) {
+	if ( isset($_POST['rating']) ) {
+		$rating = intval($_POST['rating']);
+		if ($rating < 0) $rating = 0;
+		if ($rating > 5) $rating = 5;
+		add_comment_meta($comment_id, 'rating', $rating, true);
+	}
+}
+add_action('comment_post', 'force_save_comment_rating', 10, 2);
+
+// Helper: خروجی HTML ستاره‌ها برای نمایش در نظرها
+function force_get_rating_stars($rating) {
+	$rating = intval($rating);
+	$rating = max(0, min(5, $rating));
+	$html = '<span class="comment-rating" aria-hidden="true">';
+	for ($i = 1; $i <= 5; $i++) {
+		$html .= $i <= $rating ? '<span class="star filled">★</span>' : '<span class="star">☆</span>';
+	}
+	$html .= '</span>';
+	return $html;
+}
+
+// افزودن ستاره‌ها به ابتدای متن نظر (فقط در صفحات تک محصول/تک نوشته)
+function force_append_rating_to_comment_text($comment_text, $comment) {
+	if ( is_admin() ) return $comment_text;
+	if ( ! ( is_singular('product') || is_singular() ) ) return $comment_text;
+
+	$rating = get_comment_meta($comment->comment_ID, 'rating', true);
+	if ( $rating !== '' && $rating !== false ) {
+		$stars = force_get_rating_stars($rating);
+		return $stars . ' ' . $comment_text;
+	}
+	return $comment_text;
+}
+add_filter('comment_text', 'force_append_rating_to_comment_text', 10, 2);
+
+// enable comments support for WooCommerce products and ensure reviews enabled
+add_action( 'init', function() {
+	// ensure product post type supports comments (reviews)
+	if ( post_type_exists( 'product' ) ) {
+		add_post_type_support( 'product', 'comments' );
+	}
+
+	// enable WooCommerce reviews if not already enabled
+	if ( function_exists( 'is_woocommerce' ) ) {
+		if ( get_option( 'woocommerce_enable_reviews' ) !== 'yes' ) {
+			update_option( 'woocommerce_enable_reviews', 'yes' );
+		}
+	}
+}, 20 );
+
+// Ensure comments are considered open for product post type
+add_filter( 'comments_open', function( $open, $post_id ) {
+	$post = get_post( $post_id );
+	if ( $post && $post->post_type === 'product' ) {
+		return true;
+	}
+	return $open;
+}, 10, 2 );
+
+// Load comments template on single product pages (without editing template files)
+add_action( 'woocommerce_after_single_product', function() {
+	if ( is_singular( 'product' ) ) {
+		// show reviews area only if comments enabled or there are existing comments
+		if ( comments_open() || get_comments_number() ) {
+			comments_template();
+		}
+	}
+}, 20 );

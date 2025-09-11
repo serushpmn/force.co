@@ -29,11 +29,9 @@ h3.home-title:before {
 .title-search-bar .titlebar {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 .title-search-bar .titlebar h1 {
   color: var(--black-800);
-  font-size: 30px;
   font-style: normal;
   font-weight: 700;
   line-height: 37px; /* 123.333% */
@@ -41,13 +39,13 @@ h3.home-title:before {
 }
 .title-search-bar .titlebar nav {
   color: var(--black-200);
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 30px;
 }
 .title-search-bar .titlebar nav a {
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 600;
   line-height: 30px;

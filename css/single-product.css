@@ -1,0 +1,201 @@
+/* --- استایل کلی بخش دیدگاه‌ها --- */
+#reviews.woocommerce-Reviews {
+  margin: 40px auto;
+  max-width: 800px;
+  direction: rtl;
+  color: var(--black-700);
+}
+
+/* --- عنوان اصلی (دیدگاه‌ها) --- */
+.woocommerce-Reviews-title {
+  font-size: var(--h4);
+  font-weight: var(--bold);
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--gray-100);
+  color: var(--black-900);
+}
+
+/* --- پیام "هیچ دیدگاهی وجود ندارد" --- */
+p.woocommerce-noreviews {
+  background-color: var(--orange-50);
+  border-right: 4px solid var(--orange-500);
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+  color: var(--gray-700);
+}
+
+/* --- کادر فرم ارسال دیدگاه --- */
+#review_form_wrapper {
+  background-color: var(--white);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-xl);
+  margin-top: 30px;
+}
+
+/* --- عنوان فرم ("اولین نفری باشید که...") --- */
+#reply-title {
+  font-size: var(--h5);
+  font-weight: var(--bold);
+  color: var(--black-800);
+  margin-bottom: 20px;
+}
+
+/* --- استایل کلی فرم --- */
+#commentform.comment-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.comment-form-comment,
+.comment-form-cookies-consent,
+.form-submit,
+.comment-notes,
+.comment-form-rating {
+  grid-column: 1 / -1;
+}
+
+/* --- استایل لیبل‌ها (برچسب‌ها) --- */
+.comment-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: var(--semi_bold);
+  color: var(--black-400);
+}
+
+/* --- استایل فیلدهای ورودی (input) و textarea --- */
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  background-color: var(--gray-50);
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+}
+
+.comment-form input[type="text"]:focus,
+.comment-form input[type="email"]:focus,
+.comment-form textarea:focus {
+  outline: none;
+  border-color: var(--orange-500);
+  background-color: var(--white);
+  box-shadow: 0 0 0 3px rgba(254, 89, 15, 0.2);
+}
+
+.comment-form textarea {
+  min-height: 120px;
+}
+
+/* --- استایل بخش امتیازدهی ستاره‌ای --- */
+.comment-form-rating {
+  margin-bottom: 20px;
+}
+
+.comment-form-rating p.stars a {
+  font-size: 24px;
+  color: var(--gray-300);
+  text-decoration: none;
+  display: inline-block;
+  transition: color 0.2s ease;
+  margin-left: 4px;
+}
+
+.comment-form-rating p.stars a::before {
+  content: "★";
+  font-family: "monospaced";
+}
+
+.comment-form-rating p.stars:hover a,
+.comment-form-rating p.stars.selected a.active,
+.comment-form-rating p.stars.selected a:hover {
+  color: var(--orange-500);
+}
+
+.comment-form-rating p.stars a:hover ~ a,
+.comment-form-rating p.stars.selected a.active ~ a {
+  color: var(--gray-300);
+}
+
+/* --- استایل چک‌باکس ذخیره اطلاعات --- */
+.comment-form-cookies-consent {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+.comment-form-cookies-consent input {
+  width: auto;
+}
+
+/* --- استایل دکمه ثبت دیدگاه --- */
+#submit.submit {
+  background-image: var(--gradient-light);
+  color: var(--white);
+  border: none;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: var(--bold);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#submit.submit:hover {
+  background-image: var(--gradient-dark);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-l);
+}
+/* --- استایل بخش ویژگی‌های اضافی محصول --- */
+
+/* کانتینر اصلی برای دو مورد جدید */
+.product-features-extra {
+  margin-top: 20px; /* فاصله از متن وضعیت انبار */
+  display: flex;
+  flex-direction: column; /* نمایش موارد زیر هم */
+  gap: 15px; /* فاصله بین دو مورد */
+  border-top: 1px solid var(--gray-100); /* یک خط جداکننده ظریف */
+  padding-top: 20px;
+}
+
+/* استایل هر یک از موارد (آیکون + متن) */
+.feature-item {
+  display: flex;
+  align-items: center; /* تراز عمودی آیکون و متن */
+  color: var(--gray-800);
+  font-size: 15px;
+}
+
+/* استایل آیکون‌ها */
+.feature-item .feature-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--orange-500); /* استفاده از رنگ نارنجی اصلی */
+  margin-left: 10px; /* فاصله آیکون از متن */
+  flex-shrink: 0; /* جلوگیری از فشرده شدن آیکون */
+}
+
+/* استایل متن */
+.feature-item span {
+  font-weight: var(--semi_bold);
+}
+/* --- استایل برای موبایل و تبلت (واکنش‌گرایی) --- */
+@media (max-width: 600px) {
+  #commentform.comment-form {
+    grid-template-columns: 1fr;
+  }
+
+  .comment-form-author,
+  .comment-form-email {
+    grid-column: 1 / -1;
+  }
+
+  #review_form_wrapper {
+    padding: 20px;
+  }
+}

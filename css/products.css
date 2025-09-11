@@ -268,9 +268,3 @@ form.woocommerce-ordering {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.related-products.products-grid .product-card-description {
-  padding: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}

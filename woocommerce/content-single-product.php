@@ -62,16 +62,59 @@ if ( post_password_required() ) {
               
                 <h2><?php echo wc_get_product( $post->ID )->get_title(); ?></h2>
                 <p class="prd_stock"><?php echo (wc_get_product( $post->ID )->get_stock_status()=='instock') ? 'موجود در انبار' :'ناموجود در انبار';?></p>
-                <p><?php echo wc_get_product( $post->ID )->get_price_html(); ?></p>
+                <div class="product-features-extra">
+
+                  <div class="feature-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="feature-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3"></path>
+                        <path d="M9 12l2 2l4 -4"></path>
+                      </svg>
+                      <span>ضمانت اصل بودن کالا</span>
+                  </div>
+
+                  <div class="feature-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="feature-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                        <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                        <path d="M5 17h-2v-4.4a1 1 0 0 1 .5 - .862l6.93 -4.012a1.1 1.1 0 0 1 1.125 0l6.93 4.012a1 1 0 0 1 .5 .862v4.4h-2m-9 0h6m-6 -4h6m3 -6h-10l4 -2h2l4 2"></path>
+                        <path d="M1 11l4 -2.5"></path>
+                        <path d="M23 11l-4 -2.5"></path>
+                      </svg>
+                      <span>ارسال سریع</span>
+                  </div>
+
+              </div>
+                
+                <?php
+                // نمایش امتیاز ستاره‌ای و تعداد نظرات (اگر وجود دارد)
+                if ( isset( $product ) && $product ) {
+                  $rating_count = (int) $product->get_rating_count();
+                  $average      = (float) $product->get_average_rating();
+                  if ( $rating_count > 0 ) {
+                    ?>
+                    <div class="woocommerce-product-rating">
+                      <div class="star-rating" title="<?php echo esc_attr( sprintf( __( 'Rated %s out of 5', 'woocommerce' ), $average ) ); ?>">
+                        <span style="width:<?php echo esc_attr( ( $average / 5 ) * 100 ); ?>%"></span>
+                      </div>
+                      <a href="#reviews" class="review-count">(<?php echo esc_html( $rating_count ); ?> نظر)</a>
+                    </div>
+                    <?php
+                  }
+                }
+                ?>
+
               </div>
             </div>
             <div class="product-single-left">
-            
+            <div class="product-single-details">     
+                <p><?php echo wc_get_product( $post->ID )->get_price_html(); ?></p>
+              </div>
             <?php $downloads = $product->get_downloads();
-
-foreach( $downloads as $key => $each_download ) {
-  echo '<a href="'.$each_download["file"].'" download>'.$each_download["name"];'</a>';
-}?>
+              foreach( $downloads as $key => $each_download ) {
+                echo '<a href="'.$each_download["file"].'" download>'.$each_download["name"];'</a>';
+              }?>
               <a href="https://force.co.ir/wp-content/themes/Force/files/catalogue.pdf">کاتالوگ همه محصولات<i class="fa fa-download"></i></a>
               <?php
                 // اگر محصول قابل خرید است، دکمه افزودن به سبد نمایش داده شود؛ در غیر اینصورت لینک تماس باقی بماند
@@ -85,12 +128,7 @@ foreach( $downloads as $key => $each_download ) {
                           <div id="popupForm">
                             <h2>تماس با ما</h2>
                             <?php
-                              // Your PHP code...
-
-                              // Output the Contact Form 7 shortcode
                               echo do_shortcode('[contact-form-7 id="ca52d6d" title="فرم تماس - محصولات"]');
-
-                              // More of your PHP code...
                               ?>
                           </div>
                         </div>
