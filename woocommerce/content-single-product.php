@@ -37,22 +37,8 @@ if ( post_password_required() ) {
 <section>
           <div class="product-single-top ">
             <div class="product-single-right">
-            
-            
-              <div style="position:relative;">
-                <?php
-                // نمایش بج درصد تخفیف اگر محصول تخفیف‌دار باشد
-                if ( $product->is_on_sale() ) {
-                  $regular_price = (float) $product->get_regular_price();
-                  $sale_price = (float) $product->get_sale_price();
-                  if ( $regular_price > 0 && $sale_price > 0 && $regular_price > $sale_price ) {
-                    $discount_percent = round( ( ( $regular_price - $sale_price ) / $regular_price ) * 100 );
-                    echo '<span class="discount-badge">' . $discount_percent . '% تخفیف</span>';
-                  }
-                }
-                ?>
+              
                 <?php woocommerce_show_product_images(); ?>
-              </div>
               
               <div class="product-single-details">
              
@@ -75,29 +61,8 @@ if ( post_password_required() ) {
                     <?php endif; ?>
               
                 <h2><?php echo wc_get_product( $post->ID )->get_title(); ?></h2>
-                <p class="prd_stock<?php echo ($product->get_stock_status() !== 'instock') ? ' out-of-stock-text' : ''; ?>"><?php echo (wc_get_product( $post->ID )->get_stock_status()=='instock') ? 'موجود' :'ناموجود';?></p>
-                <?php if ($product->get_stock_status() === 'instock') : ?>
-                <div class="product-price-column">
-                  <?php echo wc_get_product( $post->ID )->get_price_html(); ?>
-                </div>
-                <form class="cart add-to-cart-form" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data' style="margin:18px 0;">
-                  <input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" />
-                  <button type="submit" class="buy-btn" style="width:100%;margin-top:8px;">افزودن به سبد خرید</button>
-                </form>
-                <?php endif; ?>
-
-                <div class="product-icons-box" style="display:flex;gap:16px;align-items:center; justify-content:space-around;margin-bottom:16px;">
-
-              <div class="icon-item" style="display:flex;flex-direction:column;align-items:center;">
-                <i class="fa fa-truck" style="font-size:36px;color:#ff9800;"></i>
-                <span style="font-size:18px;margin-top:4px;">ارسال سریع</span>
-              </div>
-              <div class="icon-item" style="display:flex;flex-direction:column;align-items:center;">
-                <i class="fa fa-shield" style="font-size:36px;color:#ff9800;"></i>
-                <span style="font-size:18px;margin-top:4px;">ضمانت اصالت</span>
-              </div>
-            </div>
-
+                <p class="prd_stock"><?php echo (wc_get_product( $post->ID )->get_stock_status()=='instock') ? 'موجود در انبار' :'ناموجود در انبار';?></p>
+                <p><?php echo wc_get_product( $post->ID )->get_price_html(); ?></p>
               </div>
             </div>
             <div class="product-single-left">
@@ -108,11 +73,14 @@ foreach( $downloads as $key => $each_download ) {
   echo '<a href="'.$each_download["file"].'" download>'.$each_download["name"];'</a>';
 }?>
               <a href="https://force.co.ir/wp-content/themes/Force/files/catalogue.pdf">کاتالوگ همه محصولات<i class="fa fa-download"></i></a>
-              <?php if ($product->get_stock_status() === 'instock') : ?>
-                <a href="#" id="openFormButton">ثبت درخواست خرید<i class="fa fa-phone"></i></a>
-              <?php else : ?>
-                <a class="buy-btn disabled" href="#" tabindex="-1" aria-disabled="true" onclick="return false;">ثبت درخواست خرید<i class="fa fa-phone"></i></a>
-              <?php endif; ?>
+              <?php
+                // اگر محصول قابل خرید است، دکمه افزودن به سبد نمایش داده شود؛ در غیر اینصورت لینک تماس باقی بماند
+                if ( isset( $product ) && $product && $product->is_purchasable() ) {
+                  echo do_shortcode( '[add_to_cart id="' . intval( get_the_ID() ) . '" show_price="false"]' );
+                } else {
+                  echo '<a href="#" id="openFormButton">ثبت درخواست خرید<i class="fa fa-phone"></i></a>';
+                }
+              ?>
                         <div id="popupFormContainer">
                           <div id="popupForm">
                             <h2>تماس با ما</h2>
@@ -148,78 +116,55 @@ foreach( $downloads as $key => $each_download ) {
             <div class="product-single-left sticky">
             <?php the_post_thumbnail(); ?>
             <h3 class="maghale-title"><?php the_title(); ?></h3>
-    <?php if ($product->get_stock_status() === 'instock') : ?>
-    <div class="product-price-column">
-      <?php echo wc_get_product( $post->ID )->get_price_html(); ?>
-    </div>
-    <?php endif; ?>
+            <p><?php echo wc_get_product( $post->ID )->get_price_html(); ?></p>
             <?php $downloads = $product->get_downloads();
 foreach( $downloads as $key => $each_download ) {
   echo '<a href="'.$each_download["file"].'" download>'.$each_download["name"];'</a>';
 }?>
 <a href="<?php echo get_template_directory_uri();?>/files/catalogue.pdf" download>کاتالوگ همه محصولات<i class="fa fa-download"></i></a>
-            <?php if ($product->get_stock_status() === 'instock') : ?>
-                <a href="#" id="openFormButton">ثبت درخواست خرید<i class="fa fa-phone"></i></a>
-              <?php else : ?>
-                <a class="buy-btn disabled" href="#" tabindex="-1" aria-disabled="true" onclick="return false;">ثبت درخواست خرید<i class="fa fa-phone"></i></a>
-              <?php endif; ?>
+               <?php
+                // اگر محصول قابل خرید است، دکمه افزودن به سبد نمایش داده شود؛ در غیر اینصورت لینک تماس باقی بماند
+                if ( isset( $product ) && $product && $product->is_purchasable() ) {
+                  echo do_shortcode( '[add_to_cart id="' . intval( get_the_ID() ) . '" show_price="false"]' );
+                } else {
+                  echo '<a href="#" id="openFormButton">ثبت درخواست خرید<i class="fa fa-phone"></i></a>';
+                }
+              ?>
             </div>
           </div>
         </section>
         
 </div>
+
 <section class="related">
-<h2>محصولات مشابه</h2>
-<?php
-// Get the current product ID
-$current_product_id = get_the_ID();
+  <h2>محصولات مشابه</h2>
+  <?php
+    // Save globals
+    global $post, $product;
+    $orig_post    = $post;
+    $orig_product = $product;
 
-// Get the product object
-$current_product = wc_get_product($current_product_id);
-
-// Get the related product IDs
-$related_product_ids = $current_product->get_related();
-
-// Query the related products
-$args = array(
-    'post_type' => 'product',
-    'posts_per_page' => 8,
-    'post__in' => $related_product_ids,
-    'post__not_in' => array($current_product_id),
-);
-
-$related_products = new WP_Query($args);
-
-// Display the related products
-if ($related_products->have_posts()) {
-    echo '<ul class="related-products">';
-    while ($related_products->have_posts()) {
-        $related_products->the_post();
-        global $product;
-        ?>
-        <li>
-            <a href="<?php the_permalink(); ?>">
-            <div class="each-img">
-            <?php the_post_thumbnail(); ?>
-            </div>
-              <h3>
-                <?php the_title(); ?>
-              </h3>
-            </a>
-           
-        </li>
-        <?php
+    $related_ids = wc_get_related_products( get_the_ID(), 8 );
+    if ( ! empty( $related_ids ) ) {
+      echo '<div class="related-products products-grid">';
+      foreach ( $related_ids as $r_id ) {
+        $post    = get_post( $r_id );
+        setup_postdata( $post );
+        $product = wc_get_product( $r_id );
+        // reuse loop template so styling stays consistent
+        wc_get_template_part( 'content', 'product' );
+      }
+      echo '</div>';
+      // restore globals
+      wp_reset_postdata();
+      $post    = $orig_post;
+      $product = $orig_product;
+      setup_postdata( $post );
+    } else {
+      echo '<p class="no-related">محصول مشابه وجود ندارد.</p>';
     }
-    echo '</ul>';
-    wp_reset_postdata();
-} else {
-    echo 'No related products found.';
-}
-?>
-
-
-
-        </section>
+  ?>
+</section>
       <?php
       // نمایش لینک دانلود فایل کاتالوگ برای همه کاربران
       if ( $product && $product->is_downloadable() ) {

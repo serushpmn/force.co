@@ -1,0 +1,276 @@
+/* --- استایل اصلی کارت محصول (با فاصله کم) --- */
+.product-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--white);
+  border: 1px solid var(--gray-50);
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+.product-item:hover {
+  box-shadow: 0 2px 5px var(--shadow-l);
+}
+
+/* --- نگهدارنده بالایی (عکس، عنوان، قیمت) --- */
+.product-item .full-w {
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- استایل تصویر محصول --- */
+.product-item .each-prd-img {
+  position: relative;
+}
+
+.product-item img {
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+/* --- استایل عنوان محصول --- */
+.product-item .product-name {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 10px 10px 5px 10px; /* کاهش فاصله بالا و پایین */
+  color: #333;
+  min-height: auto; /* حذف حداقل ارتفاع برای چسبیدن به محتوا */
+  line-height: 1.5;
+}
+
+/* --- نگهدارنده توضیحات (موجودی و قیمت) --- */
+.product-card-description {
+  /* margin-top: auto; این خط حذف شد تا فاصله اضافی از بین برود */
+  padding: 0 10px 10px 10px; /* کاهش فاصله پایین */
+}
+
+/* --- استایل وضعیت موجودی --- */
+.prd_stock {
+  font-size: 14px;
+  color: #1e8731;
+  margin-bottom: 8px; /* کاهش فاصله */
+}
+.prd_stock.out-of-stock-text {
+  color: #e74c3c;
+}
+
+/* --- نگهدارنده قیمت --- */
+.product-price-column {
+  min-height: auto; /* حذف حداقل ارتفاع */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+/* --- قیمت اصلی (خط خورده) --- */
+.product-item .original-price {
+  font-size: 15px;
+  text-decoration: line-through;
+  color: #888;
+  order: 2;
+}
+
+/* --- قیمت با تخفیف یا قیمت اصلی --- */
+.product-item .discounted-price {
+  font-size: 22px;
+  color: #333;
+  font-weight: bold;
+  order: 1;
+}
+.product-item .discounted-price .woocommerce-Price-currencySymbol {
+  font-size: 14px;
+}
+
+/* --- استایل درصد تخفیف --- */
+.product-item .discount-percentage {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #e74c3c;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.buy-btn.disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+/* --- برای محصولات بدون قیمت --- */
+.no-price {
+  display: block;
+  /* برای محصولات بدون قیمت یک ارتفاع حداقلی ایجاد می‌کند تا بهم نریزد */
+  min-height: 28px;
+}
+/*
+ * استایل سفارشی برای هدر فروشگاه و مرتب‌سازی محصولات
+ */
+
+/* 1. نگهدارنده اصلی برای کل نوار */
+.shop-header-bar {
+  display: flex;
+  justify-content: space-between; /* المان‌ها را در دو طرف قرار می‌دهد */
+  align-items: center;
+  padding: 20px 0;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #e0e0e0;
+  direction: rtl; /* جهت‌دهی راست به چپ */
+}
+
+/* 2. بخش سمت راست (عنوان و تعداد محصولات) */
+.shop-title-section {
+  display: flex;
+  align-items: baseline; /* تراز کردن بر اساس خط پایه متن */
+}
+
+.shop-title-section h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 0 15px; /* فاصله از سمت چپ */
+}
+
+.shop-title-section .product-count {
+  font-size: 15px;
+  color: #888;
+}
+
+/* 3. بخش سمت چپ (مرتب‌سازی) */
+.custom-ordering-section {
+  display: flex;
+  align-items: center;
+}
+
+.custom-ordering-section .sorting-label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #444;
+  margin-left: 20px;
+}
+.custom-orderby {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/* 4. لینک‌های مرتب‌سازی */
+.custom-orderby a {
+  text-decoration: none;
+  color: #777;
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* استایل لینک در حالت هاور (ماوس روی آن) */
+.custom-orderby a:hover {
+  color: #000;
+  border-bottom: 2px solid transparent; /* برای افکت هاور */
+}
+
+/* استایل لینک فعال (گزینه انتخاب شده) */
+.custom-orderby a.active {
+  color: #000;
+  font-weight: bold;
+  border-bottom-color: #333; /* یک خط زیر گزینه فعال */
+}
+
+/* مخفی کردن فرم پیش‌فرض ووکامرس (اگر هنوز نمایش داده می‌شود) */
+form.woocommerce-ordering {
+  display: none;
+}
+
+/* واکنش‌گرایی برای موبایل */
+@media (max-width: 768px) {
+  .shop-header-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .custom-ordering-section {
+    margin-top: 15px;
+    flex-wrap: wrap; /* اجازه شکستن خط در موبایل */
+  }
+  .custom-orderby a {
+    margin: 5px 8px;
+  }
+}
+
+/* Related products grid: reuse product-item cards and show up to 6 items */
+.related-products.products-grid {
+  display: grid !important;
+  grid-template-columns: repeat(6, 1fr) !important; /* 6 items per row */
+  gap: 12px !important;
+  align-items: start !important;
+}
+.related-products.products-grid .product-item {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 8px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* hide items beyond the 6th visually */
+.related-products.products-grid > *:nth-child(n + 7) {
+  display: none !important;
+}
+
+@media (max-width: 1200px) {
+  .related-products.products-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+@media (max-width: 900px) {
+  .related-products.products-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+@media (max-width: 600px) {
+  .related-products.products-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 420px) {
+  .related-products.products-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Ensure product images inside related grid are constrained */
+.related-products.products-grid .each-prd-img {
+  width: 100% !important;
+  height: 70% !important; /* image area takes majority of square */
+  display: block !important;
+}
+.related-products.products-grid .each-prd-img img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+/* Make product name and price compact inside grid */
+.related-products.products-grid .product-name {
+  font-size: 12px;
+  line-height: 1.2;
+  margin: 6px 6px 4px 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.related-products.products-grid .product-card-description {
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

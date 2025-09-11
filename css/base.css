@@ -25,6 +25,7 @@ span {
 
 .container {
   max-width: 1360px;
+  padding: 0 10px;
   margin: 0 auto;
 }
 .full-w {

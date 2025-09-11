@@ -8,6 +8,7 @@ function loadfiles(){
   wp_enqueue_style( 'force-orders', get_template_directory_uri() . '/css/orders.css', array('style'), '1.0' );
   wp_enqueue_style( 'force-cart', get_template_directory_uri() . '/css/cart-custom.css', array('style'), '1.0' );
   wp_enqueue_style( 'force-account-edit', get_template_directory_uri() . '/css/account-edit.css', array('style'), '1.0' );
+  wp_enqueue_style( 'force-products', get_template_directory_uri() . '/css/products.css', array('style'), '1.0' );
     wp_enqueue_script( 'swiper','https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js', false );
   // Theme toggle script
   wp_enqueue_script( 'force-theme-toggle', get_template_directory_uri() . '/js/theme-toggle.js', array(), '1.0', true );
