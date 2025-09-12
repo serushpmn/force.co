@@ -9,14 +9,16 @@
          <div class="swiper-slide each-hero">
             <div class="hero">
                <div class="img-slider">
-                  <img src="<?php echo get_template_directory_uri();?>/img/bg-low-size.jpg" alt="شرکت فیلتراسین فرس" loading="lazy"/>
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/bg-low-size.jpg" alt="شرکت فیلتراسین فرس" loading="lazy"/>
                </div>
                   <h1 class="brand-title">
-                     <?php bloginfo('name'); ?>
-                     <span class="brand-description"><?php bloginfo('description'); ?></span>
+                     <?php bloginfo("name"); ?>
+                     <span class="brand-description"><?php bloginfo(
+                       "description",
+                     ); ?></span>
                   </h1>
                   <h3 class="brand-title">
-                     <a href="<?php echo get_template_directory_uri();?>/files/catalogue.pdf" download>
+                     <a href="<?php echo get_template_directory_uri(); ?>/files/catalogue.pdf" download>
                         دانلود کاتالوگ
                         <span class="brand-description"><i class="fa fa-download"></i></span>
                      </a>
@@ -33,7 +35,7 @@
          <div class="swiper-slide each-hero">
             <div class="hero">
                <div class="img-slider">
-                  <img src="<?php echo get_template_directory_uri();?>/img/Force-slider-5.jpg" alt="شرکت فیلتراسین فرس"loading="lazy" />
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/Force-slider-5.jpg" alt="شرکت فیلتراسین فرس"loading="lazy" />
                </div>
                <h2 class="brand-title">
                 تماس با ما
@@ -48,7 +50,7 @@
          <div class="swiper-slide each-hero">
             <div class="hero">
                <div class="img-slider">
-                  <img src="<?php echo get_template_directory_uri();?>/img/Force-slider-6.jpg" alt="شرکت فیلتراسین فرس" loading="lazy"/>
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/Force-slider-6.jpg" alt="شرکت فیلتراسین فرس" loading="lazy"/>
                </div>
                <h2 class="brand-title">
                   ما را مشاور خود بدانید
@@ -67,7 +69,7 @@
          <div class="swiper-slide each-hero">
             <div class="hero">
                <div class="img-slider">
-                  <img src="<?php echo get_template_directory_uri();?>/img/Force-slider-2.jpg" alt="شرکت فیلتراسین فرس"loading="lazy" />
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/Force-slider-2.jpg" alt="شرکت فیلتراسین فرس"loading="lazy" />
                </div>
                 </div>
          </div>
@@ -81,11 +83,12 @@
          <div class="kasbokar-rect"></div>
          <div class="kasbokar-circles">
             <?php $the_query = new WP_Query([
-               "post_type" => "kasbokar",
-               "posts_per_page" => "10",
-                 ]); ?>
+              "post_type" => "kasbokar",
+              "posts_per_page" => "10",
+            ]); ?>
             <?php if ($the_query->have_posts()): ?>
-            <?php while ($the_query->have_posts()): $the_query->the_post(); ?>
+            <?php while ($the_query->have_posts()):
+              $the_query->the_post(); ?>
             <div class="kasbokar-circle">
                <a href="<?php echo esc_url(get_the_permalink()); ?>">
                   <div class="circle">
@@ -98,7 +101,8 @@
                </a>
                </span>
             </div>
-            <?php endwhile; ?>
+            <?php
+            endwhile; ?>
             <?php wp_reset_postdata(); ?>
             <?php else: ?>
             <p><?php esc_html_e("متاسفانه محتوایی پیدا نشد"); ?></p>
@@ -117,29 +121,29 @@
                   <h2>شرکت های راه سازی و عمرانی</h2>
                         <div class="logo-box">
                            <?php $the_query = new WP_Query([
-                              "post_type" => "logo",
-                              "category_name" => "شرکت-های-راه-سازی-و-عمرانی",
-                              "posts_per_page" => "10",
-                              ]); ?>
+                             "post_type" => "logo",
+                             "category_name" => "شرکت-های-راه-سازی-و-عمرانی",
+                             "posts_per_page" => "10",
+                           ]); ?>
                            <?php if ($the_query->have_posts()): ?>
                            <?php while ($the_query->have_posts()):
-                              $the_query->the_post(); ?>
+                             $the_query->the_post(); ?>
                            <div class="each-logo">
                               <?php the_post_thumbnail(); ?>
                               <span class="logo-tooltip"><?php the_title(); ?></span>
                            </div>
                            <?php
-                              endwhile; ?>
+                           endwhile; ?>
                            <?php wp_reset_postdata(); ?>
                            <?php else: ?>
                            <p><?php esc_html_e(
-                              "متاسفانه محتوایی پیدا نشد"
-                              ); ?></p>
+                             "متاسفانه محتوایی پیدا نشد",
+                           ); ?></p>
                            <?php endif; ?>
                         </div>
                         <div class="comment-box">
                            <img
-                              src="<?php echo get_template_directory_uri();?>/img/logos/قرارگاه-خاتم.jpg"
+                              src="<?php echo get_template_directory_uri(); ?>/img/logos/قرارگاه-خاتم.jpg"
                               alt=""
                               class="ceo-comment-logo"
                               />
@@ -160,29 +164,29 @@
                         <h2>صنعت برق</h2>
                         <div class="logo-box">
                            <?php $the_query = new WP_Query([
-                              "post_type" => "logo",
-                              "category_name" => "صنعت-برق",
-                              "posts_per_page" => "10",
-                              ]); ?>
+                             "post_type" => "logo",
+                             "category_name" => "صنعت-برق",
+                             "posts_per_page" => "10",
+                           ]); ?>
                            <?php if ($the_query->have_posts()): ?>
                            <?php while ($the_query->have_posts()):
-                              $the_query->the_post(); ?>
+                             $the_query->the_post(); ?>
                            <div class="each-logo">
                               <?php the_post_thumbnail(); ?>
                               <span class="logo-tooltip"><?php the_title(); ?></span>
                            </div>
                            <?php
-                              endwhile; ?>
+                           endwhile; ?>
                            <?php wp_reset_postdata(); ?>
                            <?php else: ?>
                            <p><?php esc_html_e(
-                              "متاسفانه محتوایی پیدا نشد"
-                              ); ?></p>
+                             "متاسفانه محتوایی پیدا نشد",
+                           ); ?></p>
                            <?php endif; ?>
                         </div>
                         <div class="comment-box">
                            <img
-                              src="<?php echo get_template_directory_uri();?>/img/logos/نیروگاه-رجائی.jpg"
+                              src="<?php echo get_template_directory_uri(); ?>/img/logos/نیروگاه-رجائی.jpg"
                               alt=""
                               class="ceo-comment-logo"
                               />
@@ -204,29 +208,27 @@
                      <h2> نفت و گاز و پتروشیمی</h2>
                      <div class="logo-box">
                         <?php $the_query = new WP_Query([
-                           "post_type" => "logo",
-                           "category_name" => "نفت-و-گاز-و-پتروشیمی",
-                           "posts_per_page" => "10",
-                           ]); ?>
+                          "post_type" => "logo",
+                          "category_name" => "نفت-و-گاز-و-پتروشیمی",
+                          "posts_per_page" => "10",
+                        ]); ?>
                         <?php if ($the_query->have_posts()): ?>
                         <?php while ($the_query->have_posts()):
-                           $the_query->the_post(); ?>
+                          $the_query->the_post(); ?>
                         <div class="each-logo">
                            <?php the_post_thumbnail(); ?>
                            <span class="logo-tooltip"><?php the_title(); ?></span>
                         </div>
                         <?php
-                           endwhile; ?>
+                        endwhile; ?>
                         <?php wp_reset_postdata(); ?>
                         <?php else: ?>
-                        <p><?php esc_html_e(
-                           "متاسفانه محتوایی پیدا نشد"
-                           ); ?></p>
+                        <p><?php esc_html_e("متاسفانه محتوایی پیدا نشد"); ?></p>
                         <?php endif; ?>
                      </div>
                      <div class="comment-box">
                         <img
-                           src="<?php echo get_template_directory_uri();?>/img/logos/پتروشیمی-اصفهان.jpg"
+                           src="<?php echo get_template_directory_uri(); ?>/img/logos/پتروشیمی-اصفهان.jpg"
                            alt=""
                            class="ceo-comment-logo"
                            />
@@ -243,29 +245,27 @@
                      <h2>صنعت فولاد</h2>
                      <div class="logo-box">
                         <?php $the_query = new WP_Query([
-                           "post_type" => "logo",
-                           "category_name" => "صنعت-فولاد",
-                           "posts_per_page" => "10",
-                           ]); ?>
+                          "post_type" => "logo",
+                          "category_name" => "صنعت-فولاد",
+                          "posts_per_page" => "10",
+                        ]); ?>
                         <?php if ($the_query->have_posts()): ?>
                         <?php while ($the_query->have_posts()):
-                           $the_query->the_post(); ?>
+                          $the_query->the_post(); ?>
                         <div class="each-logo">
                            <?php the_post_thumbnail(); ?>
                            <span class="logo-tooltip"><?php the_title(); ?></span>
                         </div>
                         <?php
-                           endwhile; ?>
+                        endwhile; ?>
                         <?php wp_reset_postdata(); ?>
                         <?php else: ?>
-                        <p><?php esc_html_e(
-                           "متاسفانه محتوایی پیدا نشد"
-                           ); ?></p>
+                        <p><?php esc_html_e("متاسفانه محتوایی پیدا نشد"); ?></p>
                         <?php endif; ?>
                      </div>
                      <div class="comment-box">
                         <img
-                           src="<?php echo get_template_directory_uri();?>/img/logos/فولاد-نطنز.jpg"
+                           src="<?php echo get_template_directory_uri(); ?>/img/logos/فولاد-نطنز.jpg"
                            alt=""
                            class="ceo-comment-logo"
                            />
@@ -282,29 +282,27 @@
                      <h2>صنعت کاشی</h2>
                      <div class="logo-box">
                         <?php $the_query = new WP_Query([
-                           "post_type" => "logo",
-                           "category_name" => "صنعت-کاشی",
-                           "posts_per_page" => "10",
-                           ]); ?>
+                          "post_type" => "logo",
+                          "category_name" => "صنعت-کاشی",
+                          "posts_per_page" => "10",
+                        ]); ?>
                         <?php if ($the_query->have_posts()): ?>
                         <?php while ($the_query->have_posts()):
-                           $the_query->the_post(); ?>
+                          $the_query->the_post(); ?>
                         <div class="each-logo">
                            <?php the_post_thumbnail(); ?>
                            <span class="logo-tooltip"><?php the_title(); ?></span>
                         </div>
                         <?php
-                           endwhile; ?>
+                        endwhile; ?>
                         <?php wp_reset_postdata(); ?>
                         <?php else: ?>
-                        <p><?php esc_html_e(
-                           "متاسفانه محتوایی پیدا نشد"
-                           ); ?></p>
+                        <p><?php esc_html_e("متاسفانه محتوایی پیدا نشد"); ?></p>
                         <?php endif; ?>
                      </div>
                      <div class="comment-box">
                         <img
-                           src="<?php echo get_template_directory_uri();?>/img/logos/نوین-سرام-یزد.jpg"
+                           src="<?php echo get_template_directory_uri(); ?>/img/logos/نوین-سرام-یزد.jpg"
                            alt=""
                            class="ceo-comment-logo"
                            />
@@ -323,24 +321,22 @@
                      <h2>صنعت معدن و سیمان</h2>
                      <div class="logo-box">
                         <?php $the_query = new WP_Query([
-                           "post_type" => "logo",
-                           "category_name" => "صنعت-معدن-و-سیمان",
-                           "posts_per_page" => "10",
-                           ]); ?>
+                          "post_type" => "logo",
+                          "category_name" => "صنعت-معدن-و-سیمان",
+                          "posts_per_page" => "10",
+                        ]); ?>
                         <?php if ($the_query->have_posts()): ?>
                         <?php while ($the_query->have_posts()):
-                           $the_query->the_post(); ?>
+                          $the_query->the_post(); ?>
                         <div class="each-logo">
                            <?php the_post_thumbnail(); ?>
                            <span class="logo-tooltip"><?php the_title(); ?></span>
                         </div>
                         <?php
-                           endwhile; ?>
+                        endwhile; ?>
                         <?php wp_reset_postdata(); ?>
                         <?php else: ?>
-                        <p><?php esc_html_e(
-                           "متاسفانه محتوایی پیدا نشد"
-                           ); ?></p>
+                        <p><?php esc_html_e("متاسفانه محتوایی پیدا نشد"); ?></p>
                         <?php endif; ?>
                      </div>
                      
@@ -349,29 +345,27 @@
                      <h2>کشتی رانی و بندر</h2>
                      <div class="logo-box">
                         <?php $the_query = new WP_Query([
-                           "post_type" => "logo",
-                           "category_name" => "کشتی-رانی-و-بندر",
-                           "posts_per_page" => "10",
-                           ]); ?>
+                          "post_type" => "logo",
+                          "category_name" => "کشتی-رانی-و-بندر",
+                          "posts_per_page" => "10",
+                        ]); ?>
                         <?php if ($the_query->have_posts()): ?>
                         <?php while ($the_query->have_posts()):
-                           $the_query->the_post(); ?>
+                          $the_query->the_post(); ?>
                         <div class="each-logo">
                            <?php the_post_thumbnail(); ?>
                            <span class="logo-tooltip"><?php the_title(); ?></span>
                         </div>
                         <?php
-                           endwhile; ?>
+                        endwhile; ?>
                         <?php wp_reset_postdata(); ?>
                         <?php else: ?>
-                        <p><?php esc_html_e(
-                           "متاسفانه محتوایی پیدا نشد"
-                           ); ?></p>
+                        <p><?php esc_html_e("متاسفانه محتوایی پیدا نشد"); ?></p>
                         <?php endif; ?>
                      </div>
                      <div class="comment-box">
                         <img
-                           src="<?php echo get_template_directory_uri();?>/img/logos/آریا-بنادر-ایرانیان.jpg"
+                           src="<?php echo get_template_directory_uri(); ?>/img/logos/آریا-بنادر-ایرانیان.jpg"
                            alt=""
                            class="ceo-comment-logo"
                            />
@@ -389,24 +383,22 @@
                      <h2>دیگر صنایع</h2>
                      <div class="logo-box">
                         <?php $the_query = new WP_Query([
-                           "post_type" => "logo",
-                           "category_name" => "دیگر-صنایع",
-                           "posts_per_page" => "10",
-                           ]); ?>
+                          "post_type" => "logo",
+                          "category_name" => "دیگر-صنایع",
+                          "posts_per_page" => "10",
+                        ]); ?>
                         <?php if ($the_query->have_posts()): ?>
                         <?php while ($the_query->have_posts()):
-                           $the_query->the_post(); ?>
+                          $the_query->the_post(); ?>
                         <div class="each-logo">
                            <?php the_post_thumbnail(); ?>
                            <span class="logo-tooltip"><?php the_title(); ?></span>
                         </div>
                         <?php
-                           endwhile; ?>
+                        endwhile; ?>
                         <?php wp_reset_postdata(); ?>
                         <?php else: ?>
-                        <p><?php esc_html_e(
-                           "متاسفانه محتوایی پیدا نشد"
-                           ); ?></p>
+                        <p><?php esc_html_e("متاسفانه محتوایی پیدا نشد"); ?></p>
                         <?php endif; ?>
                      </div>
                      <div class="comment-box">
@@ -439,43 +431,57 @@
          </div>
          <div class="swiper myMaghale">
             <div class="swiper-wrapper">
-               <?php
-                  $the_query = new WP_Query( array( 'post_type' => 'product', 'posts_per_page'=>'100') ) ?>
-               <?php if ( $the_query->have_posts() ) : ?>
-               <?php
-                  while ( $the_query->have_posts() ) :
-                      $the_query->the_post();
-                      ?>
+               <?php $the_query = new WP_Query([
+                 "post_type" => "product",
+                 "posts_per_page" => "100",
+               ]); ?>
+               <?php if ($the_query->have_posts()): ?>
+               <?php while ($the_query->have_posts()):
+                 $the_query->the_post(); ?>
                <div class="swiper-slide each-maghale">
                   <div class="each-maghale-img">
-                     <a href="<?php the_permalink();?>">
-                         <?php
-                        // نمایش بج درصد تخفیف فقط اگر محصول موجود و تخفیف‌دار باشد
-                        if ( $product->get_stock_status() === 'instock' && $product->is_on_sale() ) {
+                     <a href="<?php the_permalink(); ?>">
+                         <?php // نمایش بج درصد تخفیف فقط اگر محصول موجود و تخفیف‌دار باشد
+                         if (
+                           $product->get_stock_status() === "instock" &&
+                           $product->is_on_sale()
+                         ) {
                            $regular_price = (float) $product->get_regular_price();
                            $sale_price = (float) $product->get_sale_price();
-                           if ( $regular_price > 0 && $sale_price > 0 && $regular_price > $sale_price ) {
-                              $discount_percent = round( ( ( $regular_price - $sale_price ) / $regular_price ) * 100 );
-                              echo '<span class="discount-badge">' . $discount_percent . '% تخفیف</span>';
+                           if (
+                             $regular_price > 0 &&
+                             $sale_price > 0 &&
+                             $regular_price > $sale_price
+                           ) {
+                             $discount_percent = round(
+                               (($regular_price - $sale_price) /
+                                 $regular_price) *
+                                 100,
+                             );
+                             echo '<span class="discount-badge">' .
+                               $discount_percent .
+                               "% تخفیف</span>";
                            }
-                        }
-                ?>
+                         } ?>
                      <?php the_post_thumbnail(); ?>
                      </a> 
                   </div>
-                  <a href="<?php the_permalink();?>">
+                  <a href="<?php the_permalink(); ?>">
                      <h3 class="maghale-title"><?php the_title(); ?></h3>
                   </a>
-                  <?php if ($product->get_stock_status() === 'instock') : ?>
-                  <span class="prd-price"><?php echo wc_get_product( $post->ID )->get_price_html(); ?></span>
+                  <?php if ($product->get_stock_status() === "instock"): ?>
+                  <span class="prd-price"><?php echo wc_get_product(
+                    $post->ID,
+                  )->get_price_html(); ?></span>
                   <?php endif; ?>
-                  <a href="<?php the_permalink() ?>" class="btn-white">خرید<i class="fa fa-shopping-cart"></i></a>
+                  <a href="<?php the_permalink(); ?>" class="btn-white">خرید<i class="fa fa-shopping-cart"></i></a>
                </div>
-               <?php endwhile; ?>
+               <?php
+               endwhile; ?>
                <!-- end of the loop -->
                <?php wp_reset_postdata(); ?>
-               <?php else : ?>
-               <p><?php esc_html_e( 'متاسفانه محتوایی پیدا نشد' ); ?></p>
+               <?php else: ?>
+               <p><?php esc_html_e("متاسفانه محتوایی پیدا نشد"); ?></p>
                <?php endif; ?>
             </div>
               <div class="swiper-button-next"></div>
@@ -516,7 +522,7 @@
                   <a href="#" class="btn-orange">مشاهده پروژه ها</a>
                </div>
             </div>
-            <img src="<?php echo get_template_directory_uri();?>/img/about-us.jpg" alt="" />
+            <img src="<?php echo get_template_directory_uri(); ?>/img/about-us.jpg" alt="" />
          </div>
       </div>
    </section>
@@ -528,22 +534,23 @@
          <div class="swiper govahinameh">
             <div class="swiper-wrapper">
                <?php $the_query = new WP_Query([
-                  "post_type" => "certificate",
-                  "posts_per_page" => "10",
-                  ]); ?>
+                 "post_type" => "certificate",
+                 "posts_per_page" => "10",
+               ]); ?>
                <?php if ($the_query->have_posts()): ?>
                <?php while ($the_query->have_posts()):
-                  $the_query->the_post(); ?>
+                 $the_query->the_post(); ?>
                <div class="swiper-slide each-govahiname">
-                  <a href="<?php the_permalink() ?>">
+                  <a href="<?php the_permalink(); ?>">
                   <?php the_post_thumbnail(); ?>
                   </a>
                </div>
-               <?php endwhile; ?>
+               <?php
+               endwhile; ?>
                <!-- end of the loop -->
                <?php wp_reset_postdata(); ?>
-               <?php else : ?>
-               <p><?php esc_html_e( 'متاسفانه محتوایی پیدا نشد' ); ?></p>
+               <?php else: ?>
+               <p><?php esc_html_e("متاسفانه محتوایی پیدا نشد"); ?></p>
                <?php endif; ?>
             </div>
             <div class="swiper-button-next"></div>
@@ -560,32 +567,34 @@
          </div>
          <div class="swiper myMaghale">
             <div class="swiper-wrapper">
-               <?php
-                  $the_query = new WP_Query( array( 'post_type' => 'post', 'category_name' => 'articles','posts_per_page'=>'20' ) ) ?>
-               <?php if ( $the_query->have_posts() ) : ?>
-               <?php
-                  while ( $the_query->have_posts() ) :
-                      $the_query->the_post();
-                      ?>
+               <?php $the_query = new WP_Query([
+                 "post_type" => "post",
+                 "category_name" => "articles",
+                 "posts_per_page" => "20",
+               ]); ?>
+               <?php if ($the_query->have_posts()): ?>
+               <?php while ($the_query->have_posts()):
+                 $the_query->the_post(); ?>
                <div class="swiper-slide each-maghale">
                   <div class="each-maghale-img">
                      <div class="sample-image">
-                        <a href="<?php the_permalink();?>">
+                        <a href="<?php the_permalink(); ?>">
                      </div>
                      <?php the_post_thumbnail(); ?>
                      </a> 
                   </div>
-                  <a href="<?php the_permalink();?>">
+                  <a href="<?php the_permalink(); ?>">
                      <h3 class="maghale-title"><?php the_title(); ?></h3>
                   </a>
                   <?php the_excerpt(); ?>
-                  <a href="<?php the_permalink() ?>" class="btn-white">ادامه مطلب <i class="fa fa-arrow-circle-left"></i></a>
+                  <a href="<?php the_permalink(); ?>" class="btn-white">ادامه مطلب <i class="fa fa-arrow-circle-left"></i></a>
                </div>
-               <?php endwhile; ?>
+               <?php
+               endwhile; ?>
                <!-- end of the loop -->
                <?php wp_reset_postdata(); ?>
-               <?php else : ?>
-               <p><?php esc_html_e( 'متاسفانه محتوایی پیدا نشد' ); ?></p>
+               <?php else: ?>
+               <p><?php esc_html_e("متاسفانه محتوایی پیدا نشد"); ?></p>
                <?php endif; ?>
             </div>
             <div class="swiper-button-next"></div>
@@ -602,30 +611,32 @@
          </div>
          <div class="swiper myakhbar">
             <div class="swiper-wrapper">
-               <?php
-                  $the_query = new WP_Query( array( 'post_type' => 'post','category_name' => 'news','posts_per_page'=>'20' ) ) ?>
-               <?php if ( $the_query->have_posts() ) : ?>
-               <?php
-                  while ( $the_query->have_posts() ) :
-                      $the_query->the_post();
-                      ?>
+               <?php $the_query = new WP_Query([
+                 "post_type" => "post",
+                 "category_name" => "news",
+                 "posts_per_page" => "20",
+               ]); ?>
+               <?php if ($the_query->have_posts()): ?>
+               <?php while ($the_query->have_posts()):
+                 $the_query->the_post(); ?>
                <div class="swiper-slide each-akhbar">
                   <div class="each-akhbar-img">
-                     <a href="<?php the_permalink();?>">
+                     <a href="<?php the_permalink(); ?>">
                      <?php the_post_thumbnail(); ?>
                      </a> 
                   </div>
-                  <a href="<?php the_permalink();?>">
+                  <a href="<?php the_permalink(); ?>">
                      <h3 class="maghale-title"><?php the_title(); ?></h3>
                   </a>
                   <?php the_excerpt(); ?>
-                  <a href="<?php the_permalink() ?>" class="btn-white">ادامه مطلب <i class="fa fa-arrow-circle-left"></i></a>
+                  <a href="<?php the_permalink(); ?>" class="btn-white">ادامه مطلب <i class="fa fa-arrow-circle-left"></i></a>
                </div>
-               <?php endwhile; ?>
+               <?php
+               endwhile; ?>
                <!-- end of the loop -->
                <?php wp_reset_postdata(); ?>
-               <?php else : ?>
-               <p><?php esc_html_e( 'متاسفانه محتوایی پیدا نشد' ); ?></p>
+               <?php else: ?>
+               <p><?php esc_html_e("متاسفانه محتوایی پیدا نشد"); ?></p>
                <?php endif; ?>
             </div>
             <div class="swiper-button-next"></div>

@@ -121,6 +121,18 @@ document.getElementById("goToTopButton").addEventListener("click", function () {
     behavior: "smooth",
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const banner = document.getElementById("top-site-banner");
+  const closeBtn = document.querySelector(".close-banner-btn");
+
+  if (banner && closeBtn) {
+    closeBtn.addEventListener("click", function () {
+      banner.style.display = "none";
+    });
+  }
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   const openMenuButton = document.querySelector(".mobile-menu-open");
   const closeMenuButton = document.querySelector(".mobile-menu-close");
@@ -181,6 +193,3 @@ inputs.forEach(function (input) {
     // targetInput.disabled = true;
   });
 });
-
-// Theme initialization and toggle moved to `js/theme-toggle.js` to avoid
-// duplicate/conflicting handlers. See that file for theme logic.

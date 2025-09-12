@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-    <meta charset="<?php bloginfo( 'charset' ); ?>" />
+    <meta charset="<?php bloginfo("charset"); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/img/force-favicon.png"> 
     <!-- FontAwesome for icons -->
@@ -11,15 +11,69 @@
 
 <body <?php body_class(); ?>>
     <script src="<?php echo get_template_directory_uri(); ?>/js/tooltip.js"></script>
+<?php
+// کوئری برای گرفتن آخرین بنر منتشر شده
+$args = [
+  "post_type" => "top_banner",
+  "posts_per_page" => 1,
+  "post_status" => "publish",
+];
+$banner_query = new WP_Query($args);
+
+// اگر بنری وجود داشت
+if ($banner_query->have_posts()):
+  while ($banner_query->have_posts()):
+    $banner_query->the_post();
+
+    // گرفتن عکس‌ها از فیلدهای ACF
+    $desktop_img = get_field("banner_desktop");
+    $tablet_img = get_field("banner_tablet");
+    $mobile_img = get_field("banner_mobile");
+
+    // فقط اگر حداقل تصویر موبایل وجود داشت، بنر را نمایش بده
+    if ($mobile_img): ?>
+            <div id="top-site-banner" class="top-site-banner">
+                <a href="<?php echo get_field("banner_link");
+      // می‌توانید یک فیلد برای لینک هم در ACF بسازید
+      ?>">
+                    <picture>
+                        <?php if ($desktop_img): ?>
+                            <source media="(min-width: 1024px)" srcset="<?php echo esc_url(
+                              $desktop_img["url"],
+                            ); ?>">
+                        <?php endif; ?>
+
+                        <?php if ($tablet_img): ?>
+                            <source media="(min-width: 768px)" srcset="<?php echo esc_url(
+                              $tablet_img["url"],
+                            ); ?>">
+                        <?php endif; ?>
+
+                        <img src="<?php echo esc_url(
+                          $mobile_img["url"],
+                        ); ?>" alt="<?php echo esc_attr(
+  $mobile_img["alt"],
+); ?>" style="width:100%; display:block;">
+                    </picture>
+                </a>
+                <button class="close-banner-btn" id="closeBannerBtn" aria-label="بستن بنر">&times;</button>
+            </div>
+<?php endif;
+  endwhile;
+  wp_reset_postdata();
+endif;
+?>
     <header>
         <div class="container">
             <div class="top-header">
                 <a href="<?php echo home_url(); ?>">
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/logo 1.png" alt="<?php bloginfo('name'); ?>" class="logo" loading="lazy" />
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/logo 1.png" alt="<?php bloginfo(
+  "name",
+); ?>" class="logo" loading="lazy" />
                 </a>
 
                 <nav class="top-menu">
-                    <?php wp_nav_menu( array( 'theme_location' => 'top-menu' ) ); ?>
+                    <?php wp_nav_menu(["theme_location" => "top-menu"]); ?>
                 </nav>
                 
                 <div class="header-right-side">
@@ -54,32 +108,53 @@
                                                 </svg>
                                         </button>
                                 <!-- Cart button -->
-                    <a href="<?php echo esc_url( function_exists('wc_get_cart_url') ? wc_get_cart_url() : site_url('/cart') ); ?>" class="cart-header-btn" aria-label="سبد خرید" >
+                    <a href="<?php echo esc_url(
+                      function_exists("wc_get_cart_url")
+                        ? wc_get_cart_url()
+                        : site_url("/cart"),
+                    ); ?>" class="cart-header-btn" aria-label="سبد خرید" >
                         <i class="fa fa-shopping-cart" aria-hidden="true" ></i>
-                        <?php $cart_count = ( function_exists('WC') && WC()->cart ) ? WC()->cart->get_cart_contents_count() : 0; ?>
-                        <?php if ( $cart_count > 0 ) : ?>
+                        <?php $cart_count =
+                          function_exists("WC") && WC()->cart
+                            ? WC()->cart->get_cart_contents_count()
+                            : 0; ?>
+                        <?php if ($cart_count > 0): ?>
                             <span class="cart-count-badge">
-                                <?php echo esc_html( $cart_count ); ?>
+                                <?php echo esc_html($cart_count); ?>
                             </span>
                         <?php endif; ?>
                     </a>
 
                     <!-- Account / Login -->
                     <div class="header-account" style="display:inline-block; margin-left:10px;">
-                        <?php if ( is_user_logged_in() ) :
-                            $current_user = wp_get_current_user();
-                            // Use the theme pages created: /account and /logout
-                            $account_page = home_url('/account');
-                            $logout_page = home_url('/logout');
-                        ?>
-                            <a href="<?php echo esc_url( $account_page ); ?>" class="account-link"><?php echo esc_html( $current_user->display_name ? $current_user->display_name : $current_user->user_login ); ?></a>
-                            <a href="<?php echo esc_url( $logout_page ); ?>" class="logout-link">خروج</a>
-                        <?php else :
-                            // Link to the theme's custom login page
-                            $login_page = home_url('/login');
-                        ?>
-                            <a href="<?php echo esc_url( $login_page ); ?>" class="account-link">ورود / ثبت‌نام</a>
-                        <?php endif; ?>
+                        <?php if (is_user_logged_in()):
+
+                          $current_user = wp_get_current_user();
+                          // Use the theme pages created: /account and /logout
+                          $account_page = home_url("/account");
+                          $logout_page = home_url("/logout");
+                          ?>
+                            <a href="<?php echo esc_url(
+                              $account_page,
+                            ); ?>" class="account-link"><?php echo esc_html(
+  $current_user->display_name
+    ? $current_user->display_name
+    : $current_user->user_login,
+); ?></a>
+                            <a href="<?php echo esc_url(
+                              $logout_page,
+                            ); ?>" class="logout-link">خروج</a>
+                        <?php
+                          // Link to the theme's custom login page
+
+
+                        else:
+                          $login_page = home_url("/login"); ?>
+                            <a href="<?php echo esc_url(
+                              $login_page,
+                            ); ?>" class="account-link">ورود / ثبت‌نام</a>
+                        <?php
+                        endif; ?>
                     </div>
 
                     <button class="mobile-menu-open" aria-label="باز کردن منو" aria-expanded="false" aria-controls="mobile-menu-container">
@@ -102,21 +177,34 @@
             </div>
             
             <div class="mobile-menu-body">
-                                <?php wp_nav_menu( array( 'theme_location' => 'top-menu', 'container' => false ) ); ?>
+                                <?php wp_nav_menu([
+                                  "theme_location" => "top-menu",
+                                  "container" => false,
+                                ]); ?>
                                 <div class="mobile-menu-actions" style="padding:12px;display:flex;gap:12px;flex-direction:column;">
-                                    <a href="<?php echo esc_url( function_exists('wc_get_cart_url') ? wc_get_cart_url() : site_url('/cart') ); ?>" class="mobile-cart-link">سبد خرید</a>
-                                    <?php if ( is_user_logged_in() ) : ?>
-                                        <a href="<?php echo esc_url( home_url('/account') ); ?>">حساب من</a>
-                                        <a href="<?php echo esc_url( home_url('/logout') ); ?>">خروج</a>
-                                    <?php else : ?>
-                                        <a href="<?php echo esc_url( home_url('/login') ); ?>">ورود / ثبت‌نام</a>
+                                    <a href="<?php echo esc_url(
+                                      function_exists("wc_get_cart_url")
+                                        ? wc_get_cart_url()
+                                        : site_url("/cart"),
+                                    ); ?>" class="mobile-cart-link">سبد خرید</a>
+                                    <?php if (is_user_logged_in()): ?>
+                                        <a href="<?php echo esc_url(
+                                          home_url("/account"),
+                                        ); ?>">حساب من</a>
+                                        <a href="<?php echo esc_url(
+                                          home_url("/logout"),
+                                        ); ?>">خروج</a>
+                                    <?php else: ?>
+                                        <a href="<?php echo esc_url(
+                                          home_url("/login"),
+                                        ); ?>">ورود / ثبت‌نام</a>
                                     <?php endif; ?>
                                 </div>
             </div>
 
             <div class="mobile-menu-footer">
                 <div class="bio-language">
-                     <?php do_action('wpml_add_language_selector'); ?>
+                     <?php do_action("wpml_add_language_selector"); ?>
                 </div>
             </div>
         </nav>

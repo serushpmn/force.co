@@ -1931,3 +1931,67 @@ del .woocommerce-Price-amount.amount {
     border-radius: 15px;
   }
 }
+/* style.css */
+
+.top-site-banner {
+  position: relative; /* برای جای‌گیری دکمه بستن */
+  width: 100%;
+  line-height: 0; /* حذف فاصله اضافی زیر عکس */
+  background-color: #f1f1f1; /* رنگ پس‌زمینه در زمان بارگذاری عکس */
+}
+
+.top-site-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.close-banner-btn {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 22px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.close-banner-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Aparat */
+/* استایل برای ویدیوی محصول */
+.product-video-wrapper {
+  margin: 40px 0;
+  clear: both;
+}
+
+.product-video-wrapper h2 {
+  margin-bottom: 15px;
+}
+
+.responsive-video-container {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%; /* نسبت تصویر 16:9 */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.responsive-video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
