@@ -60,7 +60,7 @@
       </nav>
    </div>
    <div class="copy-right">
-      <p>All rights reserved. Force co ©2023</p>
+     <p>All rights reserved. Force co ©<?php echo date("Y"); ?></p>
    </div>
 
 </footer>

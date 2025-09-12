@@ -32,47 +32,50 @@ if (post_password_required()) {
 }
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class("", $product); ?>>
-
 <section>
           <div class="product-single-top ">
             <div class="product-single-right">
-              
-                <?php woocommerce_show_product_images(); ?>
-              
-              <div class="product-single-details">
-             
-                  <?php
-                  $terms = get_the_terms(get_the_ID(), "product_cat");
-                  if ($terms && !is_wp_error($terms)):
+                              <?php woocommerce_show_product_images(); ?>
+                            <div class="product-single-details">
+                              <?php
+                              $terms = get_the_terms(
+                                get_the_ID(),
+                                "product_cat",
+                              );
+                              if ($terms && !is_wp_error($terms)):
 
-                    $term_names = [];
-                    foreach ($terms as $term) {
-                      $term_names[] = sprintf(
-                        '<a href="%1$s">%2$s</a>',
-                        esc_url(get_term_link($term)),
-                        esc_html($term->name),
-                      );
-                    }
-                    $terms_list = join(", ", $term_names);
-                    ?>
+                                $term_names = [];
+                                foreach ($terms as $term) {
+                                  $term_names[] = sprintf(
+                                    '<a href="%1$s">%2$s</a>',
+                                    esc_url(get_term_link($term)),
+                                    esc_html($term->name),
+                                  );
+                                }
+                                $terms_list = join(", ", $term_names);
+                                ?>
                          <?php esc_html_e("", "text-domain"); ?>
                         <span class="prd_cat"> <?php echo wp_kses_post(
                           $terms_list,
                         ); ?>
                         </span>
-                    
-                    <?php
-                  endif;
-                  ?>
-              
-                <h2><?php echo wc_get_product($post->ID)->get_title(); ?></h2>
-                <p class="prd_stock"><?php echo wc_get_product(
+                                        <?php
+                              endif;
+                              ?>
+                              <h2>
+<?php echo wc_get_product(
+                                $post->ID,
+                              )->get_title(); ?>
+                              </h2>
+                <p class="prd_stock">
+<?php echo wc_get_product(
                   $post->ID,
                 )->get_stock_status() == "instock"
                   ? "موجود در انبار"
-                  : "ناموجود در انبار"; ?></p>
+                  : "ناموجود در انبار"; 
+?>
+                  </p>
                 <div class="product-features-extra">
-
                   <div class="feature-item">
                       <svg xmlns="http://www.w3.org/2000/svg" class="feature-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -81,7 +84,6 @@ if (post_password_required()) {
                       </svg>
                       <span>ضمانت اصل بودن کالا</span>
                   </div>
-
                   <div class="feature-item">
                       <svg xmlns="http://www.w3.org/2000/svg" class="feature-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -93,14 +95,12 @@ if (post_password_required()) {
                       </svg>
                       <span>ارسال سریع</span>
                   </div>
-
               </div>
-                
-                <?php // نمایش امتیاز ستاره‌ای و تعداد نظرات (اگر وجود دارد)
-                if (isset($product) && $product) {
-                  $rating_count = (int) $product->get_rating_count();
-                  $average = (float) $product->get_average_rating();
-                  if ($rating_count > 0) { ?>
+<?php
+if (isset($product) && $product) {
+                                  $rating_count = (int) $product->get_rating_count();
+                                  $average = (float) $product->get_average_rating();
+                                  if ($rating_count > 0) { ?>
                     <div class="woocommerce-product-rating">
                       <div class="star-rating" title="<?php echo esc_attr(
                         sprintf(
@@ -117,8 +117,7 @@ if (post_password_required()) {
                       ); ?> نظر)</a>
                     </div>
                     <?php }
-                } ?>
-
+                                } ?>
               </div>
             </div>
             <div class="product-single-left">
@@ -139,7 +138,8 @@ if (post_password_required()) {
             ?>
               <a href="https://force.co.ir/wp-content/themes/Force/files/catalogue.pdf">کاتالوگ همه محصولات<i class="fa fa-download"></i></a>
               <?php // اگر محصول قابل خرید است، دکمه افزودن به سبد نمایش داده شود؛ در غیر اینصورت لینک تماس باقی بماند
-              if (isset($product) && $product && $product->is_purchasable()) {
+
+if (isset($product) && $product && $product->is_purchasable()) {
                 echo do_shortcode(
                   '[add_to_cart id="' .
                     intval(get_the_ID()) .
@@ -176,38 +176,48 @@ if (post_password_required()) {
                   )->get_short_description(); ?>
                 </div>
                          <?php
-                         // دریافت لینک از ACF
-                         $aparat_link = get_field("aparat_video_url");
-
-                         if (!empty($aparat_link)) {
-                           // بررسی اینکه لینک آپارات باشد
-                           if (
-                             preg_match(
-                               "/aparat\.com\/(?:v|embed)\/([a-zA-Z0-9]+)/",
-                               $aparat_link,
-                               $matches,
-                             )
-                           ) {
-                             $video_id = $matches[1]; ?>
-        <div class="aparat-video">
+// دریافت لینک از ACF
+$aparat_link = get_field("aparat_video_url");
+if (!empty($aparat_link)) {
+    // بررسی اینکه لینک آپارات باشد
+    if (preg_match("/aparat\.com\/(?:v|embed)\/([a-zA-Z0-9]+)/", $aparat_link, $matches)) {
+        $video_id = $matches[1]; ?>
+        
+        <div class="aparat-video-wrapper">
             <iframe 
-                src="https://www.aparat.com/video/video/embed/videohash/<?php echo esc_attr(
-                  $video_id,
-                ); ?>/vt/frame"
-                width="640" height="360" allowfullscreen>
+                src="https://www.aparat.com/video/video/embed/videohash/<?php echo esc_attr($video_id); ?>/vt/frame"
+                allowfullscreen>
             </iframe>
         </div>
-        <?php
-                           } else {
-                             echo "<p>لینک آپارات معتبر نیست.</p>";
-                           }
-                         }
-                         ?>
+        
+        <style>
+        .aparat-video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1000px; /* حداکثر عرض دلخواه، مثلا 1000px */
+            margin: 20px auto; /* وسط‌چین کردن */
+            aspect-ratio: 16 / 9; /* نسبت تصویر */
+        }
+
+        .aparat-video-wrapper iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border: none;
+        }
+        </style>
+
+<?php
+    } else {
+        echo "<p>لینک آپارات معتبر نیست.</p>";
+    }
+}
+?>
+
             </div>
-   
-
-
-            <div class="product-single-left sticky">
+                   <div class="product-single-left sticky">
             <?php the_post_thumbnail(); ?>
             <h3 class="maghale-title"><?php the_title(); ?></h3>
             <p><?php echo wc_get_product($post->ID)->get_price_html(); ?></p>
@@ -223,7 +233,8 @@ if (post_password_required()) {
             ?>
 <a href="<?php echo get_template_directory_uri(); ?>/files/catalogue.pdf" download>کاتالوگ همه محصولات<i class="fa fa-download"></i></a>
                <?php // اگر محصول قابل خرید است، دکمه افزودن به سبد نمایش داده شود؛ در غیر اینصورت لینک تماس باقی بماند
-               if (isset($product) && $product && $product->is_purchasable()) {
+
+if (isset($product) && $product && $product->is_purchasable()) {
                  echo do_shortcode(
                    '[add_to_cart id="' .
                      intval(get_the_ID()) .
@@ -235,9 +246,7 @@ if (post_password_required()) {
             </div>
           </div>
         </section>
-        
-</div>
-
+        </div>
 <section class="related">
   <h2>محصولات مشابه</h2>
   <?php
@@ -267,5 +276,4 @@ if (post_password_required()) {
   }
   ?>
 </section>
-    
-<?php do_action("woocommerce_after_single_product"); ?>
+    <?php do_action("woocommerce_after_single_product"); ?>

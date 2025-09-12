@@ -1,5 +1,4 @@
 <?php
-// ...existing code...
 
 if ( post_password_required() ) {
 	return;
