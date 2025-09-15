@@ -91,7 +91,7 @@
 .close-banner-btn {
   position: absolute;
   top: 8px;
-  right: 12px;
+  left: 12px;
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
   border: none;
@@ -599,4 +599,33 @@
   body.cart {
     padding-bottom: 80px; /* Adjust this value based on the footer's height */
   }
+}
+.mini-top-menu {
+  background: transparent;
+  color: var(--gray-600);
+  font-size: 12px;
+  padding: 2px 0 0 0;
+  text-align: right;
+}
+.mini-top-menu ul {
+  margin: 0;
+  padding: 0 16px;
+  list-style: none;
+  display: flex;
+  gap: 36px;
+  justify-content: flex-start;
+}
+.mini-top-menu li {
+  display: inline;
+}
+.mini-top-menu a {
+  color: var(--black-900);
+  opacity: 0.85;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+.mini-top-menu a:hover {
+  opacity: 1;
 }

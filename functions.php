@@ -61,9 +61,11 @@ add_action("wp_enqueue_scripts", "loadfiles");
 function register_my_menus()
 {
   register_nav_menus([
-    "top-menu" => __("منوی بالا"),
-    "product-menu" => __("منوی محصولات"),
-    "footer-menu" => __("منوی فوتر"),
+        'mini-top-menu' => __( 'منوی کوچک بالا' ),
+        'top-menu' => __( 'منوی بالا' ),
+        'mobile-menu' => __( 'منوی موبایل' ),
+        'product-menu' => __( 'منوی محصولات' ),
+        'footer-menu' => __( 'منوی فوتر' ),
   ]);
 }
 add_action("init", "register_my_menus");

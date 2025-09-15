@@ -7,10 +7,49 @@
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <?php wp_head(); ?>
+    
+       
 </head>
 
 <body <?php body_class(); ?>>
     <script src="<?php echo get_template_directory_uri(); ?>/js/tooltip.js"></script>
+    <script>
+    // اسکریپت باز و بسته شدن زیرمنوها فقط در موبایل
+    document.addEventListener('DOMContentLoaded', function() {
+        function isMobile() {
+            return window.innerWidth <= 1023;
+        }
+        function setupMobileSubmenus() {
+            // حذف دکمه‌های قبلی
+            document.querySelectorAll('.top-menu-mobile .submenu-toggle').forEach(btn => btn.remove());
+            // افزودن دکمه به آیتم‌هایی که زیرمنو دارند
+            document.querySelectorAll('.top-menu-mobile .menu-item-has-children').forEach(function(item) {
+                var link = item.querySelector('a');
+                if (!item.querySelector('.submenu-toggle')) {
+                    var btn = document.createElement('button');
+                    btn.setAttribute('type', 'button');
+                    btn.className = 'submenu-toggle';
+                    btn.setAttribute('aria-label', 'باز/بستن زیرمنو');
+                    btn.innerHTML = '<span aria-hidden="true">&#x2C5;</span>';
+                    link.parentNode.insertBefore(btn, link.nextSibling);
+                    btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        item.classList.toggle('open');
+                    });
+                }
+                // حذف جلوگیری از باز شدن لینک والد
+                // فقط فلش زیرمنو را باز/بسته می‌کند
+            });
+        }
+        // اجرا در بارگذاری و تغییر سایز
+        if (document.querySelector('.top-menu-mobile')) {
+            setupMobileSubmenus();
+            window.addEventListener('resize', function() {
+                setupMobileSubmenus();
+            });
+        }
+    });
+    </script>
 <?php
 // کوئری برای گرفتن آخرین بنر منتشر شده
 $args = [
@@ -78,6 +117,9 @@ if ($banner_query->have_posts()):
 endif;
 ?>
     <header>
+      <nav class="mini-top-menu">
+        <?php wp_nav_menu(["theme_location" => "mini-top-menu"]); ?>
+</nav>
         <div class="container">
             <div class="top-header">
                 <a href="<?php echo home_url(); ?>">
@@ -185,43 +227,43 @@ endif;
         <div class="mobile-menu-overlay"></div>
 
         <nav class="top-menu-mobile">
-            <div class="mobile-menu-header">
-                <span>منو</span>
-                <button class="mobile-menu-close" aria-label="بستن منو">×</button>
-            </div>
-            
             <div class="mobile-menu-body">
-                                <?php wp_nav_menu([
-                                  "theme_location" => "top-menu",
-                                  "container" => false,
-                                ]); ?>
-                                <div class="mobile-menu-actions" style="display:flex;flex-direction:column; background:var(--orange-50)">
-                                    <a href="<?php echo esc_url(
-                                      function_exists("wc_get_cart_url")
-                                        ? wc_get_cart_url()
-                                        : site_url("/cart"),
-                                    ); ?>" class="mobile-cart-link">سبد خرید</a>
-                                    <?php if (is_user_logged_in()): ?>
-                                        <a href="<?php echo esc_url(
-                                          home_url("/account"),
-                                        ); ?>">حساب من</a>
-                                        <a href="<?php echo esc_url(
-                                          home_url("/logout"),
-                                        ); ?>">خروج</a>
-                                    <?php else: ?>
-                                        <a href="<?php echo esc_url(
-                                          home_url("/login"),
-                                        ); ?>">ورود / ثبت‌نام</a>
-                                    <?php endif; ?>
-                                </div>
-            </div>
-
-            <div class="mobile-menu-footer">
-                <div class="bio-language">
-                     <?php do_action("wpml_add_language_selector"); ?>
+                <?php wp_nav_menu([
+                  "theme_location" => "mobile-menu",
+                  "container" => false,
+                ]); ?>
+                <div class="mobile-menu-actions" style="display:flex;flex-direction:column; background:var(--orange-50)">
+                    <a href="<?php echo esc_url(
+                      function_exists("wc_get_cart_url")
+                        ? wc_get_cart_url()
+                        : site_url("/cart"),
+                    ); ?>" class="mobile-cart-link">
+                        <i class="fa fa-shopping-cart" aria-hidden="true" style="margin-left:8px;"></i>
+                        سبد خرید
+                    </a>
+                    <?php if (is_user_logged_in()): ?>
+                        <a href="<?php echo esc_url(
+                          home_url("/account"),
+                        ); ?>">
+                            <i class="fa fa-user" aria-hidden="true" style="margin-left:8px;"></i>
+                            حساب من
+                        </a>
+                        <a href="<?php echo esc_url(
+                          home_url("/logout"),
+                        ); ?>">
+                            <i class="fa fa-sign-out" aria-hidden="true" style="margin-left:8px;"></i>
+                            خروج
+                        </a>
+                    <?php else: ?>
+                        <a href="<?php echo esc_url(
+                          home_url("/login"),
+                        ); ?>">
+                            <i class="fa fa-sign-in" aria-hidden="true" style="margin-left:8px;"></i>
+                            ورود / ثبت‌نام
+                        </a>
+                    <?php endif; ?>
                 </div>
             </div>
         </nav>
     </div>
-
     <div class="container">

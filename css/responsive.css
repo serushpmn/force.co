@@ -1902,38 +1902,6 @@ del .woocommerce-Price-amount.amount {
   }
 }
 /* style.css */
-
-.top-site-banner {
-  position: relative; /* برای جای‌گیری دکمه بستن */
-  width: 100%;
-  line-height: 0; /* حذف فاصله اضافی زیر عکس */
-  background-color: #f1f1f1; /* رنگ پس‌زمینه در زمان بارگذاری عکس */
-}
-
-.top-site-banner img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.close-banner-btn {
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  font-size: 22px;
-  line-height: 30px;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
 .close-banner-btn:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
