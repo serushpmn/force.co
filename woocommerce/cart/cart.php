@@ -36,7 +36,13 @@ get_header();
                         <p class="item-name">
                             <?php echo apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ); ?>
                         </p>
-                        <span class="item-price"><?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); ?></span>
+                        <span class="item-unit-price">
+                            <?php echo wc_price( $_product->get_price() ); ?>
+                            <span class="unit-label">&nbsp;قیمت واحد</span>
+                        </span>
+                        <span class="item-price">
+                            <?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); ?>
+                        </span>
                     </div>
                 </div>
                 <div class="item-actions">

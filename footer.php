@@ -102,6 +102,10 @@
 </html>
 <?php if (function_exists('is_cart') && is_cart() && !WC()->cart->is_empty()) : ?>
   <div class="cart-fixed-checkout-btn">
+    <div class="cart-fixed-total">
+      <span class="total-label">مبلغ قابل پرداخت:</span>
+      <span class="total-amount"><?php wc_cart_totals_order_total_html(); ?></span>
+    </div>
     <a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="checkout-btn">ادامه جهت تسویه حساب</a>
   </div>
 <?php endif; ?>

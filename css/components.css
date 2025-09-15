@@ -338,8 +338,8 @@
 }
 
 .mobile-add-to-cart .button {
-  background-color: #f39c12;
-  color: #fff;
+  background-color: var(--orange-500);
+  color: var(--white);
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -358,7 +358,7 @@
 
 .quantity .input-text.qty {
   text-align: center;
-  border: 1px solid #ddd;
+  border: 1px solid var(--gray-300);
   border-radius: 4px;
   padding: 5px;
   width: 60px;
@@ -395,11 +395,11 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #ffffff;
-  border-top: 1px solid #e0e0e0;
+  background-color: var(--white);
+  border-top: 1px solid var(--gray-200);
   padding: 10px 15px;
   z-index: 1000;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-xl);
 }
 
 .mobile-cart-footer-container {
@@ -419,18 +419,18 @@
 
 .mobile-cart-total .total-label {
   font-size: 12px;
-  color: #555;
+  color: var(--gray-500);
 }
 
 .mobile-cart-total .total-amount .woocommerce-Price-amount {
   font-size: 18px;
   font-weight: bold;
-  color: #222;
+  color: var(--gray-300);
 }
 
 .mobile-checkout-button .checkout-btn {
-  background-color: #0066ff;
-  color: #fff;
+  background-color: var(--orange-500);
+  color: var(--white);
   border: none;
   padding: 12px 25px;
   border-radius: 6px;
@@ -452,8 +452,8 @@
     bottom: 0;
     width: 100vw;
     z-index: 2000;
-    background: #fff;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+    background: var(--white);
+    box-shadow: var(--shadow-xl);
     padding: 12px 16px 18px 16px;
     margin: 0;
     text-align: center;
@@ -464,17 +464,17 @@
     max-width: 480px;
     font-size: 18px;
     font-weight: bold;
-    background: #0066ff;
-    color: #fff;
+    background: var(--orange-600);
+    color: var(--white);
     border: none;
     border-radius: 8px;
     padding: 14px 0;
-    box-shadow: 0 2px 8px rgba(0, 102, 255, 0.08);
+    box-shadow: var(--shadow-xl);
     text-decoration: none;
     transition: background 0.2s;
   }
   .cart-fixed-checkout-btn .checkout-btn:active {
-    background: #0052cc;
+    background: var(--orange-700);
   }
   body.cart {
     padding-bottom: 80px !important;
@@ -545,6 +545,36 @@
   }
   .checkout-fixed-total .total-amount .woocommerce-Price-amount {
     color: #28a745;
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+/* Style for total amount in fixed cart bar */
+@media (max-width: 768px) {
+  .cart-fixed-checkout-btn {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .cart-fixed-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #222;
+    background: none;
+    padding: 0;
+  }
+  .cart-fixed-total .total-label {
+    color: var(--gray-900);
+    font-size: 14px;
+    font-weight: normal;
+    margin-left: 8px;
+  }
+  .cart-fixed-total .total-amount .woocommerce-Price-amount {
+    color: var(--orange-500);
     font-size: 18px;
     font-weight: bold;
   }
