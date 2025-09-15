@@ -456,3 +456,16 @@ function create_banner_post_type()
   register_post_type("top_banner", $args);
 }
 add_action("init", "create_banner_post_type");
+
+//slider
+if( function_exists('acf_add_options_page') ) {
+    
+    acf_add_options_page(array(
+        'page_title' 	=> 'تنظیمات اسلایدر اصلی', // تیتری که در بالای صفحه نمایش داده میشه
+        'menu_title'	=> 'اسلایدر Hero', // نامی که در منوی پیشخوان میبینید
+        'menu_slug' 	=> 'hero-slider-settings',
+        'capability'	=> 'edit_posts',
+        'redirect'		=> false
+    ));
+    
+}

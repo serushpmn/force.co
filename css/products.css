@@ -7,11 +7,11 @@
   border: 1px solid var(--gray-50);
   border-radius: 8px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-xl);
   overflow: hidden;
 }
 .product-item:hover {
-  box-shadow: 0 2px 5px var(--shadow-l);
+  box-shadow: var(--shadow-l);
 }
 
 /* --- نگهدارنده بالایی (عکس، عنوان، قیمت) --- */
@@ -37,7 +37,7 @@
   font-size: 16px;
   font-weight: 600;
   margin: 10px 10px 5px 10px; /* کاهش فاصله بالا و پایین */
-  color: #333;
+  color: var(--black-700);
   min-height: auto; /* حذف حداقل ارتفاع برای چسبیدن به محتوا */
   line-height: 1.5;
 }
@@ -55,7 +55,7 @@
   margin-bottom: 8px; /* کاهش فاصله */
 }
 .prd_stock.out-of-stock-text {
-  color: #e74c3c;
+  color: var(--orange-900);
 }
 
 /* --- نگهدارنده قیمت --- */
@@ -71,14 +71,14 @@
 .product-item .original-price {
   font-size: 15px;
   text-decoration: line-through;
-  color: #888;
+  color: var(--gray-400);
   order: 2;
 }
 
 /* --- قیمت با تخفیف یا قیمت اصلی --- */
 .product-item .discounted-price {
   font-size: 22px;
-  color: #333;
+  color: var(--black-700);
   font-weight: bold;
   order: 1;
 }
@@ -91,8 +91,8 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: #e74c3c;
-  color: white;
+  background-color: var(--orange-500);
+  color: var(--white);
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 12px;
@@ -100,7 +100,7 @@
 }
 
 .buy-btn.disabled {
-  background-color: #bdc3c7;
+  background-color: #var(--gray-200);
   cursor: not-allowed;
 }
 
@@ -121,7 +121,7 @@
   align-items: center;
   padding: 20px 0;
   margin-bottom: 25px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--gray-200);
   direction: rtl; /* جهت‌دهی راست به چپ */
 }
 
@@ -134,13 +134,13 @@
 .shop-title-section h2 {
   font-size: 24px;
   font-weight: 700;
-  color: #333;
+  color: var(--black-700);
   margin: 0 0 0 15px; /* فاصله از سمت چپ */
 }
 
 .shop-title-section .product-count {
   font-size: 15px;
-  color: #888;
+  color: var(--gray-400);
 }
 
 /* 3. بخش سمت چپ (مرتب‌سازی) */
@@ -152,7 +152,7 @@
 .custom-ordering-section .sorting-label {
   font-size: 16px;
   font-weight: bold;
-  color: #444;
+  color: var(--gray-400);
   margin-left: 20px;
 }
 .custom-orderby {
@@ -163,22 +163,22 @@
 /* 4. لینک‌های مرتب‌سازی */
 .custom-orderby a {
   text-decoration: none;
-  color: #777;
+  color: var(--gray-400);
   font-size: 16px;
   transition: all 0.2s ease-in-out;
 }
 
 /* استایل لینک در حالت هاور (ماوس روی آن) */
 .custom-orderby a:hover {
-  color: #000;
+  color: var(--black-800);
   border-bottom: 2px solid transparent; /* برای افکت هاور */
 }
 
 /* استایل لینک فعال (گزینه انتخاب شده) */
 .custom-orderby a.active {
-  color: #000;
+  color: var(--black-800);
   font-weight: bold;
-  border-bottom-color: #333; /* یک خط زیر گزینه فعال */
+  border-bottom-color: var(--gray-400); /* یک خط زیر گزینه فعال */
 }
 
 /* مخفی کردن فرم پیش‌فرض ووکامرس (اگر هنوز نمایش داده می‌شود) */
@@ -218,6 +218,10 @@ form.woocommerce-ordering {
   padding: 8px;
   box-sizing: border-box;
   overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+.related-products.products-grid .product-item:hover {
+  box-shadow: none;
 }
 
 /* hide items beyond the 6th visually */

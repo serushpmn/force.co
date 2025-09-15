@@ -76,9 +76,42 @@
   box-shadow: 2px 3px 20px 0px var(--orange-500);
 }
 
+/* Top site banner image and close button */
+.top-site-banner {
+  width: 100%;
+  display: block;
+  position: relative; /* so .close-banner-btn can be absolutely positioned inside it */
+}
+.top-site-banner picture,
+.top-site-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.close-banner-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1200; /* ensure button sits above menu and banner */
+}
+.close-banner-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
 /* --- Forms --- */
 .contact-form {
-  background: var(--orange-100);
+  background: #ffccb5;
   padding: 10px;
   border-radius: 10px;
 }
@@ -92,7 +125,7 @@
   width: 75% !important;
   height: 31px;
   padding: 5px 10px;
-  background: var(--white);
+  background: #fff;
   border: none;
   border-radius: 5px;
   margin-left: 5px;
@@ -120,6 +153,7 @@
   text-align: center;
   padding-top: 12px;
   font-weight: 800;
+  color: #000;
 }
 .contact-form .wpcf7-spinner {
   display: none;
@@ -138,6 +172,7 @@
   box-shadow: var(--shadow-xl) inset;
 }
 .title-search-bar form.searchbar input {
+  color: var(--black-800);
   background: transparent;
   border-radius: 25px;
   width: 100%;
@@ -241,4 +276,267 @@
 .featherlight,
 [data-featherlight] img {
   cursor: pointer !important;
+}
+
+/* Mobile Product Footer */
+.mobile-product-footer {
+  display: none; /* Hidden by default */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border-top: 1px solid #e0e0e0;
+  padding: 10px 15px;
+  z-index: 1000;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-product-footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mobile-product-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.mobile-product-price .price-label {
+  display: none;
+}
+
+.mobile-product-price .price-amount {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.mobile-product-price .price-amount del .woocommerce-Price-amount.amount {
+  font-size: 0.8rem;
+}
+
+.mobile-add-to-cart form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.mobile-add-to-cart .cart .buttons_added {
+  display: flex;
+}
+.mobile-add-to-cart .cart .single_add_to_cart_button {
+  background: var(--orange-600) !important;
+}
+
+.mobile-add-to-cart .button {
+  background-color: #f39c12;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+/* Styles for dynamically added quantity buttons */
+.quantity {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.quantity .input-text.qty {
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 60px;
+  -moz-appearance: textfield;
+}
+
+.quantity .input-text.qty::-webkit-outer-spin-button,
+.quantity .input-text.qty::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.quantity-minus,
+.quantity-plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gray-100);
+  color: var(--gray-600);
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+  padding: 8px 12px;
+  user-select: none;
+  border-radius: 50%;
+}
+
+/* Mobile Cart Footer */
+.mobile-cart-footer {
+  display: none; /* Hidden by default */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  padding: 10px 15px;
+  z-index: 1000;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.mobile-cart-footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mobile-cart-total {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.mobile-cart-total .total-label {
+  font-size: 12px;
+  color: #555;
+}
+
+.mobile-cart-total .total-amount .woocommerce-Price-amount {
+  font-size: 18px;
+  font-weight: bold;
+  color: #222;
+}
+
+.mobile-checkout-button .checkout-btn {
+  background-color: #0066ff;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Fixed Checkout Button for Cart Page (Mobile Only) */
+@media (max-width: 768px) {
+  .cart-fixed-checkout-btn {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    z-index: 2000;
+    background: #fff;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+    padding: 12px 16px 18px 16px;
+    margin: 0;
+    text-align: center;
+  }
+  .cart-fixed-checkout-btn .checkout-btn {
+    display: inline-block;
+    width: 100%;
+    max-width: 480px;
+    font-size: 18px;
+    font-weight: bold;
+    background: #0066ff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 0;
+    box-shadow: 0 2px 8px rgba(0, 102, 255, 0.08);
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .cart-fixed-checkout-btn .checkout-btn:active {
+    background: #0052cc;
+  }
+  body.cart {
+    padding-bottom: 80px !important;
+  }
+}
+
+/* Fixed Place Order Button for Checkout Page (Mobile Only) */
+@media (max-width: 768px) {
+  .checkout-fixed-placeorder-btn {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    z-index: 2000;
+    background: #fff;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+    padding: 12px 16px 18px 16px;
+    margin: 0;
+    text-align: center;
+  }
+  .checkout-fixed-placeorder-btn .place-order-btn {
+    display: inline-block;
+    width: 100%;
+    max-width: 480px;
+    font-size: 18px;
+    font-weight: bold;
+    background: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 0;
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.08);
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .checkout-fixed-placeorder-btn .place-order-btn:active {
+    background: #218838;
+  }
+  body.woocommerce-checkout {
+    padding-bottom: 80px !important;
+  }
+}
+
+/* Show only on mobile devices */
+@media (max-width: 768px) {
+  .mobile-product-footer {
+    display: flex;
+  }
+
+  /* Add padding to the bottom of the body to prevent content from being hidden by the footer */
+  body.single-product {
+    padding-bottom: 80px; /* Adjust this value based on the footer's height */
+  }
+
+  body.cart .mobile-cart-footer {
+    display: block;
+  }
+
+  /* Add padding to the bottom of the body to prevent content from being hidden by the footer */
+  body.cart {
+    padding-bottom: 80px; /* Adjust this value based on the footer's height */
+  }
 }

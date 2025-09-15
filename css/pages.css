@@ -38,7 +38,7 @@ h3.home-title:before {
   letter-spacing: -0.35px;
 }
 .title-search-bar .titlebar nav {
-  color: var(--black-200);
+  color: var(--gray-400);
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -767,11 +767,11 @@ h3.home-title:before {
 }
 .product-description .prd-description a:hover,
 .single-article-content a:hover {
-  color: var(--orange-800);
+  color: var(--white);
   text-decoration: none;
 }
 .product-description-tab a {
-  color: var(--white);
+  color: var(--orange-700);
   font-size: 24px;
   font-style: normal;
   font-weight: 700;

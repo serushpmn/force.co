@@ -91,6 +91,8 @@
    </div>
 </div>
 
+<?php get_template_part( 'template-parts/mobile-cart-footer' ); ?>
+<?php get_template_part( 'template-parts/mobile-product-footer' ); ?>
 
 
 <!-- Initialize Swiper -->
@@ -98,3 +100,13 @@
 <?php wp_footer(); ?>
 </body>
 </html>
+<?php if (function_exists('is_cart') && is_cart() && !WC()->cart->is_empty()) : ?>
+  <div class="cart-fixed-checkout-btn">
+    <a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="checkout-btn">ادامه جهت تسویه حساب</a>
+  </div>
+<?php endif; ?>
+<?php if (function_exists('is_checkout') && is_checkout() && !is_order_received_page()) : ?>
+  <div class="checkout-fixed-placeorder-btn">
+    <button type="submit" form="order_review" class="place-order-btn">ثبت سفارش و پرداخت</button>
+  </div>
+<?php endif; ?>

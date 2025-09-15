@@ -2,6 +2,12 @@
 header {
   background: var(--gradient-glassmorphic-orange);
 }
+/* Top site banner should sit above header and mobile menu */
+#top-site-banner,
+.top-site-banner {
+  position: relative; /* keep in flow by default; change to fixed if you want it sticky */
+  z-index: 1100; /* higher than .mobile-menu-container (1000) so it appears above */
+}
 .top-header {
   backdrop-filter: blur(9px);
   display: flex;
@@ -76,12 +82,12 @@ header {
   right: 0; /* منو از راست باز می‌شود */
   width: 280px; /* عرض منو */
   height: 100%;
-  background-color: var(--black-800); /* رنگ پس‌زمینه منو */
+  background-color: var(--white); /* رنگ پس‌زمینه منو */
   transform: translateX(100%); /* در ابتدا خارج از صفحه است */
   transition: transform 0.3s ease;
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  margin-top: 15px;
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -126,15 +132,18 @@ header {
   flex-direction: column;
   width: 100%;
 }
-.top-menu-mobile .menu-item a {
+.top-menu-mobile .menu-item a,
+.mobile-menu-actions a {
   display: block;
-  padding: 12px 10px;
-  color: var(--white);
+  padding: 12px 20px;
+  color: var(--black-800);
   border-bottom: 1px solid var(--black-700);
   transition: background-color 0.2s;
 }
-.top-menu-mobile .menu-item a:hover {
+.top-menu-mobile .menu-item a:hover,
+.mobile-menu-actions a:hover {
   background-color: var(--orange-500);
+  color: #fff;
 }
 
 /* فوتر منو (برای زبان) */
@@ -225,7 +234,7 @@ nav.products-navbar ul li:hover ul {
 
 /* --- Footer --- */
 footer {
-  background: var(--black-500);
+  background: #363636;
   padding: 40px 20px 10px 20px;
 }
 .footer-menu img {
@@ -233,7 +242,7 @@ footer {
   height: 100%;
 }
 .footer-menu p {
-  color: var(--white);
+  color: #fff;
   font-size: 14px;
 }
 .footer-menu nav {
@@ -261,13 +270,13 @@ footer {
   width: 150px;
   height: 90px;
   cursor: pointer;
-  box-shadow: 0 0 4px color: var(--gray-200);
+  box-shadow: 0 0 4px #eee;
   border-radius: 4px;
 }
 .footer-menu nav .widget-icon a:hover {
   background: #515151;
-  color: var(--white);
-  box-shadow: 0 0 4px color: var(--gray-200);
+  color: #fff;
+  box-shadow: 0 0 4px #eee;
   transition: all 0.3s ease-in-out;
 }
 .footer-menu nav .widget-icon i {
@@ -276,20 +285,20 @@ footer {
   margin-bottom: 5px;
 }
 footer h3 {
-  color: var(--orange-600);
+  color: #f57c00;
   font-style: normal;
   font-weight: 700;
   line-height: 37px;
   text-align: center;
 }
 .footer-menu a {
-  color: var(--white);
+  color: #fff;
   font-style: normal;
   font-weight: 400;
   line-height: 28px;
 }
 footer a:hover {
-  color: var(--orange-500);
+  color: #f57c00;
 }
 .social-icons {
   display: flex;
@@ -302,14 +311,14 @@ footer a:hover {
 .footer-menu svg {
   width: 30px;
   height: 30px;
-  fill: var(--white);
+  fill: #fff;
 }
 .footer-menu svg:hover {
-  fill: var(--orange-500);
+  fill: #f57c00;
 }
 footer .copy-right p {
-  border-top: 1px solid var(--gray-500);
-  color: var(--gray-300);
+  border-top: 1px solid #eee;
+  color: #ccc;
   margin-top: 30px;
   padding-top: 20px;
   text-align: center;
@@ -323,8 +332,8 @@ footer .copy-right p {
 .logo-tooltip {
   visibility: hidden;
   opacity: 0;
-  background: var(--black-800);
-  color: var(--white);
+  background: #363636;
+  color: #fff;
   text-align: center;
   border-radius: 6px;
   padding: 4px 10px;
@@ -365,9 +374,6 @@ footer .copy-right p {
 }
 
 /* منوی اصلی دسکتاپ */
-.top-menu {
-  /* در حالت دسکتاپ، فلکس به طور خودکار فضا را مدیریت می‌کند */
-}
 
 /* نگهدارنده آیکون‌های سمت راست */
 .header-right-side {

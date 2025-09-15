@@ -3,78 +3,31 @@
 
 <main>
    <div class="slider">
-   <div class="swiper hero-slider">
-      <div class="swiper-wrapper">
-         <!-- Slider #1 -->
-         <div class="swiper-slide each-hero">
-            <div class="hero">
-               <div class="img-slider">
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/bg-low-size.jpg" alt="شرکت فیلتراسین فرس" loading="lazy"/>
-               </div>
-                  <h1 class="brand-title">
-                     <?php bloginfo("name"); ?>
-                     <span class="brand-description"><?php bloginfo(
-                       "description",
-                     ); ?></span>
-                  </h1>
-                  <h3 class="brand-title">
-                     <a href="<?php echo get_template_directory_uri(); ?>/files/catalogue.pdf" download>
-                        دانلود کاتالوگ
-                        <span class="brand-description"><i class="fa fa-download"></i></span>
-                     </a>
-                  </h3>
-               <div class="hero-info container-content">
-                  <p>+2152 <span>پروژه کل</span></p>
-                  <p>+3436 <span>مشتریان راضی</span></p>
-                  <p>+35 <span>پروژه در دست انجام</span></p>
-                  <p>+26 <span>گواهینامه معتبر</span></p>
-               </div>
-            </div>
-         </div>
-         <!-- Slider #2 -->
-         <div class="swiper-slide each-hero">
-            <div class="hero">
-               <div class="img-slider">
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/Force-slider-5.jpg" alt="شرکت فیلتراسین فرس"loading="lazy" />
-               </div>
-               <h2 class="brand-title">
-                تماس با ما
-                  <span class="brand-description"></span>
-               </h2>
-               <div class="hero-info container-content">
-                  <p>نیم قرن تجربه صنعتی همراه با انرژی جوانی دانش بنیان</p>
-               </div>
-            </div>
-         </div>
-         <!-- Slider #3 -->
-         <div class="swiper-slide each-hero">
-            <div class="hero">
-               <div class="img-slider">
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/Force-slider-6.jpg" alt="شرکت فیلتراسین فرس" loading="lazy"/>
-               </div>
-               <h2 class="brand-title">
-                  ما را مشاور خود بدانید
-                   </h2>
-               <div class="hero-info container-content">
-                  <span class="brand-description-2">طراحی</span>
-                  <span class="brand-description-2">ساخت</span>
-                  <span class="brand-description-2">اجرا</span>
-                  <span class="brand-description-2">تولید</span>
-                  <span class="brand-description-2">بازرگانی داخلی</span>
-                  <span class="brand-description-2">بازرگانی خارجی</span>
-               </div>
-            </div>
-         </div>
-         <!-- Slider #4 -->
-         <div class="swiper-slide each-hero">
-            <div class="hero">
-               <div class="img-slider">
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/Force-slider-2.jpg" alt="شرکت فیلتراسین فرس"loading="lazy" />
-               </div>
+   <?php if( have_rows('hero_slider', 'option') ): // ✅ کلمه 'option' اضافه شد ?>
+
+    <div class="swiper hero-slider">
+        <div class="swiper-wrapper">
+
+            <?php while( have_rows('hero_slider', 'option') ): the_row(); // ✅ کلمه 'option' اضافه شد
+                // دریافت مقادیر فیلدهای فرزند
+                $image = get_sub_field('slide_image'); // اینجا نیازی به 'option' نیست چون داخل حلقه هستیم
+                $title = get_sub_field('slide_title');
+                $link = get_sub_field('slide_link');
+            ?>
+                <div class="swiper-slide">
+                    <?php if ($link): ?><a href="<?php echo esc_url($link); ?>"><?php endif; ?>
+                    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+                    <?php if ($title): ?><h2 class="slide-title"><?php echo esc_html($title); ?></h2><?php endif; ?>
+                    <?php if ($link): ?></a><?php endif; ?>
                 </div>
-         </div>
-      </div>
-   </div>
+
+            <?php endwhile; ?>
+
+        </div>
+ 
+    </div>
+
+<?php endif; ?>
    </div>
    <!-- kasbokar  -->
    <section class="kasbokar-home" id="kasbokar">
@@ -84,7 +37,7 @@
          <div class="kasbokar-circles">
             <?php $the_query = new WP_Query([
               "post_type" => "kasbokar",
-              "posts_per_page" => "10",
+              "posts_per_page" => "8",
             ]); ?>
             <?php if ($the_query->have_posts()): ?>
             <?php while ($the_query->have_posts()):
@@ -110,6 +63,8 @@
          </div>
       </div>
    </section>
+
+            
    <!--  Comments -->
    <section class="comments-home">
       <div class="container-content">

@@ -1,4 +1,76 @@
-var swiper = new Swiper(".govahinameh", {
+// Enable click on + and - pseudo-buttons in WooCommerce quantity-control
+document.addEventListener("DOMContentLoaded", function () {
+  // Function to handle quantity button clicks
+  function handleQuantityButtons(container) {
+    const input = container.querySelector(".input-text.qty");
+    if (!input) return;
+
+    // Create and append plus/minus buttons if they don't exist
+    if (!container.querySelector(".quantity-minus")) {
+      const minusBtn = document.createElement("button");
+      minusBtn.type = "button";
+      minusBtn.className = "quantity-minus";
+      minusBtn.innerText = "-";
+      container.prepend(minusBtn);
+
+      minusBtn.addEventListener("click", function () {
+        const currentValue = parseInt(input.value, 10);
+        const minValue = parseInt(input.min, 10) || 1;
+        if (currentValue > minValue) {
+          input.value = currentValue - 1;
+          input.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+      });
+    }
+
+    if (!container.querySelector(".quantity-plus")) {
+      const plusBtn = document.createElement("button");
+      plusBtn.type = "button";
+      plusBtn.className = "quantity-plus";
+      plusBtn.innerText = "+";
+      container.append(plusBtn);
+
+      plusBtn.addEventListener("click", function () {
+        const currentValue = parseInt(input.value, 10);
+        const maxValue = parseInt(input.max, 10) || 999;
+        if (currentValue < maxValue) {
+          input.value = currentValue + 1;
+          input.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+      });
+    }
+  }
+
+  // Apply to cart page quantity controls
+  const cartQuantityContainers = document.querySelectorAll(
+    ".cart-items .quantity"
+  );
+  cartQuantityContainers.forEach(handleQuantityButtons);
+
+  // Apply to single product page quantity controls (including mobile footer)
+  const productQuantityContainers = document.querySelectorAll(
+    ".single-product .quantity"
+  );
+  productQuantityContainers.forEach(handleQuantityButtons);
+
+  // --- Logic for enabling/disabling the update cart button ---
+  const updateCartButton = document.querySelector('button[name="update_cart"]');
+  if (updateCartButton) {
+    // Listen for changes on quantity inputs within the cart form
+    const cartForm = document.querySelector(".woocommerce-cart-form");
+    if (cartForm) {
+      cartForm.addEventListener("change", function (event) {
+        if (
+          event.target.classList.contains("input-text") &&
+          event.target.classList.contains("qty")
+        ) {
+          updateCartButton.disabled = false;
+        }
+      });
+    }
+  }
+});
+const govahinamehSwiper = new Swiper(".govahinameh", {
   slidesPerView: 4,
   spaceBetween: 30,
   pagination: {
@@ -19,7 +91,7 @@ var swiper = new Swiper(".govahinameh", {
     },
   },
 });
-var swiper = new Swiper(".hero-slider", {
+const heroSwiper = new Swiper(".hero-slider", {
   slidesPerView: 1,
   pagination: {
     el: ".swiper-pagination",
@@ -33,7 +105,8 @@ var swiper = new Swiper(".hero-slider", {
     delay: 2500,
   },
 });
-var swiper = new Swiper(".myMaghale", {
+
+const maghaleSwiper = new Swiper(".myMaghale", {
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
@@ -61,7 +134,7 @@ var swiper = new Swiper(".myMaghale", {
     },
   },
 });
-var swiper = new Swiper(".myakhbar", {
+const akhbarSwiper = new Swiper(".myakhbar", {
   slidesPerView: 3,
   spaceBetween: 15,
   pagination: {
@@ -90,7 +163,7 @@ var swiper = new Swiper(".myakhbar", {
     },
   },
 });
-var swiper = new Swiper(".mylogos", {
+const logosSwiper = new Swiper(".mylogos", {
   slidesPerView: 1,
   spaceBetween: 15,
   pagination: {

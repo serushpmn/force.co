@@ -30,30 +30,44 @@ if ($banner_query->have_posts()):
     $tablet_img = get_field("banner_tablet");
     $mobile_img = get_field("banner_mobile");
 
+    // helper to get URL and alt for different ACF return types (array, ID, or URL)
+    function _force_get_img_data($img) {
+      if (!$img) return ['url' => '', 'alt' => ''];
+      // array (default ACF image return)
+      if (is_array($img) && !empty($img['url'])) {
+        return ['url' => $img['url'], 'alt' => (!empty($img['alt']) ? $img['alt'] : '')];
+      }
+      // numeric ID
+      if (is_numeric($img)) {
+        $url = wp_get_attachment_url($img);
+        $alt = get_post_meta($img, '_wp_attachment_image_alt', true);
+        return ['url' => $url ? $url : '', 'alt' => $alt ? $alt : ''];
+      }
+      // string URL
+      if (is_string($img)) {
+        return ['url' => $img, 'alt' => ''];
+      }
+      return ['url' => '', 'alt' => ''];
+    }
+
+    $desktop = _force_get_img_data($desktop_img);
+    $tablet = _force_get_img_data($tablet_img);
+    $mobile = _force_get_img_data($mobile_img);
+
     // فقط اگر حداقل تصویر موبایل وجود داشت، بنر را نمایش بده
-    if ($mobile_img): ?>
+    if (!empty($mobile['url'])): ?>
             <div id="top-site-banner" class="top-site-banner">
-                <a href="<?php echo get_field("banner_link");
-      // می‌توانید یک فیلد برای لینک هم در ACF بسازید
-      ?>">
+                <a href="<?php echo esc_url(get_field('banner_link') ?: '#'); ?>">
                     <picture>
-                        <?php if ($desktop_img): ?>
-                            <source media="(min-width: 1024px)" srcset="<?php echo esc_url(
-                              $desktop_img["url"],
-                            ); ?>">
+                        <?php if (!empty($desktop['url'])): ?>
+                            <source media="(min-width: 1024px)" srcset="<?php echo esc_url($desktop['url']); ?>">
                         <?php endif; ?>
 
-                        <?php if ($tablet_img): ?>
-                            <source media="(min-width: 768px)" srcset="<?php echo esc_url(
-                              $tablet_img["url"],
-                            ); ?>">
+                        <?php if (!empty($tablet['url'])): ?>
+                            <source media="(min-width: 768px)" srcset="<?php echo esc_url($tablet['url']); ?>">
                         <?php endif; ?>
 
-                        <img src="<?php echo esc_url(
-                          $mobile_img["url"],
-                        ); ?>" alt="<?php echo esc_attr(
-  $mobile_img["alt"],
-); ?>" style="width:100%; display:block;">
+                        <img src="<?php echo esc_url($mobile['url']); ?>" alt="<?php echo esc_attr($mobile['alt']); ?>" />
                     </picture>
                 </a>
                 <button class="close-banner-btn" id="closeBannerBtn" aria-label="بستن بنر">&times;</button>
@@ -159,7 +173,7 @@ endif;
 
                     <button class="mobile-menu-open" aria-label="باز کردن منو" aria-expanded="false" aria-controls="mobile-menu-container">
                         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="27" viewBox="0 0 26 27" fill="none">
-                            <path d="M1 25.348H25M1 13.4273H25M1 1.50659H25" stroke="black" stroke-width="1.875" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M1 25.348H25M1 13.4273H25M1 1.50659H25" stroke="var(--black-900)" stroke-width="1.875" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                 </div>
@@ -181,7 +195,7 @@ endif;
                                   "theme_location" => "top-menu",
                                   "container" => false,
                                 ]); ?>
-                                <div class="mobile-menu-actions" style="padding:12px;display:flex;gap:12px;flex-direction:column;">
+                                <div class="mobile-menu-actions" style="display:flex;flex-direction:column; background:var(--orange-50)">
                                     <a href="<?php echo esc_url(
                                       function_exists("wc_get_cart_url")
                                         ? wc_get_cart_url()

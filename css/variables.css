@@ -126,9 +126,9 @@
   --gray-800: #c1bdba;
   --gray-900: #e7e6e4;
 
-  --white: #262626
+  --white: #191919;
 
-    --shadow-xs: 2px 2px 15px 0px rgba(255, 255, 255, 0.15);
+  --shadow-xs: 2px 2px 15px 0px rgba(255, 255, 255, 0.15);
   --shadow-l: 2px 2px 15px 0px rgba(255, 255, 255, 0.15);
   --shadow-xl: 0px 4px 12px 0px rgba(255, 255, 255, 0.15);
   --shadow-2xl: 0px 6px 30px 0px rgba(255, 255, 255, 0.2);
