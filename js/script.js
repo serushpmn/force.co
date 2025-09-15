@@ -105,7 +105,42 @@ const heroSwiper = new Swiper(".hero-slider", {
     delay: 2500,
   },
 });
-
+var swiper = new Swiper(".kasbokar-slider", {
+  slidesPerView: 1,
+  spaceBetween: 30,
+  loop: true,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".kasbokar-next",
+    prevEl: ".kasbokar-prev",
+  },
+  breakpoints: {
+    350: {
+      slidesPerView: 5,
+      spaceBetween: 20,
+    },
+    768: {
+      slidesPerView: 5,
+      spaceBetween: 40,
+    },
+    1024: {
+      slidesPerView: 5,
+      spaceBetween: 50,
+    },
+    1200: {
+      slidesPerView: 5,
+      spaceBetween: 50,
+    },
+  },
+  on: {
+    reachEnd: function () {
+      this.slideToLoop(0, 0, false);
+    },
+  },
+});
 const maghaleSwiper = new Swiper(".myMaghale", {
   navigation: {
     nextEl: ".swiper-button-next",
@@ -236,32 +271,30 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-document
-  .getElementById("openFormButton")
-  .addEventListener("click", function () {
-    document.getElementById("popupFormContainer").style.display = "block";
-  });
-
-document
-  .getElementById("openFormButton")
-  .addEventListener("click", function () {
-    document.getElementById("popupFormContainer").style.display = "block";
-  });
-
-document
-  .getElementById("popupFormContainer")
-  .addEventListener("click", function (e) {
-    if (e.target === this) {
-      document.getElementById("popupFormContainer").style.display = "none";
+var openFormBtn = document.getElementById("openFormButton");
+if (openFormBtn) {
+  openFormBtn.addEventListener("click", function () {
+    var popupForm = document.getElementById("popupFormContainer");
+    if (popupForm) {
+      popupForm.style.display = "block";
     }
   });
+}
+
+var popupFormContainer = document.getElementById("popupFormContainer");
+if (popupFormContainer) {
+  popupFormContainer.addEventListener("click", function (e) {
+    if (e.target === this) {
+      popupFormContainer.style.display = "none";
+    }
+  });
+}
 
 var inputs = document.querySelectorAll('input[type="text"]');
 inputs.forEach(function (input) {
   input.addEventListener("focus", function () {
     const h1Title = document.querySelector("h1").textContent;
     var targetInput = document.querySelector('input[name="text-334"]');
-
     targetInput.value = h1Title;
     // targetInput.disabled = true;
   });
