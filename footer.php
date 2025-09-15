@@ -107,6 +107,10 @@
 <?php endif; ?>
 <?php if (function_exists('is_checkout') && is_checkout() && !is_order_received_page()) : ?>
   <div class="checkout-fixed-placeorder-btn">
+    <div class="checkout-fixed-total">
+      <span class="total-label">مبلغ قابل پرداخت:</span>
+      <span class="total-amount"><?php wc_cart_totals_order_total_html(); ?></span>
+    </div>
     <button type="submit" form="order_review" class="place-order-btn">ثبت سفارش و پرداخت</button>
   </div>
 <?php endif; ?>
