@@ -60,8 +60,8 @@
                <?php endif; ?>
             </div>
             <!-- دکمه‌های ناوبری را با کلاس یکتا قرار دهید و خارج از .swiper-wrapper باشند -->
-            <div class="swiper-button-next kasbokar-next"></div>
-            <div class="swiper-button-prev kasbokar-prev"></div>
+           <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
          </div>
       </div>
    </section>
@@ -223,34 +223,29 @@
                            <?php if ($the_query->have_posts()): ?>
                            <?php while ($the_query->have_posts()):
                                $the_query->the_post(); ?>
-                           <div class="each-logo">
+                           <div class="each-logo logo-clickable" 
+                                data-company="<?php echo esc_attr(get_the_title()); ?>"
+                                data-content="<?php echo esc_attr(get_the_content()); ?>"
+                                data-image="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>">
                               <?php the_post_thumbnail(); ?>
                               <span class="logo-tooltip"><?php the_title(); ?></span>
                            </div>
-                           <?php
-                           endwhile; ?>
+                           <?php endwhile; ?>
                            <?php wp_reset_postdata(); ?>
                            <?php else: ?>
-                           <p><?php esc_html_e(
-                               "متاسفانه محتوایی پیدا نشد"
-                           ); ?></p>
+                           <p><?php esc_html_e("متاسفانه محتوایی پیدا نشد"); ?></p>
                            <?php endif; ?>
                         </div>
-                        <div class="comment-box">
-                           <img
-                              src="<?php echo get_template_directory_uri(); ?>/img/logos/قرارگاه-خاتم.jpg"
-                              alt=""
-                              class="ceo-comment-logo"
-                              />
+                        <div class="comment-box" id="comment-box-1">
+                           <img src="<?php echo get_template_directory_uri(); ?>/img/logos/قرارگاه-خاتم.jpg" alt="" class="ceo-comment-logo" id="comment-img-1"/>
                            <div class="ceo-comment">
-                              <h3>
+                              <h3 id="comment-title-1">
                                  جواد نوری <span>-</span>
                                  <span>قرار گاه سازندگی خاتم الانبیا</span>
                               </h3>
-                              <p>
-                                                            با احترام بدینوسیله مراتب رضایت این موسسه از عملکرد دستگاه فیلتراسیون روغن ساخت ان شرکت جهت تصفیه اب و ذرات موجود در روغن های هیدرولیک کارگاه الیگودرز اعلام میگردد .
+                              <p id="comment-text-1">
+                                 با احترام بدینوسیله مراتب رضایت این موسسه از عملکرد دستگاه فیلتراسیون روغن ساخت ان شرکت جهت تصفیه اب و ذرات موجود در روغن های هیدرولیک کارگاه الیگودرز اعلام میگردد .
                               فیلتراسیون این روغن ها صرفه اقتصادی مناسبی را برای این موسسه در برداشته است .امید است تلاش ان مجموعه فنی همواره مورد رضایت خداوند متعال بوده وشاهد موفقیت های روز افزون ان شرکت باشیم .ضمنا از زحمات و تلاش های بی وقفه مدیریت وکادر فنی ان شرکت محترم تشکر و قدر دانی می نماید.
-
                               </p>
                            </div>
                         </div>
@@ -266,34 +261,28 @@
                            <?php if ($the_query->have_posts()): ?>
                            <?php while ($the_query->have_posts()):
                                $the_query->the_post(); ?>
-                           <div class="each-logo">
+                           <div class="each-logo logo-clickable" 
+                                data-company="<?php echo esc_attr(get_the_title()); ?>"
+                                data-content="<?php echo esc_attr(get_the_content()); ?>"
+                                data-image="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>">
                               <?php the_post_thumbnail(); ?>
                               <span class="logo-tooltip"><?php the_title(); ?></span>
                            </div>
-                           <?php
-                           endwhile; ?>
+                           <?php endwhile; ?>
                            <?php wp_reset_postdata(); ?>
                            <?php else: ?>
-                           <p><?php esc_html_e(
-                               "متاسفانه محتوایی پیدا نشد"
-                           ); ?></p>
+                           <p><?php esc_html_e("متاسفانه محتوایی پیدا نشد"); ?></p>
                            <?php endif; ?>
                         </div>
-                        <div class="comment-box">
-                           <img
-                              src="<?php echo get_template_directory_uri(); ?>/img/logos/نیروگاه-رجائی.jpg"
-                              alt=""
-                              class="ceo-comment-logo"
-                              />
+                        <div class="comment-box" id="comment-box-2">
+                           <img src="<?php echo get_template_directory_uri(); ?>/img/logos/نیروگاه-رجائی.jpg" alt="" class="ceo-comment-logo" id="comment-img-2"/>
                            <div class="ceo-comment">
-                              <h3>
+                              <h3 id="comment-title-2">
                               عبدالعظیم محمد نیازی
                                  <span>-</span>
-                                 <span>
-                                 شرکت تولید برق شهید رجایی
-                                 </span>
+                                 <span>شرکت تولید برق شهید رجایی</span>
                               </h3>
-                              <p>
+                              <p id="comment-text-2">
                               با احترام بدینوسیله مراتب رضایت این شرکت از عملکرد دستگاه فیلتراسیون روغن ساخت شرکت فرس جهت تصفیه آب و ذرات موجود در روغنهای این نیروگاه اعلام می‌گردد.
                               </p>
                            </div>
@@ -310,29 +299,27 @@
                         <?php if ($the_query->have_posts()): ?>
                         <?php while ($the_query->have_posts()):
                             $the_query->the_post(); ?>
-                        <div class="each-logo">
+                        <div class="each-logo logo-clickable" 
+                             data-company="<?php echo esc_attr(get_the_title()); ?>"
+                             data-content="<?php echo esc_attr(get_the_content()); ?>"
+                             data-image="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>">
                            <?php the_post_thumbnail(); ?>
                            <span class="logo-tooltip"><?php the_title(); ?></span>
                         </div>
-                        <?php
-                        endwhile; ?>
+                        <?php endwhile; ?>
                         <?php wp_reset_postdata(); ?>
                         <?php else: ?>
                         <p><?php esc_html_e("متاسفانه محتوایی پیدا نشد"); ?></p>
                         <?php endif; ?>
                      </div>
-                     <div class="comment-box">
-                        <img
-                           src="<?php echo get_template_directory_uri(); ?>/img/logos/پتروشیمی-اصفهان.jpg"
-                           alt=""
-                           class="ceo-comment-logo"
-                           />
+                     <div class="comment-box" id="comment-box-3">
+                        <img src="<?php echo get_template_directory_uri(); ?>/img/logos/پتروشیمی-اصفهان.jpg" alt="" class="ceo-comment-logo" id="comment-img-3"/>
                         <div class="ceo-comment">
-                           <h3>
+                           <h3 id="comment-title-3">
                            علی مستاجران<span>-</span>
                               <span>پتروشیمی اصفهان</span>
                            </h3>
-                           <p>بدینوسیله تایید می گردد شرکت پیشگام صنعت فرس میزان هفتاد هزار لیتر روغن حرارتی واحد انیدرید فتالیک پتروشیمی اصفهان را به نحو مناسب تصفیه (اب زدایی) نموده است.   </p>
+                           <p id="comment-text-3">بدینوسیله تایید می گردد شرکت پیشگام صنعت فرس میزان هفتاد هزار لیتر روغن حرارتی واحد انیدرید فتالیک پتروشیمی اصفهان را به نحو مناسب تصفیه (اب زدایی) نموده است.   </p>
                         </div>
                      </div>
                   </div>
@@ -347,29 +334,27 @@
                         <?php if ($the_query->have_posts()): ?>
                         <?php while ($the_query->have_posts()):
                             $the_query->the_post(); ?>
-                        <div class="each-logo">
+                        <div class="each-logo logo-clickable" 
+                             data-company="<?php echo esc_attr(get_the_title()); ?>"
+                             data-content="<?php echo esc_attr(get_the_content()); ?>"
+                             data-image="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>">
                            <?php the_post_thumbnail(); ?>
                            <span class="logo-tooltip"><?php the_title(); ?></span>
                         </div>
-                        <?php
-                        endwhile; ?>
+                        <?php endwhile; ?>
                         <?php wp_reset_postdata(); ?>
                         <?php else: ?>
                         <p><?php esc_html_e("متاسفانه محتوایی پیدا نشد"); ?></p>
                         <?php endif; ?>
                      </div>
-                     <div class="comment-box">
-                        <img
-                           src="<?php echo get_template_directory_uri(); ?>/img/logos/فولاد-نطنز.jpg"
-                           alt=""
-                           class="ceo-comment-logo"
-                           />
+                     <div class="comment-box" id="comment-box-4">
+                        <img src="<?php echo get_template_directory_uri(); ?>/img/logos/فولاد-نطنز.jpg" alt="" class="ceo-comment-logo" id="comment-img-4"/>
                         <div class="ceo-comment">
-                           <h3>
+                           <h3 id="comment-title-4">
                            علیرضا توکلی طرقی <span>-</span>
                               <span>شرکت صنایع فولاد نطنز</span>
                            </h3>
-                           <p>احتراما بدینوسیله صحت عملکرد یونیت تصفیه روغن سری FT که صرفه جویی اقتصادی قابل توجهی را به همراه داشته اعلام و از زحمات و تلاش بی وقفه مدیریت و کلیه متخصصین ان شرکت تشکر و قدر دانی میگردد. </p>
+                           <p id="comment-text-4">احتراما بدینوسیله صحت عملکرد یونیت تصفیه روغن سری FT که صرفه جویی اقتصادی قابل توجهی را به همراه داشته اعلام و از زحمات و تلاش بی وقفه مدیریت و کلیه متخصصین ان شرکت تشکر و قدر دانی میگردد. </p>
                         </div>
                      </div>
                   </div>
@@ -384,29 +369,27 @@
                         <?php if ($the_query->have_posts()): ?>
                         <?php while ($the_query->have_posts()):
                             $the_query->the_post(); ?>
-                        <div class="each-logo">
+                        <div class="each-logo logo-clickable" 
+                             data-company="<?php echo esc_attr(get_the_title()); ?>"
+                             data-content="<?php echo esc_attr(get_the_content()); ?>"
+                             data-image="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>">
                            <?php the_post_thumbnail(); ?>
                            <span class="logo-tooltip"><?php the_title(); ?></span>
                         </div>
-                        <?php
-                        endwhile; ?>
+                        <?php endwhile; ?>
                         <?php wp_reset_postdata(); ?>
                         <?php else: ?>
                         <p><?php esc_html_e("متاسفانه محتوایی پیدا نشد"); ?></p>
                         <?php endif; ?>
                      </div>
-                     <div class="comment-box">
-                        <img
-                           src="<?php echo get_template_directory_uri(); ?>/img/logos/نوین-سرام-یزد.jpg"
-                           alt=""
-                           class="ceo-comment-logo"
-                           />
+                     <div class="comment-box" id="comment-box-5">
+                        <img src="<?php echo get_template_directory_uri(); ?>/img/logos/نوین-سرام-یزد.jpg" alt="" class="ceo-comment-logo" id="comment-img-5"/>
                         <div class="ceo-comment">
-                           <h3>
+                           <h3 id="comment-title-5">
                            مدیریت بازرگانی<span>-</span>
                               <span>کاشی نوین سرام یزد</span>
                            </h3>
-                           <p>احتراماً به استخضار می‌رساند که دستگاه تصفیه روغن کد FL50 که از شرکت فرس خریداری شده مورد تأیید این شرکت می‌باشد.
+                           <p id="comment-text-5">احتراماً به استخضار می‌رساند که دستگاه تصفیه روغن کد FL50 که از شرکت فرس خریداری شده مورد تأیید این شرکت می‌باشد.
                            مراتب جهت اطلاع خدمتتان ارسال می‌گردد.
                            </p>
                         </div>
@@ -423,12 +406,14 @@
                         <?php if ($the_query->have_posts()): ?>
                         <?php while ($the_query->have_posts()):
                             $the_query->the_post(); ?>
-                        <div class="each-logo">
+                        <div class="each-logo logo-clickable" 
+                             data-company="<?php echo esc_attr(get_the_title()); ?>"
+                             data-content="<?php echo esc_attr(get_the_content()); ?>"
+                             data-image="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>">
                            <?php the_post_thumbnail(); ?>
                            <span class="logo-tooltip"><?php the_title(); ?></span>
                         </div>
-                        <?php
-                        endwhile; ?>
+                        <?php endwhile; ?>
                         <?php wp_reset_postdata(); ?>
                         <?php else: ?>
                         <p><?php esc_html_e("متاسفانه محتوایی پیدا نشد"); ?></p>
@@ -447,29 +432,27 @@
                         <?php if ($the_query->have_posts()): ?>
                         <?php while ($the_query->have_posts()):
                             $the_query->the_post(); ?>
-                        <div class="each-logo">
+                        <div class="each-logo logo-clickable" 
+                             data-company="<?php echo esc_attr(get_the_title()); ?>"
+                             data-content="<?php echo esc_attr(get_the_content()); ?>"
+                             data-image="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>">
                            <?php the_post_thumbnail(); ?>
                            <span class="logo-tooltip"><?php the_title(); ?></span>
                         </div>
-                        <?php
-                        endwhile; ?>
+                        <?php endwhile; ?>
                         <?php wp_reset_postdata(); ?>
                         <?php else: ?>
                         <p><?php esc_html_e("متاسفانه محتوایی پیدا نشد"); ?></p>
                         <?php endif; ?>
                      </div>
-                     <div class="comment-box">
-                        <img
-                           src="<?php echo get_template_directory_uri(); ?>/img/logos/آریا-بنادر-ایرانیان.jpg"
-                           alt=""
-                           class="ceo-comment-logo"
-                           />
+                     <div class="comment-box" id="comment-box-7">
+                        <img src="<?php echo get_template_directory_uri(); ?>/img/logos/آریا-بنادر-ایرانیان.jpg" alt="" class="ceo-comment-logo" id="comment-img-7"/>
                         <div class="ceo-comment">
-                           <h3>
+                           <h3 id="comment-title-7">
                            صفدر تاجیک<span>-</span>
                               <span>شرکت آریا بنادر ایرانیان </span>
                            </h3>
-                           <p>احتراماً با بررسی به عمل آمده از دستگاه فیلتراسیون سوخت، خریداری شده از شرکت فرس، به عرض می‌رساند: در طول مدت بهره‌برداری این دستگاه،  از کیفیت و کارائی قابل قبولی برخوردار بوده به نحوی که استفاده از آن سبب افزایش طول عمر سیستم های سوخت و همچنین کاهش هزینه ا و تعمیرات را در پی داشته است.  </p>
+                           <p id="comment-text-7">احتراماً با بررسی به عمل آمده از دستگاه فیلتراسیون سوخت، خریداری شده از شرکت فرس، به عرض می‌رساند: در طول مدت بهره‌برداری این دستگاه،  از کیفیت و کارائی قابل قبولی برخوردار بوده به نحوی که استفاده از آن سبب افزایش طول عمر سیستم های سوخت و همچنین کاهش هزینه ا و تعمیرات را در پی داشته است.  </p>
                         </div>
                      </div>
                   </div>
@@ -485,28 +468,27 @@
                         <?php if ($the_query->have_posts()): ?>
                         <?php while ($the_query->have_posts()):
                             $the_query->the_post(); ?>
-                        <div class="each-logo">
+                        <div class="each-logo logo-clickable" 
+                             data-company="<?php echo esc_attr(get_the_title()); ?>"
+                             data-content="<?php echo esc_attr(get_the_content()); ?>"
+                             data-image="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>">
                            <?php the_post_thumbnail(); ?>
                            <span class="logo-tooltip"><?php the_title(); ?></span>
                         </div>
-                        <?php
-                        endwhile; ?>
+                        <?php endwhile; ?>
                         <?php wp_reset_postdata(); ?>
                         <?php else: ?>
                         <p><?php esc_html_e("متاسفانه محتوایی پیدا نشد"); ?></p>
                         <?php endif; ?>
                      </div>
-                     <div class="comment-box">
-                        
+                     <div class="comment-box" id="comment-box-8">
                         <div class="ceo-comment">
-                           <h3>
+                           <h3 id="comment-title-8">
                            حسین ازادواری
                               <span>-</span>
-                              <span>
-                              سازمان خدمات موتوری
-                                 </span>
+                              <span>سازمان خدمات موتوری</span>
                            </h3>
-                           <p>
+                           <p id="comment-text-8">
                            ضمن اعلام رضایت از عملکرد دستگاه تصفیه گازوئیل ساخت  ان شرکت محترم خواهشمند است مراتب رضایت این سازمان را به کلیه همکاران تلاشگر تان اعلام فرمایید. از خداوند منان موفقیت روز افزون برای شما آرزومندیم.
                            </p>
                         </div>
@@ -517,40 +499,58 @@
          </div>
       </div>
    </section>
-   <!-- About US  -->
-   <section class="about-us" id="about-us">
-      <div class="container-content">
-         <h3 class="home-title">درباره ما</h3>
-         <div class="about-us-content">
-            <div class="right">
-               <p>
-                  شرکت فرس به منظور دستیابی صنایع کشور به تجهیزات مدرن
-                  فیلتراسیون روغن و سوخت در جهت افزایش طول عمر روغن، قطعات،
-                  ماشین آلات و کاهش زمان تولید و کاهش هزینه و زمان تعمیرات و در
-                  نهایت افزایش راندمان اقتصادی شرکت ها از سال 1384 در زمینه
-                  فیلتراسیون روغن و سوخت تحقیقات گسترده ای آغاز نموده که در
-                  نهایت این امر منجر به تاسیس شرکت فرس با چشم انداز، ماموریت و
-                  ارزشهای ذیل شده‌است. امروزه شرکت فرس با تولید بیش از هزار
-                  دستگاه در سال با صنایع بزرگ کشور از جمله: صنایع فولاد، معادن،
-                  پتروشیمی، پالایشگاه، سیمان و ... همکاری دارد.
-               </p>
-               <p>
-                  رویکرد هیئت موسس شرکت فرس از ابتدا استفاده از جوانان و توسعه
-                  محصولات بوده است و امروزه با افتخار اعلام میکنیم با رویکرد
-                  اتخاذ شده، علاوه بر تولید خود را رقیبی جدی برای شرکتهای صنعتی
-                  بزرگ میبیند. علاوه بر تجهیزات، از سال های ابتدایی تأسیس، شرکت
-                  فرس با علاقمندی در زمینه پتروپالایش، فعالیتهای گستردهای را در
-                  کشور آغاز نموده و امروز اعلام میکنیم علاوه بر تولید محصولات
-                  فرآیندی، شرکت ما مجری ساخت مینی پالایشگاهها نیز میباشد.
-               </p>
-               <div class="buttons">
-                  <a href="/Force/catalogue.pdf" class="btn-orange" download
-                     >دانلود کاتالوگ</a
-                     >
-                  <a href="#" class="btn-orange">مشاهده پروژه ها</a>
-               </div>
-            </div>
-            <img src="<?php echo get_template_directory_uri(); ?>/img/about-us.jpg" alt="" />
+
+   <script>
+   document.addEventListener('DOMContentLoaded', function() {
+      // گرفتن تمام لوگوهای کلیک‌پذیر
+      const clickableLogos = document.querySelectorAll('.logo-clickable');
+      
+      clickableLogos.forEach(function(logo) {
+         logo.style.cursor = 'pointer';
+         
+         logo.addEventListener('click', function() {
+            const company = this.getAttribute('data-company');
+            const content = this.getAttribute('data-content');
+            const image = this.getAttribute('data-image');
+            
+            // پیدا کردن باکس کامنت مربوط به این اسلاید
+            const slide = this.closest('.swiper-slide');
+            const commentBox = slide.querySelector('.comment-box');
+            
+            if (commentBox && content) {
+               const commentImg = commentBox.querySelector('.ceo-comment-logo');
+               const commentTitle = commentBox.querySelector('.ceo-comment h3');
+               const commentText = commentBox.querySelector('.ceo-comment p');
+               
+               // تغییر تصویر اگر موجود باشد
+               if (commentImg && image) {
+                  commentImg.src = image;
+               }
+               
+               // تغییر عنوان
+               if (commentTitle) {
+                  commentTitle.innerHTML = company;
+               }
+               
+               // تغییر متن
+               if (commentText) {
+                  commentText.innerHTML = content;
+               }
+               
+               // افکت انیمیشن
+               commentBox.style.opacity = '0';
+               setTimeout(function() {
+                  commentBox.style.transition = 'opacity 0.3s ease';
+                  commentBox.style.opacity = '1';
+               }, 100);
+            }
+         });
+      });
+   });
+   </script>
+</main>
+               
+<?php get_footer(); ?>
          </div>
       </div>
    </section>

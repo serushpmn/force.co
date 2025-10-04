@@ -482,6 +482,12 @@ del .woocommerce-Price-amount.amount {
 .group-logos .logo-box .each-logo {
   border-radius: 50% !important;
   overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.group-logos .logo-box .each-logo.logo-clickable:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(254, 89, 15, 0.3);
 }
 /* media queries
 ///////////////////////////////
@@ -564,13 +570,6 @@ del .woocommerce-Price-amount.amount {
   .container-content {
     width: 100%;
   }
-
-  .top-menu {
-    display: none;
-  }
-  .top-header .bio-language {
-    display: block; /* keep language selector visible */
-  }
   .mobile-menu-icon {
     display: flex;
   }
@@ -632,6 +631,7 @@ del .woocommerce-Price-amount.amount {
   h3.home-title {
     font-size: 20px;
     padding-right: 90px;
+    padding-bottom: 15px;
     right: -25px;
   }
   h3.home-title:before {
@@ -651,8 +651,8 @@ del .woocommerce-Price-amount.amount {
     /* margin-top: -40px; */
   }
   .kasbokar-circle .circle {
-    width: 50px;
-    height: 50px;
+    width: 75px;
+    height: 75px;
     overflow: hidden;
   }
   .kasbokar-circle span {
@@ -675,8 +675,8 @@ del .woocommerce-Price-amount.amount {
     gap: 15px;
   }
   .comment-box img.ceo-comment-logo {
-    width: 68px;
-    height: 68px;
+    width: 90px;
+    height: 90px;
   }
   .group-logos .logo-box {
     padding: 10px;
@@ -1238,11 +1238,12 @@ del .woocommerce-Price-amount.amount {
     /* margin-top: -50px; */
   }
   .kasbokar-circle .circle {
-    width: 60px;
-    height: 60px;
+    width: 150px;
+    height: 150px;
   }
   .kasbokar-circle span {
-    font-size: 12px;
+    margin-top: 4px;
+    font-size: 16px;
   }
   .partner-brands h2 {
     font-size: 28px;
@@ -1688,6 +1689,7 @@ del .woocommerce-Price-amount.amount {
 .top-section {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   gap: 24px;
 }
 
@@ -1742,12 +1744,6 @@ del .woocommerce-Price-amount.amount {
   border: 2px solid var(--orange-700);
 }
 
-.maghalat.special-products .each-maghale-img {
-  position: relative;
-  padding: 18px 0 0 0;
-  text-align: center;
-}
-
 .maghalat.special-products .discount-badge {
   position: absolute;
   top: 10px;
@@ -1771,16 +1767,6 @@ del .woocommerce-Price-amount.amount {
   min-width: 60px;
   text-align: center;
   border: 2px solid var(--orange-300);
-}
-
-.maghalat.special-products .each-maghale-img img {
-  max-width: 120px;
-  max-height: 120px;
-  border-radius: 12px;
-  margin: 0 auto 12px auto;
-  box-shadow: 0 2px 8px rgba(254, 89, 15, 0.08);
-  background: var(--orange-100);
-  display: block;
 }
 
 .maghalat.special-products .maghale-title {
@@ -1833,39 +1819,77 @@ del .woocommerce-Price-amount.amount {
 
 /* ریسپانسیو ویژه */
 @media (max-width: 900px) {
+  .maghalat.special-products {
+    padding: 24px 0 16px 0;
+  }
+  .top-section {
+    align-items: center;
+    gap: 16px;
+    padding: 0 16px;
+  }
+  .maghalat.special-products .home-title {
+    font-size: 0.8rem !important;
+    text-align: center;
+  }
+  .maghalat.special-products .btn-orange {
+    font-size: 0.6rem;
+    padding: 6px 22px;
+  }
   .maghalat.special-products .swiper-slide.each-maghale {
     max-width: 260px;
     margin: 0 auto 10px auto;
-  }
-  .maghalat.special-products .each-maghale-img img {
-    max-width: 90px;
-    max-height: 90px;
   }
   .maghalat.special-products .discount-badge {
     font-size: 0.8rem;
     padding: 5px 12px;
     min-width: 40px;
   }
+  .maghalat.special-products .prd-price {
+    font-size: 1.1rem;
+  }
+  .maghalat.special-products .btn-white {
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 600px) {
   .maghalat.special-products {
-    padding: 12px 0 10px 0;
-    border-radius: 12px;
+    padding: 16px 0 10px 0;
+    border-radius: 16px;
+    margin: 24px 0;
+  }
+  .top-section {
+    padding: 0 12px;
+  }
+  .maghalat.special-products .home-title {
+    font-size: 1.3rem;
+  }
+  .maghalat.special-products .swiper.myMaghale {
+    padding-top: 16px;
   }
   .maghalat.special-products .swiper-slide.each-maghale {
     max-width: 95vw;
     min-width: 180px;
     padding: 0 2vw;
-  }
-  .maghalat.special-products .each-maghale-img img {
-    max-width: 70px;
-    max-height: 70px;
+    border-radius: 16px;
   }
   .maghalat.special-products .discount-badge {
     font-size: 0.7rem;
     padding: 4px 8px;
     min-width: 30px;
+  }
+  .maghalat.special-products .maghale-title {
+    font-size: 0.8rem;
+    min-height: 36px;
+  }
+  .maghalat.special-products .prd-price {
+    font-size: 1rem;
+    padding: 4px 0;
+  }
+  .maghalat.special-products .btn-white {
+    font-size: 0.85rem;
+    padding: 6px 0;
+    margin-top: 10px;
   }
 }
 .product-single-details .product-price-card {
@@ -1961,4 +1985,277 @@ del .woocommerce-Price-amount.amount {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+/* بهینه‌سازی بخش کامنت‌ها و لوگوها */
+.comments-home {
+  padding: 50px 0;
+}
+
+.comments-rect {
+  margin-top: 30px;
+}
+
+.partner-brands h2 {
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  padding: 12px 20px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.group-logos .logo-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.group-logos .logo-box .each-logo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50% !important;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background: var(--white);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.group-logos .logo-box .each-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.group-logos .logo-box .each-logo.logo-clickable:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 20px rgba(254, 89, 15, 0.25);
+  z-index: 10;
+}
+
+.group-logos .logo-box .each-logo .logo-tooltip {
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: var(--white);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+  z-index: 100;
+  min-width: 80px;
+  text-align: center;
+}
+
+.group-logos .logo-box .each-logo:hover .logo-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.comment-box {
+  display: flex;
+  gap: 25px;
+  align-items: flex-start;
+  padding: 25px;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.comment-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+}
+
+.comment-box img.ceo-comment-logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.comment-box .ceo-comment {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.comment-box .ceo-comment h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.comment-box .ceo-comment h3 span {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.comment-box .ceo-comment p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  text-align: justify;
+  margin: 0;
+}
+
+/* ریسپانسیو تبلت */
+@media (max-width: 900px) {
+  .partner-brands h2 {
+    font-size: 1.5rem;
+    padding: 10px 16px;
+    margin-bottom: 20px;
+  }
+
+  .group-logos .logo-box {
+    gap: 12px;
+    padding: 16px;
+    margin-bottom: 25px;
+  }
+
+  .group-logos .logo-box .each-logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .comment-box {
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .comment-box img.ceo-comment-logo {
+    width: 85px;
+    height: 85px;
+  }
+
+  .comment-box .ceo-comment h3 {
+    font-size: 1.15rem;
+  }
+
+  .comment-box .ceo-comment h3 span {
+    font-size: 1rem;
+  }
+
+  .comment-box .ceo-comment p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+}
+
+/* ریسپانسیو موبایل */
+@media (max-width: 600px) {
+  .comments-home {
+    padding: 30px 0;
+  }
+
+  .partner-brands h2 {
+    font-size: 1.2rem;
+    padding: 8px 12px;
+    margin-bottom: 16px;
+  }
+
+  .group-logos .logo-box {
+    gap: 10px;
+    padding: 12px;
+    margin-bottom: 20px;
+  }
+
+  .group-logos .logo-box .each-logo {
+    width: 50px;
+    height: 50px;
+    padding: 6px;
+  }
+
+  .group-logos .logo-box .each-logo .logo-tooltip {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    bottom: -30px;
+  }
+
+  .comment-box {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .comment-box img.ceo-comment-logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+  }
+
+  .comment-box .ceo-comment {
+    text-align: center;
+  }
+
+  .comment-box .ceo-comment h3 {
+    font-size: 1.1rem;
+  }
+
+  .comment-box .ceo-comment h3 span {
+    font-size: 0.95rem;
+    display: inline-block;
+  }
+
+  .comment-box .ceo-comment p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    text-align: justify;
+  }
+}
+
+/* ریسپانسیو موبایل کوچک */
+@media (max-width: 400px) {
+  .partner-brands h2 {
+    font-size: 1.1rem;
+    padding: 6px 10px;
+  }
+
+  .group-logos .logo-box .each-logo {
+    width: 45px;
+    height: 45px;
+  }
+
+  .comment-box {
+    padding: 14px;
+  }
+
+  .comment-box img.ceo-comment-logo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .comment-box .ceo-comment h3 {
+    font-size: 1rem;
+  }
+
+  .comment-box .ceo-comment h3 span {
+    font-size: 0.85rem;
+  }
+
+  .comment-box .ceo-comment p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
 }

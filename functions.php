@@ -471,3 +471,13 @@ if( function_exists('acf_add_options_page') ) {
     ));
     
 }
+
+function force_register_menus() {
+    register_nav_menus([
+        'top-menu' => __('Top Menu', 'Force.co'),
+        'mini-top-menu' => __('Mini Top Menu', 'Force.co'),
+        'mobile-menu' => __('Mobile Menu', 'Force.co'),
+        // ... سایر منوها ...
+    ]);
+}
+add_action('after_setup_theme', 'force_register_menus');

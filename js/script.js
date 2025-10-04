@@ -106,20 +106,20 @@ const heroSwiper = new Swiper(".hero-slider", {
   },
 });
 var swiper = new Swiper(".kasbokar-slider", {
-  slidesPerView: 1,
-  spaceBetween: 30,
-  loop: true,
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
   },
   navigation: {
-    nextEl: ".kasbokar-next",
-    prevEl: ".kasbokar-prev",
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  autoplay: {
+    delay: 1500,
   },
   breakpoints: {
     350: {
-      slidesPerView: 5,
+      slidesPerView: 4,
       spaceBetween: 20,
     },
     768: {
@@ -133,11 +133,6 @@ var swiper = new Swiper(".kasbokar-slider", {
     1200: {
       slidesPerView: 5,
       spaceBetween: 50,
-    },
-  },
-  on: {
-    reachEnd: function () {
-      this.slideToLoop(0, 0, false);
     },
   },
 });

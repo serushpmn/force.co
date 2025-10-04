@@ -165,7 +165,7 @@ h3.home-title:before {
 
 /* --- Home Page Sections --- */
 .kasbokar-home {
-  background: var(--white);
+  padding-bottom: 10px;
 }
 .kasbokar-rect {
   background: var(--gradient-dark);
@@ -219,7 +219,7 @@ h3.home-title:before {
   text-align: center;
 }
 .comments-home {
-  background: #f6ac8b54;
+  background: var(--orange-50);
 }
 .comments-rect {
   border-radius: 27px;
@@ -553,6 +553,7 @@ h3.home-title:before {
 }
 .maghalat .each-maghale,
 .akhbar .each-akhbar {
+  border-radius: 1rem;
   padding: 10px;
   background: var(--white);
   height: 400px;

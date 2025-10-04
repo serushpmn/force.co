@@ -75,27 +75,13 @@ if (post_password_required()) {
                   : "ناموجود در انبار"; 
 ?>
                   </p>
-                <div class="product-features-extra">
-                  <div class="feature-item">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="feature-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3"></path>
-                        <path d="M9 12l2 2l4 -4"></path>
-                      </svg>
-                      <span>ضمانت اصل بودن کالا</span>
-                  </div>
-                  <div class="feature-item">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="feature-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-                        <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-                        <path d="M5 17h-2v-4.4a1 1 0 0 1 .5 - .862l6.93 -4.012a1.1 1.1 0 0 1 1.125 0l6.93 4.012a1 1 0 0 1 .5 .862v4.4h-2m-9 0h6m-6 -4h6m3 -6h-10l4 -2h2l4 2"></path>
-                        <path d="M1 11l4 -2.5"></path>
-                        <path d="M23 11l-4 -2.5"></path>
-                      </svg>
-                      <span>ارسال سریع</span>
-                  </div>
-              </div>
+                  <?php 
+// نمایش ویژگی‌های محصول
+if (class_exists('CPI_Frontend')) {
+    CPI_Frontend::get_instance()->display_product_features();
+}
+?>
+               
 <?php
 if (isset($product) && $product) {
                                   $rating_count = (int) $product->get_rating_count();
