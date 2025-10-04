@@ -499,62 +499,7 @@
          </div>
       </div>
    </section>
-
-   <script>
-   document.addEventListener('DOMContentLoaded', function() {
-      // گرفتن تمام لوگوهای کلیک‌پذیر
-      const clickableLogos = document.querySelectorAll('.logo-clickable');
-      
-      clickableLogos.forEach(function(logo) {
-         logo.style.cursor = 'pointer';
-         
-         logo.addEventListener('click', function() {
-            const company = this.getAttribute('data-company');
-            const content = this.getAttribute('data-content');
-            const image = this.getAttribute('data-image');
-            
-            // پیدا کردن باکس کامنت مربوط به این اسلاید
-            const slide = this.closest('.swiper-slide');
-            const commentBox = slide.querySelector('.comment-box');
-            
-            if (commentBox && content) {
-               const commentImg = commentBox.querySelector('.ceo-comment-logo');
-               const commentTitle = commentBox.querySelector('.ceo-comment h3');
-               const commentText = commentBox.querySelector('.ceo-comment p');
-               
-               // تغییر تصویر اگر موجود باشد
-               if (commentImg && image) {
-                  commentImg.src = image;
-               }
-               
-               // تغییر عنوان
-               if (commentTitle) {
-                  commentTitle.innerHTML = company;
-               }
-               
-               // تغییر متن
-               if (commentText) {
-                  commentText.innerHTML = content;
-               }
-               
-               // افکت انیمیشن
-               commentBox.style.opacity = '0';
-               setTimeout(function() {
-                  commentBox.style.transition = 'opacity 0.3s ease';
-                  commentBox.style.opacity = '1';
-               }, 100);
-            }
-         });
-      });
-   });
-   </script>
-</main>
-               
-<?php get_footer(); ?>
-         </div>
-      </div>
-   </section>
-   <!-- Govahinameh  -->
+ <!-- Govahinameh  -->
    <section class="govahiname">
       <div class="govahiname-bg"></div>
       <div class="container-content">
@@ -672,7 +617,54 @@
          </div>
       </div>
    </section>
- 
+   <script>
+   document.addEventListener('DOMContentLoaded', function() {
+      // گرفتن تمام لوگوهای کلیک‌پذیر
+      const clickableLogos = document.querySelectorAll('.logo-clickable');
+      
+      clickableLogos.forEach(function(logo) {
+         logo.style.cursor = 'pointer';
+         
+         logo.addEventListener('click', function() {
+            const company = this.getAttribute('data-company');
+            const content = this.getAttribute('data-content');
+            const image = this.getAttribute('data-image');
+            
+            // پیدا کردن باکس کامنت مربوط به این اسلاید
+            const slide = this.closest('.swiper-slide');
+            const commentBox = slide.querySelector('.comment-box');
+            
+            if (commentBox && content) {
+               const commentImg = commentBox.querySelector('.ceo-comment-logo');
+               const commentTitle = commentBox.querySelector('.ceo-comment h3');
+               const commentText = commentBox.querySelector('.ceo-comment p');
+               
+               // تغییر تصویر اگر موجود باشد
+               if (commentImg && image) {
+                  commentImg.src = image;
+               }
+               
+               // تغییر عنوان
+               if (commentTitle) {
+                  commentTitle.innerHTML = company;
+               }
+               
+               // تغییر متن
+               if (commentText) {
+                  commentText.innerHTML = content;
+               }
+               
+               // افکت انیمیشن
+               commentBox.style.opacity = '0';
+               setTimeout(function() {
+                  commentBox.style.transition = 'opacity 0.3s ease';
+                  commentBox.style.opacity = '1';
+               }, 100);
+            }
+         });
+      });
+   });
+   </script>
 </main>
                
 <?php get_footer(); ?>
