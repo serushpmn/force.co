@@ -23,12 +23,13 @@ h3.home-title:before {
 }
 .title-search-bar {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
 }
 .title-search-bar .titlebar {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 .title-search-bar .titlebar h1 {
   color: var(--black-800);

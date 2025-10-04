@@ -23,8 +23,8 @@ get_header( 'shop' ); ?>
 <div class="container">
  <section>
             <div class="title-search-bar">
+				<h1><?php the_title(); ?></h1>
               <div class="titlebar">
-			  <h1><?php the_title(); ?></h1>
 	<?php
 		/**
 		 * woocommerce_before_main_content hook.

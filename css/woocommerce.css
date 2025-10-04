@@ -9,7 +9,7 @@ ul.customize-pane-parent li {
 }
 .woocommerce div.product div.images img {
   object-fit: contain;
-  height: 100%;
+  max-height: 400px;
 }
 .woocommerce div.product div.images {
   margin: 0;

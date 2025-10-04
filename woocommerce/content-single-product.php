@@ -153,14 +153,72 @@ if (isset($product) && $product && $product->is_purchasable()) {
                 </div>
                 <div class="prd-description">
                   <h6 id="#desc">توضیحات دستگاه</h6>
-                  <p>
-                  <?php echo wc_get_product($post->ID)->get_description(); ?>
-                  </p>               
+                  <div class="description-content">
+                    <div class="description-text">
+                      <?php echo wc_get_product($post->ID)->get_description(); ?>
+                    </div>
+                    <button class="read-more-btn" onclick="toggleDescription(this)">
+                      <span class="more-text">ادامه مطلب</span>
+                      <span class="less-text" style="display: none;">بستن</span>
+                      <i class="fa fa-chevron-down arrow-icon"></i>
+                    </button>
+                  </div>
+                  
                   <h6 id="details">مشخصات کلی دستگاه</h6>
-                  <?php echo wc_get_product(
-                    $post->ID,
-                  )->get_short_description(); ?>
+                  <div class="specs-content">
+                    <div class="specs-text">
+                      <?php echo wc_get_product($post->ID)->get_short_description(); ?>
+                    </div>
+                    <button class="read-more-btn" onclick="toggleSpecs(this)">
+                      <span class="more-text">ادامه مطلب</span>
+                      <span class="less-text" style="display: none;">بستن</span>
+                      <i class="fa fa-chevron-down arrow-icon"></i>
+                    </button>
+                  </div>
                 </div>
+                
+                <script>
+                function toggleDescription(btn) {
+                  const container = btn.parentElement;
+                  const content = container.querySelector('.description-text');
+                  const moreText = btn.querySelector('.more-text');
+                  const lessText = btn.querySelector('.less-text');
+                  const arrow = btn.querySelector('.arrow-icon');
+                  
+                  if (content.classList.contains('expanded')) {
+                    content.classList.remove('expanded');
+                    moreText.style.display = 'inline';
+                    lessText.style.display = 'none';
+                    arrow.style.transform = 'rotate(0deg)';
+                  } else {
+                    content.classList.add('expanded');
+                    moreText.style.display = 'none';
+                    lessText.style.display = 'inline';
+                    arrow.style.transform = 'rotate(180deg)';
+                  }
+                }
+
+                function toggleSpecs(btn) {
+                  const container = btn.parentElement;
+                  const content = container.querySelector('.specs-text');
+                  const moreText = btn.querySelector('.more-text');
+                  const lessText = btn.querySelector('.less-text');
+                  const arrow = btn.querySelector('.arrow-icon');
+                  
+                  if (content.classList.contains('expanded')) {
+                    content.classList.remove('expanded');
+                    moreText.style.display = 'inline';
+                    lessText.style.display = 'none';
+                    arrow.style.transform = 'rotate(0deg)';
+                  } else {
+                    content.classList.add('expanded');
+                    moreText.style.display = 'none';
+                    lessText.style.display = 'inline';
+                    arrow.style.transform = 'rotate(180deg)';
+                  }
+                }
+                </script>
+
                          <?php
 // دریافت لینک از ACF
 $aparat_link = get_field("aparat_video_url");
