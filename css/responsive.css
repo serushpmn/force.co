@@ -34,6 +34,7 @@ footer .container {
 .footer-menu nav {
   display: flex;
   flex-direction: column;
+  align-self: baseline;
   gap: 16px;
 }
 
@@ -209,9 +210,9 @@ footer .container {
 /* فرم تماس فوتر - سایز یکسان */
 .contact-form {
   background: var(--gray-800);
-  padding: 20px;
   border-radius: 12px;
   min-height: 300px;
+  align-self: baseline;
 }
 
 .contact-form span {
@@ -1210,7 +1211,6 @@ footer .container {
     font-size: 16px;
     border: none;
     padding: 8px 16px;
-    border-radius: 15px;
     cursor: pointer;
   }
 
@@ -2047,7 +2047,6 @@ footer .container {
   transition: all 0.3s ease;
   font-family: KalamehWebFaNum, Tahoma, Arial, sans-serif;
   box-shadow: 0 4px 16px rgba(254, 89, 15, 0.2);
-  width: fit-content;
 }
 
 .read-more-btn:hover {
@@ -2066,67 +2065,677 @@ footer .container {
   transform: translateY(0);
 }
 
+/* بازطراحی کامل و مدرن صفحه Checkout - تمام سایزها */
+
+/* استایل پایه برای دسکتاپ */
+.checkout-page {
+  background: linear-gradient(135deg, var(--orange-50) 0%, var(--gray-50) 100%);
+  min-height: 100vh;
+  padding: 60px 0;
+}
+
+.checkout-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.checkout-title {
+  font-size: 2.8rem;
+  color: var(--orange-700);
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  padding-bottom: 25px;
+}
+
+.checkout-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 5px;
+  background: linear-gradient(90deg, var(--orange-700) 0%, var(--orange-500) 100%);
+  border-radius: 3px;
+}
+
+/* فرم Checkout */
+.woocommerce-checkout,
+.woocommerce-checkout * {
+  font-family: KalamehWebFaNum, Tahoma, Arial, sans-serif !important;
+}
+
+.woocommerce-checkout form.checkout {
+  background: var(--white);
+  border-radius: 28px;
+  padding: 50px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.1);
+}
+
+/* دو ستونه کردن فرم */
+.woocommerce-checkout .col2-set {
+  display: flex;
+  gap: 50px;
+  margin-bottom: 50px;
+}
+.woocommerce form .form-row.woocommerce-validated input.input-text, .woocommerce form .form-row.woocommerce-validated select {
+  border-color: none !important;
+}
+
+.woocommerce-checkout .col-1,
+.woocommerce-checkout .col-2 {
+  background: var(--orange-50);
+  padding: 35px;
+  border-radius: 24px;
+  border: 2px solid var(--orange-200);
+  transition: all 0.3s ease;
+}
+
+.woocommerce-checkout .col-1:hover,
+.woocommerce-checkout .col-2:hover {
+  border-color: var(--orange-500);
+  box-shadow: 0 6px 24px rgba(254, 89, 15, 0.15);
+}
+
+/* عنوان بخش‌ها */
+.woocommerce-checkout h3 {
+  color: var(--orange-700);
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 30px;
+  padding-bottom: 18px;
+  border-bottom: 3px solid var(--orange-500);
+  position: relative;
+}
+
+.woocommerce-checkout h3::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  right: 0;
+  width: 80px;
+  height: 3px;
+  background: var(--orange-700);
+}
+
+/* فیلدهای فرم */
+.woocommerce-checkout .form-row {
+  margin-bottom: 24px;
+}
+
+.woocommerce-checkout label {
+  display: block;
+  color: var(--orange-700);
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.woocommerce-checkout label .required {
+  color: #e74c3c;
+  margin-right: 5px;
+  font-size: 1.2rem;
+}
+
+.woocommerce-checkout input[type="text"],
+.woocommerce-checkout input[type="email"],
+.woocommerce-checkout input[type="tel"],
+.woocommerce-checkout input[type="number"],
+.woocommerce-checkout input[type="password"],
+.woocommerce-checkout textarea,
+.woocommerce-checkout select {
+  width: 100%;
+  border: 2px solid var(--orange-200);
+  border-radius: 14px;
+  background: var(--white);
+  color: var(--orange-700);
+  font-size: 1.1rem;
+  font-family: KalamehWebFaNum, Tahoma, Arial, sans-serif;
+  padding: 16px 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(254, 89, 15, 0.05);
+}
+
+.woocommerce-checkout input:focus,
+.woocommerce-checkout textarea:focus,
+.woocommerce-checkout select:focus {
+  border-color: var(--orange-500);
+  outline: none;
+  box-shadow: 0 6px 20px rgba(254, 89, 15, 0.2);
+  background: var(--white);
+}
+
+.woocommerce-checkout textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* Checkbox و Radio */
+.woocommerce-checkout input[type="checkbox"],
+.woocommerce-checkout input[type="radio"] {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--orange-500);
+  cursor: pointer;
+}
+
+/* جدول سبد خرید */
+.woocommerce-checkout-review-order {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 40px;
+  border: 2px solid var(--orange-200);
+  box-shadow: 0 6px 24px rgba(254, 89, 15, 0.1);
+}
+
+.woocommerce-checkout-review-order-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 35px;
+}
+
+.woocommerce-checkout-review-order-table thead {
+  background: linear-gradient(90deg, var(--orange-700) 0%, var(--orange-500) 100%);
+}
+
+.woocommerce-checkout-review-order-table th {
+  color: var(--white);
+  font-weight: 900;
+  font-size: 1.2rem;
+  padding: 22px 24px;
+  text-align: right;
+  border: none;
+}
+
+.woocommerce-checkout-review-order-table td {
+  padding: 20px 24px;
+  text-align: right;
+  border-bottom: 1px solid var(--orange-100);
+  font-size: 1.1rem;
+  color: var(--black-700);
+}
+
+.woocommerce-checkout-review-order-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.woocommerce-checkout-review-order-table tbody tr:hover {
+  background: var(--orange-50);
+}
+
+.woocommerce-checkout-review-order-table .cart_item .product-name {
+  font-weight: 700;
+  color: var(--orange-700);
+}
+
+.woocommerce-checkout-review-order-table .product-total {
+  font-weight: 800;
+  color: var(--orange-600);
+}
+
+/* ردیف جمع کل */
+.woocommerce-checkout-review-order-table .order-total th,
+.woocommerce-checkout-review-order-table .order-total td {
+  background: var(--orange-100);
+  color: var(--orange-700);
+  font-weight: 900;
+  font-size: 1.6rem;
+  border: none;
+  padding: 24px;
+}
+
+/* روش‌های پرداخت */
+.woocommerce-checkout-payment {
+  background: var(--orange-50);
+  border-radius: 24px;
+  padding: 35px;
+  margin-top: 35px;
+  border: 2px solid var(--orange-200);
+}
+
+.woocommerce-checkout-payment ul.payment_methods {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
+}
+
+.woocommerce-checkout-payment .payment_methods li {
+  margin-bottom: 18px;
+  background: var(--white);
+  border-radius: 14px;
+  padding: 20px;
+  border: 2px solid var(--orange-200);
+  transition: all 0.3s ease;
+}
+
+.woocommerce-checkout-payment .payment_methods li:hover {
+  border-color: var(--orange-500);
+  box-shadow: 0 6px 20px rgba(254, 89, 15, 0.2);
+  transform: translateY(-2px);
+}
+
+.woocommerce-checkout-payment .payment_methods li label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--orange-700);
+  margin: 0;
+}
+
+.woocommerce-checkout-payment .payment_methods li input[type="radio"] {
+  margin: 0;
+}
+
+.woocommerce-checkout-payment .payment_box {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 22px;
+  margin-top: 18px;
+  border: 1px solid var(--orange-200);
+  color: var(--black-700);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* دکمه ثبت سفارش */
+.woocommerce-checkout .place-order {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.woocommerce-checkout #place_order {
+  background: linear-gradient(90deg, var(--orange-700) 0%, var(--orange-500) 100%);
+  color: var(--white);
+  border: none;
+  border-radius: 18px;
+  font-weight: 900;
+  font-size: 1.4rem;
+  padding: 20px 70px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 28px rgba(254, 89, 15, 0.35);
+  font-family: KalamehWebFaNum, Tahoma, Arial, sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 300px;
+  justify-content: center;
+}
+
+.woocommerce-checkout #place_order::after {
+  content: '\f07a';
+  font-family: 'FontAwesome';
+  font-size: 1.3rem;
+}
+
+.woocommerce-checkout #place_order:hover {
+  background: linear-gradient(90deg, var(--orange-500) 0%, var(--orange-700) 100%);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(254, 89, 15, 0.5);
+}
+
+.woocommerce-checkout #place_order:active {
+  transform: translateY(-2px);
+}
+
+/* پیام‌های خطا و موفقیت */
+.woocommerce-error,
+.woocommerce-message,
+.woocommerce-info {
+  background: var(--orange-100);
+  color: var(--orange-700);
+  border: 2px solid var(--orange-500);
+  border-radius: 14px;
+  padding: 20px 28px;
+  margin-bottom: 30px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 1.1rem;
+}
+
+.woocommerce-error::before,
+.woocommerce-message::before,
+.woocommerce-info::before {
+  font-family: 'FontAwesome';
+  font-size: 1.7rem;
+  color: var(--orange-500);
+}
+
+.woocommerce-message::before {
+  content: '\f058';
+}
+
+.woocommerce-error::before {
+  content: '\f071';
+  color: #e74c3c;
+}
+
+.woocommerce-info::before {
+  content: '\f05a';
+}
+
+/* شرایط و ضوابط */
+.woocommerce-terms-and-conditions-wrapper {
+  background: var(--orange-50);
+  border-radius: 14px;
+  padding: 24px;
+  margin: 24px 0;
+  border: 1px solid var(--orange-200);
+}
+
+.woocommerce-checkout .woocommerce-privacy-policy-text {
+  font-size: 1rem;
+  color: var(--gray-600);
+  line-height: 1.8;
+}
+
 /* ریسپانسیو تبلت */
 @media (max-width: 1024px) {
-  .description-text,
-  .specs-text {
-    max-height: 160px;
-    font-size: 1.05rem;
-    line-height: 1.75;
+  .checkout-page {
+    padding: 50px 0;
   }
 
-  .read-more-btn {
-    font-size: 1rem;
-    padding: 10px 28px;
+  .checkout-container {
+    padding: 0 25px;
+  }
+
+  .checkout-title {
+    font-size: 2.3rem;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+  }
+
+  .checkout-title::after {
+    width: 100px;
+    height: 4px;
+  }
+
+  .woocommerce-checkout form.checkout {
+    padding: 40px;
+    border-radius: 24px;
+  }
+
+  .woocommerce-checkout .col2-set {
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  .woocommerce-checkout .col-1,
+  .woocommerce-checkout .col-2 {
+    padding: 30px;
+  }
+
+  .woocommerce-checkout h3 {
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+    padding-bottom: 16px;
+  }
+
+  .woocommerce-checkout label {
+    font-size: 1.05rem;
+  }
+
+  .woocommerce-checkout input[type="text"],
+  .woocommerce-checkout input[type="email"],
+  .woocommerce-checkout input[type="tel"],
+  .woocommerce-checkout select {
+    font-size: 1.05rem;
+    padding: 15px 18px;
+  }
+
+  .woocommerce-checkout-review-order {
+    padding: 35px;
+  }
+
+  .woocommerce-checkout-review-order-table th {
+    font-size: 1.15rem;
+    padding: 20px 22px;
+  }
+
+  .woocommerce-checkout-review-order-table td {
+    padding: 18px 22px;
+    font-size: 1.05rem;
+  }
+
+  .woocommerce-checkout .order-total th,
+  .woocommerce-checkout .order-total td {
+    font-size: 1.5rem;
+    padding: 22px;
+  }
+
+  .woocommerce-checkout-payment {
+    padding: 30px;
+  }
+
+  .woocommerce-checkout-payment .payment_methods li label {
+    font-size: 1.1rem;
+  }
+
+  .woocommerce-checkout #place_order {
+    font-size: 1.3rem;
+    padding: 18px 60px;
+    min-width: 280px;
   }
 }
 
 /* ریسپانسیو موبایل */
 @media (max-width: 768px) {
-  .description-text,
-  .specs-text {
-    max-height: 140px;
+  .checkout-page {
+    padding: 30px 0;
+  }
+
+  .checkout-container {
+    padding: 0 15px;
+  }
+
+  .checkout-title {
+    font-size: 1.9rem;
+    margin-bottom: 35px;
+    padding-bottom: 18px;
+  }
+
+  .checkout-title::after {
+    width: 80px;
+    height: 4px;
+  }
+
+  .woocommerce-checkout form.checkout {
+    padding: 28px;
+    border-radius: 20px;
+  }
+
+  .woocommerce-checkout .col2-set {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 35px;
+  }
+
+  .woocommerce-checkout .col-1,
+  .woocommerce-checkout .col-2 {
+    padding: 26px;
+  }
+
+  .woocommerce-checkout h3 {
+    font-size: 1.4rem;
+    margin-bottom: 22px;
+    padding-bottom: 14px;
+  }
+
+  .woocommerce-checkout label {
     font-size: 1rem;
-    line-height: 1.7;
+    margin-bottom: 8px;
   }
 
-  .description-text:not(.expanded)::after,
-  .specs-text:not(.expanded)::after {
-    height: 60px;
-  }
-
-  .read-more-btn {
-    font-size: 0.95rem;
-    padding: 9px 24px;
+  .woocommerce-checkout input[type="text"],
+  .woocommerce-checkout input[type="email"],
+  .woocommerce-checkout input[type="tel"],
+  .woocommerce-checkout select {
+    font-size: 1rem;
+    padding: 14px 16px;
     border-radius: 12px;
   }
 
-  .read-more-btn .arrow-icon {
-    font-size: 0.9rem;
+  .woocommerce-checkout-review-order {
+    padding: 24px;
+    border-radius: 18px;
+  }
+
+  .woocommerce-checkout-review-order-table th {
+    font-size: 1.05rem;
+    padding: 16px 18px;
+  }
+
+  .woocommerce-checkout-review-order-table td {
+    padding: 16px 18px;
+    font-size: 1rem;
+  }
+
+  .woocommerce-checkout .order-total th,
+  .woocommerce-checkout .order-total td {
+    font-size: 1.3rem;
+    padding: 18px;
+  }
+
+  .woocommerce-checkout-payment {
+    padding: 26px;
+    border-radius: 18px;
+  }
+
+  .woocommerce-checkout-payment .payment_methods li {
+    padding: 16px;
+  }
+
+  .woocommerce-checkout-payment .payment_methods li label {
+    font-size: 1.05rem;
+  }
+
+  .woocommerce-checkout #place_order {
+    font-size: 1.2rem;
+    padding: 16px 45px;
+    width: 100%;
+    min-width: auto;
+    border-radius: 14px;
+  }
+
+  .woocommerce-error,
+  .woocommerce-message,
+  .woocommerce-info {
+    padding: 16px 22px;
+    font-size: 1.05rem;
   }
 }
 
 /* ریسپانسیو موبایل کوچک */
 @media (max-width: 480px) {
-  .description-text,
-  .specs-text {
-    max-height: 120px;
+  .checkout-page {
+    padding: 24px 0;
+  }
+
+  .checkout-title {
+    font-size: 1.6rem;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+  }
+
+  .checkout-title::after {
+    width: 70px;
+    height: 3px;
+  }
+
+  .woocommerce-checkout form.checkout {
+    padding: 22px;
+    border-radius: 18px;
+  }
+
+  .woocommerce-checkout .col-1,
+  .woocommerce-checkout .col-2 {
+    padding: 22px;
+    border-radius: 18px;
+  }
+
+  .woocommerce-checkout h3 {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+  }
+
+  .woocommerce-checkout label {
     font-size: 0.95rem;
-    line-height: 1.65;
   }
 
-  .description-text:not(.expanded)::after,
-  .specs-text:not(.expanded)::after {
-    height: 50px;
-  }
-
-  .read-more-btn {
-    font-size: 0.9rem;
-    padding: 8px 20px;
+  .woocommerce-checkout input[type="text"],
+  .woocommerce-checkout input[type="email"],
+  .woocommerce-checkout input[type="tel"],
+  .woocommerce-checkout select {
+    font-size: 0.95rem;
+    padding: 12px 14px;
     border-radius: 10px;
   }
 
-  .read-more-btn .arrow-icon {
-    font-size: 0.85rem;
+  .woocommerce-checkout-review-order {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .woocommerce-checkout-review-order-table th {
+    font-size: 1rem;
+    padding: 14px 16px;
+  }
+
+  .woocommerce-checkout-review-order-table td {
+    padding: 14px 16px;
+    font-size: 0.95rem;
+  }
+
+  .woocommerce-checkout .order-total th,
+  .woocommerce-checkout .order-total td {
+    font-size: 1.2rem;
+    padding: 16px;
+  }
+
+  .woocommerce-checkout-payment {
+    padding: 22px;
+    border-radius: 16px;
+  }
+
+  .woocommerce-checkout-payment .payment_methods li {
+    padding: 14px;
+    border-radius: 10px;
+  }
+
+  .woocommerce-checkout-payment .payment_methods li label {
+    font-size: 1rem;
+  }
+
+  .woocommerce-checkout #place_order {
+    font-size: 1.1rem;
+    padding: 14px 36px;
+    border-radius: 12px;
+  }
+
+  .woocommerce-checkout #place_order::after {
+    font-size: 1.1rem;
+  }
+
+  .woocommerce-error,
+  .woocommerce-message,
+  .woocommerce-info {
+    padding: 14px 18px;
+    font-size: 1rem;
+    border-radius: 12px;
+  }
+
+  .woocommerce-error::before,
+  .woocommerce-message::before,
+  .woocommerce-info::before {
+    font-size: 1.5rem;
   }
 }
